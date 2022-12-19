@@ -7954,3 +7954,3502 @@ $ ls
 258856 gpgdm
 '
 ]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day08: data bis: bis [
+
+	"(Advent2022 day08: Advent2022 day08sample bis: false) >>> 21"
+
+	"(Advent2022 day08: Advent2022 day08data bis: false) >>> 1763"
+
+	"(Advent2022 day08: Advent2022 day08sample bis: true) >>> 8"
+
+	"(Advent2022 day08: Advent2022 day08data bis: true) >>> 671160"
+
+	| nbRows nbCols data2 forest result treeVisible score treeScore |
+	nbRows := data lineCount.
+	nbCols := data size / nbRows - 1.
+	data2 := data select: [ :c | c ~= Character cr ].
+	data2 := data2 collect: [ :c | c asInteger -> false ] as: Array.
+	forest := Array2D rows: nbRows columns: nbCols contents: data2.
+
+	result := 0.
+	score := 0.
+	forest withIndicesDo: [ :val :row :col | 
+		treeVisible := false. "for part1"
+		treeScore := 1. "for part2"
+		{ 1. 0. -1. 0. 0. 1. 0. -1 } pairsDo: [ :dr :dc | 
+			| s c r |
+			s := 0.
+			r := row.
+			c := col.
+			[ 
+			r := r + dr.
+			c := c + dc.
+
+			(r < 1 or: [ r > nbRows or: [ c < 1 or: [ c > nbCols ] ] ])
+				ifTrue: [ 
+					treeVisible := true.
+					true ]
+				ifFalse: [ 
+					s := s + 1.
+					(forest at: r at: c) >= val ] ] whileFalse.
+			treeScore := treeScore * s ].
+		treeVisible ifTrue: [ result := result + 1 ].
+		score := treeScore max: score ].
+
+	bis
+		ifFalse: [ ^ result ]
+		ifTrue: [ ^ score ]
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day08data [
+
+	^ '122202212311200210333041243104410211022242435153422552354101423030331120103122123201123013212020121
+212122122000221311323440442444413314215241554351515445144551151103011402331412314230102131310221002
+200010233110132032201044033410403402323542453441213225433145441453242244421030303220011011132300002
+120101110203333110240120011412225434434121313542334144355225111454523132420142243111113223031311111
+120110223201233140434331404320315125532452213233242311511524412523343520430421042000030001030200222
+000102322010022341104032321113312242521134214543411111515333425154553221421211441143024103333323012
+012132022020312444102430014331221411222235334515444152433144133435532224431441304412411212000133031
+120233223310314441323131225313444245412451315432455236445534542223421552522450312102202033233322003
+110303300214411413041135513123311333342254632434525246464244653512154122151153240314331404133102032
+320333021041401210342112413252521354154654526224624264656643323243514213144525443140321100432322102
+213333013400314344445512541224344542425335542246245535342346525455632342143432241440034221113121103
+103101323212441144514541213255356562253454324423562254643435566355652443131311521310340011410023010
+232231310023333125425145335413643646335436344645256622626244424566265461143132555442033102212102133
+230012330403333244113122423525434543453346345442546444536356456656653336522243141515320031310242132
+001331331400242344452535542244353454256436245444356344633623323223624634633531345443212332124100001
+320213230430015352541121166364225342324465546743674376745764665342525653462642431254322120131320301
+030030441321345531435352552565634242236456747547675667333646754662532244322223425143335202013410331
+130323430403445155252353542665556632743644346337573354575553473564426335656353332452444512100342303
+000124441244513213434222225365536245467565344634335675756354647753423526454264443544455252333100012
+303404133431225152343544434244326457656763736537576455577647443546747235534536353521453342020431303
+311104212215444221552335243356444654364337535373347655455775663756457363653523325323222244130341434
+033113243413224543336252525236557657445633537454545454747556455455777455542442433541422521522303132
+032301305335212345536223463445733334466466456857685556646643443634434366755622423221321152153211112
+432413234435244244452452522766657337677487457667574884664485837634653735355652265344225135521142200
+214204451352332225552233236447335656736454774865747468575666547736456546737626423225514542353132003
+033032334245244345353263544373576764747865456884456784664774575446775657546624634322432214245131331
+121012311135135242665226463546373455674886866675578444744865445486444436446765632254623534551121111
+341323122332344433445227455474347888748648456446654846846776658764776443766657642346253535143552144
+324244533333334656636247465677737577755486464656557545574668654666685345546335423322234653144345021
+043204235524544223242334547537787887788644766889958956876454754674478577343347433636323431422535420
+132053544243564633627466765775657547755548985595865776876887476476586773674345367554624423333443214
+434145415151462624423574737777874646757869897568985857768555766747845787346556464366425553353151300
+033552122413443664556665676655648855845975596556995967956566699866477545537554553645645553335523524
+413544333326325544236357664865456474858595889756579986899779997968486748464773366656464426231155442
+004332522265552444763374547484644488886789598575569799777767888975656856667647455453254435233141511
+035354414545334263444765576467446658985699666669667988675585776867776657644544534734656653433441431
+442122443263522535743777354555686688857759689956668767555979587695855866658755676536345652311311234
+231314151362463367455573668565545776596986867687779777769576568988867748688753444556446645553534525
+045415334236364244375435664665477567587759896768777886876768796985898556758446336336326243331233454
+342353524362463357737675678645755585686559698888978699669989566777695575467773733463432243352222445
+244133134532623377737577688575658856867977866698779767897688987856558847648874553573743553546523534
+021553556544442474674534678684779989779667798977898967696766875855597978664786474743343545232141545
+045425316553544766676736774475658985557769887677898986998789979958865786565747357474546425542554235
+123511255462335663763334745464955879987988867676898776768888899576578976678476464757366443234425311
+325533243442663433734555785478977676679868889789787989899689977975777578786878557777434464652443351
+341155355546553356347757544788568965668697968997877777976676899896768799766576567645554342336334233
+421521345226644475636665485646689879769887867898789798988788768788759989487445577633675662663234325
+225431534432355354466644477659579957678999798898887898798887799686577775655556855457566334643614134
+254522334642647433556585856548559868968877679888988778897876767896886779646466464564775265336232441
+312113532345553345433444768455667856989979687989987899997988898888658869478687547476363665422513141
+152555423534245354346564447446976597699676889998999887989796789797775977768544533373735436335515423
+341213542653444767556388768885878975698787998799977787779899987685979877545764473357337423424514315
+322113552445453574657574755545799689867898669877988877997779898765669858668546477767666242656344212
+523331354363325454365675645869975977878797967999887779897978887888798999548865636336353426535355452
+523523423432344663765375787446557887679766968878979887789796777987687596555667445376536663356525141
+551114235346366563637355556866885895767877798798797989787886976886787698548687646557754363564525313
+251223245223334447766584755447956898986768669897979798997768689676988975874646433446733346424411335
+214241355255455766365674476646975968859866869967978898867967666685895878644875637565576656255154544
+455352455253232666575668454867955886956998987678966896777867699977589755646464755747533332342424541
+444515424223524645435648587576677675775989869686879869776776888598575688877564767577434234326235545
+431313414332525265734668687845775796567769886777989778777997885578687756877567364366345652533512134
+333555123263656354334546784878748996895956799868879687768998999597665865666673657464554445565315153
+234251415355332356354555748857549756797677788669666779776896855789587868886666535745644366551433223
+425342555454555443357573485485875677656895597978676766678885768675668576658854377547455252453332433
+323212322142542547356336654885588587756876988878668876996855885757567666665664655447625566342455323
+145453124156454236753637566754554586888986779659899875656867888757855674866346635564564335311444142
+241532355322446443663343474577685666578989895777658988767886579994465878877675775646446644411214331
+144121414316432226357635465574878648885659856586566979685759558986575567664637365426532646212254243
+110513511415656625443556556674684868678895878785759566769757697468556564753375577435453525411543113
+010054252444265234547356444555575676545757579699968766586568964546866767534346564224265623245525511
+120212515152224263635534376453556487856658876995968869757756754456584754356376564445254454534225340
+334403322452135643232646334553464468686466757956767796875866688444464456337547673543644223334124002
+424345231535522355445635437664744565688755754586858454858554458475568756654735523654265235423342312
+031443144424522463542544764444765767644457666757567678447484574545767543635774453342345411351542313
+321403155315156656344554665775567644878587754546578686767855867554637477555573424362546151514131330
+100300432342253325546433443636475644557666885556847555458755555684535636335545343542245513545400031
+241103243345314352532434567355636677768477667655874858784887748363644434657254223342542521512523103
+013432002255524532425326442376655436757756476784578755546658775744775577372453335234234123311334110
+224312132351342113543625426364775474475555435685668887764654565767573537642634534534253412535033121
+342013333254343554666262433657555734443433335545744436575736345777633344224223656361344225330312223
+234442324252344452264263235643446676735646567555767567465473767566476572456525232422431125340421040
+030302023035452131512323435555347556466757645454545634364636667436454662255465636151444354004144240
+002004133214113555342264554265222355765774744775436734535556664773753352634233435412243552441100341
+011422341232151553353542265363535632735746674664776744464473335435625662443566132542533542101243120
+203021201322125111143244446544365445365774633366633765656576533325536225455355341443312221224423103
+311021234200144512534253453355352253535542456754747757743743435344545565465655544322254011444341222
+101203222013410332153151244543442433553342325366345652255264423465522455665453535113251410414031300
+103101032340424335231434112162665465333242654445464443552552544226533654451145222233401204012240023
+300000234304043032354531115322565425623354453256432525255636642566343622125151231523130220222300331
+320320110121204431154322441252432253656645325532363344542646546553223512543244125154443233034012021
+223211323021301334023554115315242234323456322565626332455546252636654333515412114103233412041213321
+020331330004113222113544411442545513454442262444225546542423526322541134153211543210202143401031310
+033131211214044030334411533413134451124346654653645545223652313534244341353254324212241333001202010
+011223212020313313300223232314353315524525531133464633645121312251455142242212211423301012011010012
+202131322330230012310003211315154334411525215354321214224515115324133412515133121340021221223011311
+102233123000103132110110422414142252322414331525452331522255224253512324323332322332002033332200121
+010112331222023221443321410332323442443211235352422543351522342441341212433312114143012011012301012
+102001321100332034112010340431405521533133132514423245132455311232555303030103043321011110131121202
+102100020233112322130014030443133042115515544424443514351353232214340221142434234013000032002122000
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day08sample [
+
+	^ '30373
+25512
+65332
+33549
+35390
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day09: data bis: bis [
+
+	"(Advent2022 day09: Advent2022 day09sample bis: false) >>> 13"
+
+	"(Advent2022 day09: Advent2022 day09data bis: false) >>> 5902"
+
+	"(Advent2022 day09: Advent2022 day09sample bis: true) >>> 1"
+
+	"(Advent2022 day09: Advent2022 day09data bis: true) >>> 2445"
+
+	| dirs len rope parsed dir visited |
+	dirs := { 
+		        ('U' -> (1 @ 0)).
+		        ('D' -> (-1 @ 0)).
+		        ('R' -> (0 @ 1)).
+		        ('L' -> (0 @ -1)) } asDictionary.
+
+	len := bis
+		       ifFalse: [ 2 ]
+		       ifTrue: [ 10 ].
+
+	rope := Array new: len withAll: 0 @ 0.
+	visited := Set with: rope last.
+	data linesDo: [ :line | 
+		parsed := line splitOn: ' '.
+		dir := dirs at: parsed first.
+		parsed second asInteger timesRepeat: [ 
+			rope at: 1 put: rope first + dir.
+			2 to: rope size do: [ :i | 
+				| next tail |
+				next := rope at: i - 1.
+				tail := rope at: i.
+				((next x - tail x) abs max: (next y - tail y) abs) = 2 ifTrue: [ 
+					rope
+						at: i
+						put: tail + ((next x - tail x) sign @ (next y - tail y) sign) ] ].
+			visited add: rope last ] ].
+	^ visited size
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day09data [
+
+	^ 'R 1
+D 1
+U 1
+R 2
+L 2
+U 2
+D 1
+L 2
+R 1
+L 1
+U 2
+L 2
+R 2
+U 1
+D 2
+R 1
+D 1
+U 1
+L 1
+R 1
+L 2
+D 2
+R 1
+D 2
+L 1
+R 1
+D 2
+L 2
+D 1
+L 2
+D 1
+U 1
+L 2
+U 2
+R 2
+D 1
+L 1
+D 1
+L 2
+R 2
+U 1
+D 2
+L 2
+R 1
+L 2
+U 1
+L 2
+R 2
+D 1
+U 1
+L 1
+U 1
+R 1
+U 1
+R 1
+U 1
+L 2
+D 2
+U 1
+D 1
+L 1
+D 2
+R 2
+D 1
+L 1
+R 2
+D 1
+R 2
+U 1
+L 2
+R 1
+D 2
+R 1
+L 2
+D 2
+U 2
+D 2
+R 1
+D 1
+L 1
+D 2
+R 2
+D 2
+L 1
+D 2
+U 1
+D 1
+L 1
+U 1
+D 2
+L 2
+R 2
+L 1
+R 2
+U 2
+D 1
+U 1
+R 1
+U 1
+R 1
+D 2
+L 1
+U 2
+R 1
+U 1
+R 1
+D 2
+R 2
+U 1
+L 2
+R 2
+U 2
+R 3
+L 2
+R 2
+L 2
+D 3
+R 3
+D 1
+U 3
+L 1
+U 1
+D 2
+L 1
+D 1
+L 2
+D 2
+L 1
+D 2
+U 2
+R 1
+L 3
+U 3
+R 2
+L 3
+R 3
+D 3
+L 3
+R 1
+L 3
+D 1
+R 1
+L 1
+U 2
+D 3
+R 2
+U 1
+L 3
+U 3
+L 2
+D 3
+L 2
+U 1
+L 1
+D 1
+U 1
+D 2
+R 1
+L 3
+R 3
+L 1
+D 3
+U 3
+R 2
+L 3
+R 3
+D 2
+U 1
+R 1
+U 3
+R 2
+L 2
+D 3
+R 2
+L 1
+U 3
+R 3
+D 3
+L 3
+D 2
+R 2
+D 2
+U 3
+L 3
+R 1
+U 2
+D 3
+L 2
+R 3
+D 2
+L 2
+U 1
+D 2
+L 3
+U 1
+D 2
+U 1
+D 3
+R 1
+L 3
+R 3
+D 2
+U 1
+D 1
+U 2
+L 1
+R 2
+U 3
+L 2
+R 2
+D 1
+L 1
+D 1
+R 3
+U 2
+L 2
+D 3
+U 2
+R 2
+L 1
+U 1
+R 2
+U 3
+D 1
+R 4
+D 2
+L 4
+D 1
+L 2
+R 1
+L 2
+D 2
+U 2
+D 2
+R 3
+L 2
+D 2
+L 4
+R 4
+D 4
+L 2
+U 4
+L 1
+R 4
+U 4
+D 1
+L 4
+U 2
+L 3
+D 1
+L 3
+D 4
+U 2
+D 2
+R 1
+L 4
+D 1
+U 3
+L 3
+U 2
+R 4
+L 3
+D 3
+U 1
+L 2
+R 3
+L 2
+R 1
+D 2
+L 1
+U 3
+D 1
+L 3
+U 2
+R 2
+L 3
+D 1
+U 4
+R 1
+U 3
+R 1
+D 2
+R 3
+L 2
+U 1
+D 3
+L 4
+U 3
+L 3
+R 1
+D 2
+R 1
+L 1
+R 2
+D 4
+U 3
+L 4
+D 4
+R 3
+D 3
+U 3
+D 3
+L 2
+R 3
+L 4
+U 4
+D 1
+L 3
+U 4
+R 2
+D 3
+L 3
+R 1
+L 1
+R 1
+L 3
+D 3
+L 4
+R 4
+D 3
+U 4
+L 1
+R 2
+D 3
+U 1
+R 1
+L 3
+R 2
+D 3
+U 3
+R 4
+U 2
+L 1
+U 2
+R 2
+D 2
+R 1
+U 3
+R 5
+L 4
+D 2
+R 3
+L 3
+U 4
+L 2
+U 4
+R 1
+D 4
+R 2
+U 5
+L 4
+R 3
+U 5
+L 5
+U 2
+D 5
+R 1
+D 3
+L 5
+R 5
+L 4
+R 3
+L 5
+U 5
+D 2
+L 1
+U 4
+L 2
+R 3
+D 4
+L 3
+U 3
+L 3
+D 1
+U 5
+D 5
+R 1
+D 1
+L 1
+U 4
+L 1
+U 4
+L 1
+R 5
+D 4
+U 4
+D 3
+L 5
+D 1
+U 4
+R 2
+U 2
+D 3
+R 5
+L 3
+R 4
+D 1
+R 2
+L 2
+U 2
+L 3
+R 2
+L 5
+D 5
+L 1
+U 2
+D 5
+L 3
+U 1
+R 2
+L 3
+U 4
+D 5
+U 1
+R 5
+D 4
+R 5
+U 2
+D 4
+L 3
+R 5
+D 2
+U 2
+L 5
+R 1
+D 1
+R 4
+L 3
+D 1
+R 1
+U 1
+L 2
+D 5
+R 4
+L 5
+U 4
+R 4
+U 4
+D 2
+R 1
+U 4
+L 4
+R 4
+L 5
+D 6
+R 1
+L 1
+D 5
+R 4
+L 6
+D 5
+L 6
+U 3
+D 2
+R 6
+L 1
+R 3
+D 5
+L 4
+R 4
+U 4
+L 2
+U 1
+D 3
+R 2
+U 1
+D 2
+L 2
+R 3
+D 6
+R 3
+L 1
+D 3
+U 3
+L 3
+U 6
+R 1
+L 4
+D 3
+L 4
+U 2
+D 1
+U 5
+R 1
+D 1
+R 4
+D 2
+L 4
+R 2
+L 3
+R 6
+L 6
+R 6
+U 2
+R 4
+D 3
+U 6
+L 2
+R 6
+L 2
+D 4
+R 1
+U 4
+D 3
+R 2
+D 6
+L 4
+D 3
+U 5
+R 1
+D 6
+U 5
+R 1
+L 1
+R 3
+U 4
+L 2
+D 1
+R 4
+D 4
+U 4
+R 4
+L 1
+D 6
+U 3
+D 2
+U 2
+D 4
+R 1
+L 5
+R 5
+D 5
+R 5
+U 5
+L 6
+D 4
+U 5
+R 1
+L 5
+R 1
+U 3
+D 4
+L 6
+U 2
+D 1
+U 3
+R 6
+L 5
+U 6
+R 2
+L 2
+U 1
+L 2
+D 6
+U 4
+R 1
+D 4
+L 7
+D 6
+R 5
+L 4
+U 6
+R 4
+U 7
+R 4
+U 3
+L 7
+D 5
+R 6
+L 1
+R 5
+L 3
+R 4
+U 6
+R 1
+U 4
+L 7
+D 2
+R 4
+L 4
+R 5
+U 3
+D 1
+R 2
+D 1
+L 1
+R 4
+L 2
+U 7
+L 4
+R 7
+U 1
+D 3
+L 2
+D 6
+R 3
+D 1
+U 2
+L 5
+R 3
+D 2
+L 5
+U 1
+R 6
+D 3
+L 6
+U 6
+R 3
+L 5
+D 3
+U 3
+D 7
+U 4
+D 7
+R 4
+D 4
+L 4
+D 2
+R 4
+D 2
+R 2
+D 4
+U 5
+D 5
+L 6
+U 6
+L 1
+R 6
+U 3
+L 2
+U 3
+R 1
+U 4
+L 6
+R 5
+U 5
+D 2
+U 4
+R 1
+D 1
+R 2
+U 5
+L 4
+D 3
+R 2
+L 4
+U 2
+R 2
+L 7
+R 4
+U 3
+L 6
+R 3
+L 2
+U 6
+L 2
+R 2
+L 3
+D 2
+L 5
+R 2
+U 6
+D 6
+L 4
+D 5
+U 4
+R 2
+L 2
+U 3
+D 1
+R 8
+D 5
+L 8
+R 1
+U 7
+R 3
+U 4
+L 8
+D 3
+U 6
+D 8
+R 1
+D 4
+L 3
+D 8
+L 7
+D 5
+R 8
+L 5
+U 4
+D 3
+L 5
+R 3
+L 2
+R 5
+L 6
+R 3
+U 6
+R 6
+U 3
+D 1
+R 4
+U 5
+D 2
+L 1
+R 8
+U 3
+D 5
+R 6
+D 1
+L 3
+D 8
+R 1
+U 3
+L 3
+U 4
+D 2
+U 3
+L 8
+D 2
+L 3
+U 7
+L 2
+U 1
+D 1
+U 8
+R 6
+D 6
+R 3
+L 5
+U 6
+R 8
+L 1
+R 5
+L 7
+U 1
+R 1
+D 4
+L 8
+D 7
+R 6
+U 6
+D 5
+R 3
+U 3
+R 8
+D 4
+R 2
+U 6
+L 2
+D 2
+U 1
+L 1
+D 3
+L 4
+D 8
+R 6
+L 8
+D 7
+R 1
+L 2
+U 6
+R 7
+L 5
+R 3
+L 5
+U 3
+D 8
+U 5
+R 3
+U 7
+L 5
+D 8
+U 5
+R 1
+D 5
+L 4
+D 9
+R 5
+U 1
+D 9
+U 6
+L 2
+D 3
+L 7
+U 5
+D 3
+R 3
+U 5
+R 3
+D 2
+R 7
+U 5
+D 6
+R 1
+L 8
+U 6
+D 5
+L 2
+R 1
+L 9
+D 2
+R 3
+L 5
+R 2
+L 4
+U 7
+L 2
+D 6
+L 9
+R 9
+D 8
+U 6
+D 2
+U 7
+R 7
+D 5
+R 3
+U 9
+R 8
+D 5
+L 2
+D 3
+R 8
+U 3
+L 2
+U 8
+R 8
+L 1
+U 5
+R 4
+L 8
+U 9
+L 7
+U 9
+R 9
+D 6
+L 3
+R 9
+U 5
+L 3
+U 7
+L 5
+U 5
+R 1
+D 9
+U 5
+R 9
+D 5
+U 4
+D 8
+U 3
+L 4
+D 8
+L 3
+U 4
+D 5
+R 5
+L 1
+D 7
+U 4
+R 3
+L 6
+R 9
+U 5
+R 8
+D 9
+L 7
+U 4
+L 2
+D 2
+U 6
+R 5
+U 5
+L 8
+U 9
+L 2
+R 3
+D 9
+U 2
+L 6
+D 6
+L 3
+D 2
+U 7
+D 4
+L 6
+D 7
+L 8
+U 4
+D 2
+R 3
+U 3
+L 1
+R 5
+L 3
+D 2
+R 6
+D 8
+U 8
+R 10
+U 7
+L 6
+U 3
+D 6
+U 5
+L 3
+R 5
+U 8
+D 4
+L 8
+U 8
+L 9
+U 6
+L 6
+D 3
+U 1
+L 2
+U 1
+L 8
+R 9
+L 1
+R 9
+D 1
+R 4
+D 5
+L 5
+R 8
+U 3
+L 2
+U 7
+D 2
+U 2
+L 6
+D 4
+L 9
+U 10
+R 10
+U 2
+R 6
+L 4
+D 1
+R 10
+U 5
+L 1
+U 9
+L 10
+D 8
+R 1
+U 2
+L 1
+D 4
+U 2
+L 1
+U 5
+L 9
+D 1
+U 3
+L 10
+U 3
+D 8
+U 8
+D 10
+L 4
+D 9
+U 4
+L 8
+R 9
+D 6
+U 1
+L 1
+R 8
+L 2
+R 5
+U 7
+L 8
+R 2
+D 8
+L 6
+R 8
+L 7
+R 1
+D 4
+L 7
+R 9
+L 6
+U 2
+R 10
+U 1
+R 2
+U 4
+D 7
+U 6
+L 9
+R 6
+L 6
+R 5
+U 4
+L 4
+D 10
+L 10
+R 4
+L 10
+D 10
+R 11
+U 7
+D 5
+L 11
+D 8
+U 2
+R 2
+L 10
+R 9
+L 1
+U 4
+R 11
+L 7
+R 3
+D 5
+U 4
+L 10
+D 11
+R 4
+D 5
+L 8
+R 3
+D 2
+R 11
+U 9
+L 5
+R 1
+L 1
+U 9
+L 10
+U 11
+D 7
+L 3
+U 2
+D 6
+L 9
+D 2
+U 8
+L 6
+R 7
+U 6
+R 8
+D 11
+L 9
+D 7
+R 1
+D 7
+L 8
+R 11
+L 1
+R 7
+D 10
+R 10
+U 2
+L 7
+U 8
+L 2
+D 8
+U 7
+L 6
+R 8
+D 10
+L 11
+D 2
+U 4
+L 3
+U 8
+L 4
+D 10
+U 3
+D 6
+R 4
+L 8
+D 6
+U 11
+D 7
+L 9
+U 10
+D 10
+R 9
+D 8
+L 8
+U 10
+L 6
+D 2
+L 6
+R 11
+D 10
+R 1
+U 7
+R 7
+L 2
+R 6
+D 11
+R 1
+L 6
+R 8
+U 1
+R 3
+L 5
+U 7
+R 2
+L 4
+U 7
+L 4
+D 8
+R 10
+D 12
+U 8
+L 6
+U 2
+D 5
+U 8
+D 5
+U 10
+R 6
+L 7
+D 11
+L 8
+R 4
+L 5
+R 12
+L 3
+R 3
+D 5
+R 3
+L 9
+U 6
+L 3
+R 4
+D 12
+R 7
+L 10
+D 5
+L 6
+R 3
+U 9
+D 4
+U 5
+R 5
+L 12
+R 3
+U 12
+D 6
+L 3
+U 6
+R 10
+D 6
+U 11
+D 9
+U 1
+D 10
+R 4
+U 9
+D 10
+R 7
+U 3
+R 11
+U 5
+R 9
+L 11
+D 11
+U 11
+R 3
+L 10
+U 5
+L 9
+U 6
+D 10
+L 5
+D 11
+L 1
+R 8
+D 7
+L 7
+R 2
+L 5
+R 1
+D 12
+R 2
+D 6
+U 6
+D 3
+R 3
+L 1
+R 10
+L 9
+R 1
+D 10
+L 8
+D 4
+R 4
+U 6
+L 2
+R 4
+U 9
+L 6
+U 9
+D 9
+R 12
+L 8
+U 2
+D 1
+U 4
+R 12
+D 1
+R 10
+L 8
+U 1
+R 6
+D 5
+U 12
+R 10
+L 10
+D 7
+R 3
+U 1
+D 9
+R 1
+L 1
+D 11
+L 3
+D 9
+U 7
+R 4
+L 9
+R 13
+L 5
+D 3
+U 2
+L 7
+U 2
+R 10
+D 1
+L 1
+D 7
+R 4
+U 3
+R 8
+D 6
+L 7
+U 12
+L 6
+D 3
+R 10
+D 11
+L 11
+R 10
+U 6
+L 2
+U 4
+R 10
+D 6
+R 5
+U 2
+R 12
+D 8
+L 2
+D 13
+R 9
+L 5
+U 2
+L 12
+U 8
+D 6
+U 9
+R 11
+U 11
+L 7
+R 7
+U 7
+R 4
+U 9
+D 1
+R 6
+D 8
+L 6
+D 7
+R 1
+L 5
+R 8
+D 10
+L 8
+R 1
+U 9
+R 12
+D 10
+U 2
+L 9
+U 5
+R 4
+U 7
+D 7
+R 3
+U 7
+D 12
+U 2
+L 12
+U 1
+D 6
+R 13
+L 11
+R 12
+L 4
+U 6
+L 1
+U 8
+D 6
+U 9
+D 3
+L 7
+D 7
+R 12
+U 13
+R 13
+U 13
+D 13
+R 11
+L 2
+D 9
+R 2
+D 9
+U 11
+R 7
+U 8
+R 7
+L 8
+U 10
+R 4
+U 5
+D 14
+R 4
+D 4
+U 5
+R 6
+U 2
+D 11
+L 5
+U 10
+R 2
+L 1
+D 12
+U 7
+D 6
+L 4
+D 10
+U 11
+L 12
+D 8
+R 9
+L 6
+D 8
+R 11
+L 14
+D 13
+U 8
+D 12
+U 7
+D 10
+R 9
+L 1
+D 2
+U 3
+D 1
+R 2
+L 2
+D 13
+L 13
+R 4
+L 2
+R 3
+U 10
+R 3
+L 4
+R 8
+U 8
+R 5
+D 13
+L 2
+R 3
+U 2
+L 9
+R 1
+U 6
+D 5
+L 1
+R 4
+L 2
+U 2
+D 5
+R 13
+L 8
+D 13
+R 1
+U 14
+D 2
+L 11
+U 4
+D 12
+U 7
+R 8
+U 5
+R 6
+U 5
+D 2
+U 10
+D 1
+U 2
+D 3
+U 12
+L 10
+R 2
+D 12
+R 12
+L 5
+D 13
+R 1
+L 1
+U 1
+D 10
+R 13
+L 2
+D 4
+L 8
+U 9
+L 3
+R 5
+D 13
+L 4
+R 9
+U 4
+L 3
+D 2
+U 14
+R 1
+L 6
+D 8
+R 14
+U 8
+L 1
+D 5
+U 9
+L 15
+R 4
+L 15
+R 14
+U 6
+D 1
+L 15
+U 11
+R 5
+D 13
+L 1
+U 6
+R 7
+L 12
+D 3
+U 12
+R 11
+L 9
+R 2
+L 6
+R 9
+L 6
+R 4
+U 3
+L 13
+R 9
+L 3
+R 15
+D 8
+U 3
+D 13
+L 6
+D 14
+U 6
+L 3
+R 8
+U 15
+D 14
+U 2
+L 9
+U 3
+L 7
+U 15
+D 11
+U 13
+L 6
+D 9
+R 11
+L 7
+U 2
+L 15
+U 14
+L 4
+R 4
+U 11
+R 7
+U 8
+D 3
+L 15
+U 10
+R 2
+D 14
+U 13
+D 6
+U 1
+L 7
+R 7
+U 5
+L 4
+R 1
+L 12
+D 1
+R 15
+U 14
+D 13
+U 4
+D 10
+U 11
+L 14
+R 3
+L 3
+R 9
+L 11
+U 6
+D 13
+R 5
+L 10
+R 8
+L 5
+D 3
+U 5
+R 12
+D 6
+L 11
+R 1
+U 13
+D 6
+L 2
+D 14
+R 14
+D 10
+R 8
+L 12
+U 8
+L 8
+U 9
+R 8
+U 2
+R 14
+U 9
+L 12
+D 3
+L 3
+D 14
+U 7
+L 4
+D 11
+L 6
+U 2
+D 14
+L 1
+R 10
+U 5
+R 7
+L 12
+U 1
+L 8
+U 3
+D 5
+L 14
+D 3
+L 12
+R 3
+U 11
+D 3
+U 6
+D 12
+U 11
+L 11
+U 1
+R 8
+U 3
+L 16
+D 16
+L 14
+U 13
+D 14
+L 4
+U 15
+D 7
+U 6
+R 13
+U 16
+L 10
+U 6
+L 6
+U 15
+D 10
+L 11
+U 12
+R 13
+L 4
+R 5
+U 10
+D 16
+U 8
+D 8
+U 13
+R 13
+U 10
+R 5
+D 1
+L 9
+U 5
+D 7
+U 4
+L 15
+R 6
+L 13
+D 2
+U 2
+R 3
+U 2
+D 11
+U 12
+L 15
+D 3
+U 3
+R 5
+L 8
+U 14
+R 15
+U 12
+R 14
+L 14
+D 12
+R 14
+L 1
+R 4
+U 6
+R 12
+D 10
+R 12
+L 5
+D 8
+U 15
+L 13
+D 6
+L 4
+D 2
+R 6
+D 9
+L 12
+U 1
+R 16
+U 2
+L 15
+U 1
+D 3
+R 14
+L 5
+D 2
+L 16
+U 14
+L 11
+U 9
+L 5
+U 3
+R 1
+L 4
+U 15
+R 9
+U 4
+D 13
+U 16
+D 2
+R 6
+D 14
+R 6
+U 1
+L 2
+R 12
+D 15
+U 9
+R 3
+U 11
+L 5
+U 1
+R 16
+D 7
+R 11
+U 8
+L 15
+D 5
+L 11
+U 12
+D 12
+L 17
+U 5
+L 13
+R 5
+D 14
+U 14
+L 13
+U 7
+D 2
+R 6
+D 15
+L 8
+D 1
+U 8
+R 13
+D 9
+U 5
+D 1
+R 5
+L 4
+R 5
+U 4
+L 2
+R 15
+L 3
+R 14
+D 4
+U 17
+R 2
+U 2
+L 14
+U 4
+R 16
+U 13
+L 9
+D 4
+U 13
+L 14
+U 15
+L 9
+U 16
+D 10
+L 13
+R 11
+U 6
+R 15
+D 10
+L 1
+R 7
+U 11
+R 5
+D 6
+L 6
+R 10
+D 5
+U 15
+R 13
+U 10
+D 15
+L 14
+D 16
+U 2
+D 11
+R 17
+U 17
+R 17
+U 2
+R 8
+D 4
+R 14
+L 2
+D 12
+L 7
+R 3
+D 4
+U 9
+L 11
+U 1
+D 5
+U 13
+R 7
+L 18
+U 2
+D 17
+L 15
+R 18
+L 2
+D 10
+L 12
+R 3
+L 11
+R 9
+L 13
+R 10
+U 12
+R 14
+U 10
+D 15
+R 17
+D 5
+U 2
+R 12
+D 14
+L 11
+D 10
+R 8
+U 7
+L 4
+U 3
+R 5
+D 13
+L 14
+D 1
+L 2
+D 7
+R 8
+U 13
+L 6
+D 15
+R 5
+D 1
+L 12
+R 7
+L 6
+R 15
+L 17
+R 10
+D 10
+L 4
+R 12
+D 16
+L 12
+R 2
+L 17
+D 6
+R 13
+L 14
+R 14
+U 11
+L 5
+R 7
+D 1
+L 8
+U 16
+L 14
+R 16
+D 16
+R 7
+L 5
+R 13
+U 3
+R 1
+D 8
+L 8
+D 15
+R 14
+D 4
+U 6
+D 13
+L 2
+D 15
+R 11
+D 14
+U 2
+D 15
+R 1
+L 18
+R 8
+L 14
+U 7
+L 13
+U 11
+R 5
+L 17
+R 3
+U 13
+R 17
+U 9
+R 4
+D 10
+L 13
+D 12
+R 10
+L 11
+U 9
+L 14
+D 9
+U 3
+D 15
+L 2
+R 8
+D 14
+U 17
+R 5
+D 3
+U 2
+R 2
+L 13
+R 16
+L 6
+D 9
+U 1
+R 8
+D 4
+R 4
+L 3
+D 12
+U 4
+D 5
+U 13
+L 19
+R 13
+L 6
+R 10
+L 9
+D 16
+L 6
+R 4
+U 9
+L 5
+D 12
+L 2
+U 8
+R 8
+U 2
+L 12
+R 15
+D 4
+U 4
+L 8
+D 6
+U 8
+R 8
+D 16
+U 2
+R 12
+U 17
+R 15
+U 8
+D 1
+R 5
+U 8
+R 4
+L 3
+D 7
+R 15
+D 2
+U 19
+L 15
+R 1
+U 6
+R 9
+D 3
+U 1
+R 15
+L 16
+D 6
+U 19
+D 11
+L 7
+R 13
+D 19
+U 13
+L 1
+U 14
+R 5
+U 9
+D 12
+U 2
+L 7
+D 2
+R 5
+U 1
+L 3
+R 17
+U 10
+R 12
+U 19
+L 8
+U 11
+D 16
+L 14
+U 11
+L 3
+R 17
+L 10
+D 2
+U 11
+L 8
+U 15
+L 14
+D 18
+U 2
+D 6
+L 14
+D 14
+R 12
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day09sample [
+
+	^ 'R 4
+U 4
+L 3
+D 1
+R 4
+D 1
+L 5
+R 2'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day10: data bis: bis [
+
+	"(Advent2022 day10: Advent2022 day10sample bis: false) >>> 13140"
+
+	"(Advent2022 day10: Advent2022 day10data bis: false) >>> 12980"
+
+	"((Advent2022 day10: Advent2022 day10sample bis: true) count: [ :c | c = $#  ]) >>> 124"
+
+	"((Advent2022 day10: Advent2022 day10data bis: true) count: [ :c | c = $#  ]) >>> 91"
+
+	| sum cycle regX parsed cycles crt screen w |
+	cycles := { 20. 60. 100. 140. 180. 220 }.
+
+	sum := 0.
+	cycle := 1.
+	regX := 1.
+	crt := 0.
+	screen := WriteStream on: String new.
+	data linesDo: [ :line | 
+		parsed := line splitOn: $ .
+
+		w := 1.
+		parsed size = 2 ifTrue: [ w := 2 ].
+
+		w timesRepeat: [ 
+			(cycles includes: cycle) ifTrue: [ sum := sum + (cycle * regX) ].
+			cycle := cycle + 1.
+			"part2:"
+			(crt between: regX - 1 and: regX + 1)
+				ifTrue: [ screen nextPut: $# ]
+				ifFalse: [ screen nextPut: $. ].
+			crt := crt + 1.
+			crt \\ 40 = 0 ifTrue: [ 
+				screen cr.
+				crt := 0 ] ].
+
+		parsed size = 2 ifTrue: [ regX := regX + parsed second asInteger ] ].
+
+	bis ifFalse: [ ^ sum ].
+
+	^ screen contents
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day10data [
+
+	^ 'noop
+noop
+addx 5
+noop
+noop
+addx 6
+addx 4
+addx -4
+addx 4
+addx -6
+addx 11
+addx -1
+addx 2
+addx 4
+addx 3
+noop
+addx 2
+addx -30
+addx 2
+addx 33
+noop
+addx -37
+noop
+noop
+noop
+addx 3
+addx 2
+addx 5
+addx 20
+addx 7
+addx -24
+addx 2
+noop
+addx 7
+addx -2
+addx -6
+addx 13
+addx 3
+addx -2
+addx 2
+noop
+addx -5
+addx 10
+addx 5
+addx -39
+addx 1
+addx 5
+noop
+addx 3
+noop
+addx -5
+addx 10
+addx -2
+addx 2
+noop
+noop
+addx 7
+noop
+noop
+noop
+noop
+addx 3
+noop
+addx 3
+addx 2
+addx 8
+addx -1
+addx -20
+addx 21
+addx -38
+addx 5
+addx 2
+noop
+noop
+noop
+addx 8
+noop
+noop
+addx -2
+addx 2
+addx -7
+addx 14
+addx 5
+noop
+noop
+noop
+addx -16
+addx 17
+addx 2
+addx -12
+addx 19
+noop
+noop
+addx -37
+noop
+noop
+noop
+addx 3
+addx 2
+addx 2
+addx 5
+addx 20
+addx -19
+addx 2
+noop
+noop
+noop
+addx 5
+addx 19
+addx -12
+addx 3
+addx -2
+addx 2
+addx -18
+addx 25
+addx -14
+addx -22
+addx 1
+noop
+noop
+noop
+addx 3
+addx 5
+addx -4
+addx 7
+addx 4
+noop
+addx 1
+noop
+noop
+addx 2
+addx -6
+addx 15
+addx -1
+addx 4
+noop
+noop
+addx 1
+addx 4
+addx -33
+noop
+addx 21
+noop
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day10sample [
+
+	^ 'addx 15
+addx -11
+addx 6
+addx -3
+addx 5
+addx -1
+addx -8
+addx 13
+addx 4
+noop
+addx -1
+addx 5
+addx -1
+addx 5
+addx -1
+addx 5
+addx -1
+addx 5
+addx -1
+addx -35
+addx 1
+addx 24
+addx -19
+addx 1
+addx 16
+addx -11
+noop
+noop
+addx 21
+addx -15
+noop
+noop
+addx -3
+addx 9
+addx 1
+addx -3
+addx 8
+addx 1
+addx 5
+noop
+noop
+noop
+noop
+noop
+addx -36
+noop
+addx 1
+addx 7
+noop
+noop
+noop
+addx 2
+addx 6
+noop
+noop
+noop
+noop
+noop
+addx 1
+noop
+noop
+addx 7
+addx 1
+noop
+addx -13
+addx 13
+addx 7
+noop
+addx 1
+addx -33
+noop
+noop
+noop
+addx 2
+noop
+noop
+noop
+addx 8
+noop
+addx -1
+addx 2
+addx 1
+noop
+addx 17
+addx -9
+addx 1
+addx 1
+addx -3
+addx 11
+noop
+noop
+addx 1
+noop
+addx 1
+noop
+noop
+addx -13
+addx -19
+addx 1
+addx 3
+addx 26
+addx -30
+addx 12
+addx -1
+addx 3
+addx 1
+noop
+noop
+noop
+addx -9
+addx 18
+addx 1
+addx 2
+noop
+noop
+addx 9
+noop
+noop
+noop
+addx -1
+addx 2
+addx -37
+addx 1
+addx 3
+noop
+addx 15
+addx -21
+addx 22
+addx -6
+addx 1
+noop
+addx 2
+addx 1
+noop
+addx -10
+noop
+noop
+addx 20
+addx 1
+addx 2
+addx 2
+addx -6
+addx -11
+noop
+noop
+noop'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day11: data bis: bis [
+
+	"(Advent2022 day11: Advent2022 day11data bis: false) >>> 55458"
+	"(Advent2022 day11: Advent2022 day11data bis: true) >>> 14508081294"
+
+	| lines monkeys midx monkey modulo |
+	monkeys := (1 to: 10) collect: [ :x | 
+		           Monkey new
+			           id: x - 1;
+			           yourself ].
+
+	midx := 1.
+	data splitOn: '<r><r>' expandMacros do: [ :monkeystr | 
+		monkey := monkeys at: midx.
+		midx := midx + 1.
+		lines := monkeystr lines.
+		monkey items:
+			(((lines second splitOn: ':') second splitOn: ', ') collect:
+				 #asInteger).
+		monkey operation: (lines third splitOn: ' ') seventh asSymbol.
+		monkey operand: (lines third splitOn: ' ') eighth asInteger.
+		monkey test: (lines fourth splitOn: 'by') second asInteger.
+		monkey ifTrue:
+			(monkeys at: (lines fifth splitOn: 'monkey') second asInteger + 1).
+		monkey ifFalse:
+			(monkeys at: (lines sixth splitOn: 'monkey') second asInteger + 1) ].
+
+
+	bis ifFalse: [
+		"part1"
+		20 timesRepeat: [ monkeys do: [ :m | m steps ] ].
+
+		^ ((monkeys collect: #activity) sort last: 2) product ].
+
+	"part2"
+
+	modulo := (monkeys collect: #test thenSelect: #isNotNil) product.
+	monkeys do: [ :m | m modulo: modulo ].
+
+	10000 timesRepeat: [ monkeys do: [ :m | m steps ] ].
+	^ ((monkeys collect: #activity) sort last: 2) product
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day11data [
+
+	^ 'Monkey 0:
+  Starting items: 84, 72, 58, 51
+  Operation: new = old * 3
+  Test: divisible by 13
+    If true: throw to monkey 1
+    If false: throw to monkey 7
+
+Monkey 1:
+  Starting items: 88, 58, 58
+  Operation: new = old + 8
+  Test: divisible by 2
+    If true: throw to monkey 7
+    If false: throw to monkey 5
+
+Monkey 2:
+  Starting items: 93, 82, 71, 77, 83, 53, 71, 89
+  Operation: new = old * old
+  Test: divisible by 7
+    If true: throw to monkey 3
+    If false: throw to monkey 4
+
+Monkey 3:
+  Starting items: 81, 68, 65, 81, 73, 77, 96
+  Operation: new = old + 2
+  Test: divisible by 17
+    If true: throw to monkey 4
+    If false: throw to monkey 6
+
+Monkey 4:
+  Starting items: 75, 80, 50, 73, 88
+  Operation: new = old + 3
+  Test: divisible by 5
+    If true: throw to monkey 6
+    If false: throw to monkey 0
+
+Monkey 5:
+  Starting items: 59, 72, 99, 87, 91, 81
+  Operation: new = old * 17
+  Test: divisible by 11
+    If true: throw to monkey 2
+    If false: throw to monkey 3
+
+Monkey 6:
+  Starting items: 86, 69
+  Operation: new = old + 6
+  Test: divisible by 3
+    If true: throw to monkey 1
+    If false: throw to monkey 0
+
+Monkey 7:
+  Starting items: 91
+  Operation: new = old + 1
+  Test: divisible by 19
+    If true: throw to monkey 2
+    If false: throw to monkey 5
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day12: data bis: bis [
+
+	"(Advent2022 day12: Advent2022 day12sample bis: false) >>> 31"
+
+	"(Advent2022 day12: Advent2022 day12data bis: false) >>> 352"
+
+	"(Advent2022 day12: Advent2022 day12sample bis: true) >>> 29"
+
+	"(Advent2022 day12: Advent2022 day12data bis: true) >>> 345"
+
+	| data2D graph neighbor cells start end shortestPath edges |
+	data2D := data asArray2D.
+
+	graph := AIBFS new.
+
+	cells := Dictionary new.
+	data2D withIndicesDo: [ :val :row :col | 
+		| v cell |
+		v := val.
+		val = $S ifTrue: [ v := $a ].
+		val = $E ifTrue: [ v := $z ].
+		cell := row @ col -> v codePoint.
+		val = $S ifTrue: [ start := cell ].
+		val = $E ifTrue: [ end := cell ].
+		cells at: cell key put: cell.
+		graph addNodeFor: cell ].
+
+	edges := OrderedCollection new.
+	cells do: [ :cell | 
+		{ 
+			(1 @ 0).
+			(-1 @ 0).
+			(0 @ 1).
+			(0 @ -1) } do: [ :dir | 
+			neighbor := cell key + dir.
+			cells
+				at: neighbor
+				ifPresent: [ :n | 
+				cell value + 1 >= n value ifTrue: [ edges add: n -> cell ] ] ] ].
+	graph edges: edges from: #key to: #value.
+
+	graph runFrom: end.
+	bis ifFalse: [ ^ (graph findNode: start) distance ].
+
+	shortestPath := graph nodes
+		                select: [ :n | 
+		                n visited and: [ n model value = 97 ] ]
+		                thenCollect: #distance.
+	^ shortestPath min
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day12data [
+
+	^ 'abccccccccccccccccccaaaaaaaaacccccccccccccccccccccccccccccccccccccaaaa
+abcccccccccccccccaaaaaaaaaaacccccccccccccccccccccccccccccccccccccaaaaa
+abcaaccaacccccccccaaaaaaaaaacccccccccccccccccccccaaacccccccccccccaaaaa
+abcaaaaaaccccccccaaaaaaaaaaaaacccccccccccccccccccaacccccccccccccaaaaaa
+abcaaaaaacccaaacccccaaaaaaaaaaaccccccccccccccccccaaaccccccccccccccccaa
+abaaaaaaacccaaaaccccaaaaaacaaaacccccccccccaaaacjjjacccccccccccccccccca
+abaaaaaaaaccaaaaccccaaaaaaccccccaccccccccccaajjjjjkkcccccccccccccccccc
+abaaaaaaaaccaaacccccccaaaccccccaaccccccccccajjjjjjkkkaaacccaaaccaccccc
+abccaaacccccccccccccccaaccccaaaaaaaacccccccjjjjoookkkkaacccaaaaaaccccc
+abcccaacccccccccccccccccccccaaaaaaaaccccccjjjjoooookkkkcccccaaaaaccccc
+abcccccccaacccccccccccccccccccaaaacccccccijjjoooooookkkkccaaaaaaaccccc
+abccaaccaaaccccccccccccccccccaaaaacccccciijjooouuuoppkkkkkaaaaaaaacccc
+abccaaaaaaaccccccccccaaaaacccaacaaaccciiiiiooouuuuupppkkklllaaaaaacccc
+abccaaaaaacccccccccccaaaaacccacccaaciiiiiiqooouuuuuupppkllllllacaccccc
+abcccaaaaaaaacccccccaaaaaaccccaacaiiiiiqqqqoouuuxuuupppppplllllccccccc
+abccaaaaaaaaaccaaaccaaaaaaccccaaaaiiiiqqqqqqttuxxxuuuppppppplllccccccc
+abccaaaaaaaacccaaaaaaaaaaacccaaaahiiiqqqttttttuxxxxuuuvvpppplllccccccc
+abcaaaaaaacccaaaaaaaaaaacccccaaaahhhqqqqtttttttxxxxuuvvvvvqqlllccccccc
+abcccccaaaccaaaaaaaaaccccccccacaahhhqqqttttxxxxxxxyyyyyvvvqqlllccccccc
+abcccccaaaccaaaaaaaacccccccccccaahhhqqqtttxxxxxxxyyyyyyvvqqqlllccccccc
+SbcccccccccccaaaaaaaaaccccccccccchhhqqqtttxxxxEzzzyyyyvvvqqqmmlccccccc
+abcccccccccccaaaaaaaacccaacccccccchhhppptttxxxxyyyyyvvvvqqqmmmcccccccc
+abccccccccccaaaaaaaaaaccaacccccccchhhpppptttsxxyyyyyvvvqqqmmmccccccccc
+abcaacccccccaaaaaaacaaaaaaccccccccchhhppppsswwyyyyyyyvvqqmmmmccccccccc
+abaaaacccccccaccaaaccaaaaaaacccccccchhhpppsswwyywwyyyvvqqmmmddcccccccc
+abaaaaccccccccccaaaccaaaaaaacccccccchhhpppsswwwwwwwwwvvqqqmmdddccccccc
+abaaaacccccccccaaaccaaaaaaccccccccccgggpppsswwwwrrwwwwvrqqmmdddccccccc
+abccccccaaaaaccaaaacaaaaaaccccccaacccggpppssswwsrrrwwwvrrqmmdddacccccc
+abccccccaaaaaccaaaacccccaaccccaaaaaacggpppssssssrrrrrrrrrnmmdddaaccccc
+abcccccaaaaaaccaaaccccccccccccaaaaaacggppossssssoorrrrrrrnnmdddacccccc
+abcccccaaaaaaccccccccaaaaccccccaaaaacgggoooossoooonnnrrnnnnmddaaaacccc
+abccccccaaaaaccccccccaaaacccccaaaaaccgggoooooooooonnnnnnnnndddaaaacccc
+abccccccaaaccccccccccaaaacccccaaaaacccgggoooooooffennnnnnnedddaaaacccc
+abcccccccccccccccccccaaacccccccaacccccggggffffffffeeeeeeeeeedaaacccccc
+abccccccccccccccccccaaacccccaccaaccccccggfffffffffeeeeeeeeeecaaacccccc
+abccccccccccccccccccaaaacccaaaaaaaaaccccfffffffaaaaaeeeeeecccccccccccc
+abccccccccaacaaccccaaaaaacaaaaaaaaaaccccccccccaaaccaaaaccccccccccccccc
+abccccccccaaaaacccaaaaaaaaaaacaaaaccccccccccccaaaccccaaccccccccccaaaca
+abcccccccaaaaaccccaaaaaaaaaaacaaaaacccccccccccaaaccccccccccccccccaaaaa
+abcccccccaaaaaacccaaaaaaaaaacaaaaaacccccccccccaaccccccccccccccccccaaaa
+abcccccccccaaaaccaaaaaaaaaaaaaaccaaccccccccccccccccccccccccccccccaaaaa
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day12sample [
+
+	^ 'Sabqponm
+abcryxxl
+accszExk
+acctuvwj
+abdefghi
+'.
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day13: data [
+
+	"(Advent2022 day13: Advent2022 day13sample) >>> 13"
+	"(Advent2022 day13: Advent2022 day13data) >>> 5623"
+
+	| data2 d1 d2 v sum |
+
+	data2 := data copy.
+	data2 replaceAll: $[ with: $(.
+	data2 replaceAll: $] with: $).
+	data2 replaceAll: $, with: $ .
+	data2 := RBParser parseLiterals: data2.
+
+	sum := 0.
+	1 to: data2 size / 2 do: [ :i | 
+		d1 := data2 at: i - 1 * 2 + 1.
+		d2 := data2 at: i - 1 * 2 + 2.
+		v := self day13cmp: d1 and: d2.
+		v ~= 1 ifTrue: [ sum := sum + i ] ].
+
+	^ sum
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day13bis: data [
+
+	"(Advent2022 day13bis: Advent2022 day13sample) >>> 140"
+	"(Advent2022 day13bis: Advent2022 day13data) >>> 20570"
+
+	| data2 data3 |
+
+	data2 := data copy.
+	data2 replaceAll: $[ with: $(.
+	data2 replaceAll: $] with: $).
+	data2 replaceAll: $, with: $ .
+	data2 := RBParser parseLiterals: data2.
+
+	data3 := data2 , #( #( #( 2 ) ) #( #( 6 ) ) ).
+	data3 sort: [ :a :b | (self day13cmp: a and: b) = -1 ].
+
+	^ (data3 indexOf: #( #( 2 ) )) * (data3 indexOf: #( #( 6 ) )).
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day13cmp: x and: y [
+
+	| x2 y2 v |
+	(x isInteger and: [ y isInteger ]) ifTrue: [ ^ (x - y) sign ].
+	x2 := x.
+	y2 := y.
+	x2 isInteger ifTrue: [ x2 := { x2 } ].
+	y2 isInteger ifTrue: [ y2 := { y2 } ].
+
+	1 to: (x2 size min: y2 size) do: [ :i | 
+		v := self day13cmp: (x2 at: i) and: (y2 at: i).
+		v ~= 0 ifTrue: [ ^ v ] ].
+
+	^ (x2 size - y2 size) sign
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day13data [
+
+	^ '[[5,[[3,0]],[0,[8,6,9],2,9],[5,6,[2,8,3],[0]],[6,2,[2,6,8],10]]]
+[[6,4,[2,[2,2],8,[3,7,0,6,2]]],[4,10]]
+
+[[[6,[10,9,7]],9,[9,[9,0,8,3],[0],3],[8,1]],[2,10,9],[[0,6,[4]],2,[2,3,[6,7,0],[1,4,2]],[[3,7,2],[],0],9],[],[[]]]
+[[1,[1,10]]]
+
+[[2,3,[]],[7,[[6,9,9,1,6],[0,3],10,3,[5]],[[]],[9,[],[1,0,0,1,1]]],[7,[1,[3,0],[7,10,8,5,0],2,1],4,7,3],[[5],6,4],[9,3,[4,[0,7,9,9],5,[2,0],[]],[6,[],[4,9]]]]
+[[2,[[3,4,7],[7,2,2,6],[8,9,7,7,6],[7,8,1,6,1],[]],[],8]]
+
+[[4,[[9,8,1],2],10,6,[[],[],7]]]
+[[9,4,10],[0,[1,[10,4,6],[1],8],[[6,2,7,2,4],[9,3,5,6],[0,3,7],10],3],[[[5,4],2,10],2,9,4,[[6,7,2,3],[6]]],[],[]]
+
+[[0,1],[[7,[10,0,8,1],1,4]],[]]
+[[1,3,2,3],[1,[[],7,[6,5,8,7,9],[0,2]],[8],5,[]],[[7,8,[],[8,9,4]],[2]]]
+
+[[7,[[6]],[4,9]]]
+[[10],[],[[10,[10,10,5,2,1],[10],5],[4,4],[[2,1],[9]],6],[6,8]]
+
+[[[[],[2,3,7],4],0],[[[6,5,10,2,6],10,[2,7],5,5],7,8,[0]],[[10,1,3,3,[7]],0],[]]
+[[[[6,2,2,8],[7,4,9,4],3,[0]],7,10]]
+
+[[6,5,5,1],[8],[]]
+[[1,[]],[10],[10,[8,[4]],6,1],[5]]
+
+[[[[1,1,2,4],[7,8,8,7],5,[9,1,7,0,8],[2,10,10,4]],10,[7,[6,10],[6,10,6,9],[0,8,10],7]],[8,[[],[],[1,3,0,5,10],[7,0,7]],1],[]]
+[[6,3,[],5],[]]
+
+[[[3],[2,[],[1,10,5,5],[1,0,3,3,1]]]]
+[[[6,5,[4]]],[5,10,5,3],[6],[10]]
+
+[[[[],[5,0,8,5,4],[2],0,[]],7,6,10,[7,1,10,9]],[]]
+[[[8,[1,2,3]]],[8],[6,9,[3,1,1,[10,10,3,10,0]],3,0],[[[8,7]]]]
+
+[[0,[[0],5,[6,3,3],[10,3,10,9]],4]]
+[[],[5],[8],[[[10,8,10,5,3],[3,7,10,9,8],0],[[],[]]]]
+
+[[],[10,[7,3,[6],7],[9,[3],[8],7,[1]],10],[6,9,[9,3],[[4,8,1],[10,1,4,7],7],10],[[],[3]]]
+[[[6],5,6,10,6],[[]],[1,[6,10],8,3],[1]]
+
+[[1,3],[10,[2],8,1,[6,6,[5],5,[2]]],[[4]],[],[]]
+[[[],[1,0,[8],8,[0,3,6]],1],[[[6,1],8,3,1],1,[6,[6,9,3,8,7]],10,[5,[4]]]]
+
+[[9,[6,2,[],[3,0,2,7]],0],[[[5,4,0],0,[2],[7,3,2,5,1]],9,3]]
+[[2,[7,[5,2,4],8,5,[3,0,4,5,4]],0,8]]
+
+[[8,6,3,[[10,1,1,7]],8]]
+[[[9,2,5],10,5]]
+
+[[],[6],[[[3,6,3,9]],[[2,0],7,1,[10,10,4,4,10]]]]
+[[4,[[6,8,4,9,2],[],5,[10,1]],1,6],[[[4,2,5],4]],[[3,6]],[7,8,[[5,8,9,10],1,[6,8],1,7]]]
+
+[[[[],10,7],[],[1,[]],8,[9,0]],[0,[[6],3,1,[0,7,5]],[[7,6,3,9,3],4,4],[],0],[],[9,2,[9,1,[0,9,4,6],[9,2],10],9]]
+[[],[2,5,6,5,8]]
+
+[[[[4,4],5,[7],3,[8,8,4]],2],[]]
+[[[[6,5,4,7,1],[0,9,9]],[[7,3,7,6,10],3,[6,4,9,4]],[1,[],[]]],[[7,5,[2,4,1,1]],2,4],[],[[[4,7],[1,7,9],5,[]],4,[[7,5,1,9,10],2,5,[1,2,0,9,9]]],[9,[]]]
+
+[[7,[[8,10,9,4,5],[1,3]],1],[[[1,1],2],[[3]],[[7,9,6,6,8],4,[5]],7],[3],[[9,[3,9],[3,1,0,9,2]],4,5,9,[[1]]]]
+[[[4,[9],5],[[2],8,[5,7,0,0],0,9],[[2,1],[],7,[7,1],2],4,7],[[[4,7,0,10,2],[5,5,0,3,6],[10,6,3,3],4,8],2,[[1]],9,9]]
+
+[[[[6,2,4,0]],[],[[8,3,1,5,5],1,7,4,2],5,1]]
+[[[],0],[],[4,[[1,6],2,[8,4,1,3,10]],[5,0,[10,1,0]],8,[2,[10,8,4],[6,2,7,10,10],[8,2,4,4],[]]],[[],6],[[4,5,[2],[10,2,2,1],[4,6,5,10]],[5,[],9,[1]],[]]]
+
+[[9]]
+[[[],8],[7,[6,4]],[5]]
+
+[[],[[3,5,[1],3,[3]],[5],6,[[7,2,6,9],[1,0,0,1]]],[[[5,5,2,0,10],10,7,8,7],5,7,7,[[],1,[6]]],[[]]]
+[[[5,8,10,[9,1,3,2,4],[6,7,0,7,6]],3,[[7],3,9,4,[9]]]]
+
+[[3,1,4,[[6]],[[4,6],1,[4]]],[0],[3,[],7]]
+[[7]]
+
+[[4,[[5]],[10,8,5,0]],[4]]
+[[7,6,10,[[1],8,0,[10,5,1]]],[[[2,1,6],9,9,[4],9]],[]]
+
+[[7,0,5,3,1],[],[[0,9,[8,4,9]],[7,[10,9,4,1,7],2,6],10,[],10],[]]
+[[1,[],[],6,[[],10,3]]]
+
+[[[[1,6]]],[[[5,3,7],[],[10,9,7,3,3],0,[]],3,10,5],[],[10,[2]]]
+[[[[1,5],5],[[6],[3,2],9,[2,0,8]],[9,[6,9,4],8,0,6]],[[[8],8,10],0,[],6,[[2,7,8],0,9]],[7,1],[[[0],[9,5,9]],[[2,10]],[]]]
+
+[[1,7,[[9],8,[1,1,8]]],[[[9,10,2,0,1],10],0,[7,[10,10],10],5],[7,1],[9,[[],[7,10]]],[[2,9,8,[0,0],[10,9,4,1]],[5],[[8,6]]]]
+[[[[4,7,4],[],6,[5,4]],[],[7,[],[],3],[[9,3,5,1,10],[],[7,2]]],[[6,1],3,[[],[3,2],[],[3],[8,7,3,9]]]]
+
+[[[2],0],[2,[6,1],6,5],[0,[],[[9],[],[],[10,8,6]],[[9,6,8,2,3],8,1,5,1],[[4],2,[]]],[[10,1,0,6,1],6],[4]]
+[[1,[[4,10,2],10],[4],6,[[1,0,7],[8,1,9,5,2],6]]]
+
+[[],[9],[[],[[4,4,1,8],3,5]]]
+[[[[10,7],6,[]],[[1,3],[8,9,4],8,[],[2,9]],[8,3],10],[7],[8,9,10]]
+
+[[3,[10,[],4],[[8,3],4,6,[0,6,9,3,6],[8,9,5,9]],[10,[7,1,0,1],[7,1,2,1],[],[]]]]
+[[7,2]]
+
+[[8,[],2,0],[[1,[10,7],[0],2,0]],[4,0,[10,[0,5,1],[1],[]],6,[9]]]
+[[],[6,[[5,1,6,0,5],4],[7,7,[6],8,[2,1]],1,[[3,0]]],[4,10,[[5,10],[4,9,2,1,5],[7,1,5,6]]],[],[1,9,[]]]
+
+[[[[5,7,1,2],[8],[7,0,9,7,3],[4,2,1],1],8,[4,1,[8,6,1,10],[6,8,3,2,0]],[[3],1,[2]]],[[8,[7,10,1,5,2],[1,1],[1,2]],[[0,4],2,1,[4,6,8]],1,0,3],[10,1,[[0,0,7,8,7],3]],[[4,[4],3,7,[]],3,[10,1,5,[9,6,3]],[[3],[2]],[[],1,10,[2,7]]],[[[9],7,3],8,10]]
+[[[3]],[[10],2,3]]
+
+[[[10,4],1,[[4,2,5,8],3,6,[6,10,5,5],5],6],[[7,3,4,5],3,[],[]]]
+[[[[0,5,8,4],[2,3,9,1],5],[[9,7,1,5,3],6,[4],[9,2]],[]],[10,[4,1,3,2,7]],[2,9,[4,[],8,[8,10,6,10,10]],[5,8,[]]],[10,4,3,3],[]]
+
+[[],[[[0,9,10,9],9]],[3,[[],[10],4,[4,2,7,8]],0,[[9,10,1,2],9,0],[5]]]
+[[[[8,2,9,9],9,4,2],[[9,9],0],[9,[4,1],2,[2,5],2]],[]]
+
+[[],[[0,[4,9]],[4,7,[9],7],[[1,8,9,7,5],[1,4],3,[9,1],4],[4,10,[1],[],[]]],[[5,4,2,10,[9,7,0,4]]],[[[0,10],4],1,5,[[10,7,0,8,9],[6,10,6]],1],[[[5,7],7,5,[]],10,[[6,10,1],[0,8,0]],[],6]]
+[[7,[[0,5,8,1],[10,10,0,2],[3]],10],[[[0,1,2,7],4],[1,6]],[[[3],[2],[]],6],[[1],[]]]
+
+[[2],[[],2],[3,9],[],[7,[],1,[[4],8,6,[9,4]],9]]
+[[7,[[],[2,10,5,10],1,0,[9,2,1]]],[8,[[],0],4,9],[4,[6,3,5],7]]
+
+[[[[5,5,6,3],[2],8,[]],[[10,1,4,7]],8,6],[[9]]]
+[[[[8,9],4]],[[[6,0,6],[0,4,2,8,5],2,[5,6,0,9],1],10,4],[]]
+
+[[[[0],10],[[6,2,10,8]]],[],[[[2],10,3],[],2,10,[10,[]]]]
+[[[],1,[]],[[],8]]
+
+[[[2,[10,8,8],[7,1,7,1]],7,1,[]],[6,[[5,10,5,6],2],2,[2,2,[6],10,8]],[[[5,1],[7],1],2,2,10]]
+[[5,[3,[8,2,10],[3,10,10,10]],2,7]]
+
+[[],[9,1,4,[1]],[10,[[8,9,2,1],8,6,[],6],8,5],[]]
+[[[8,5],[[],2,7,[5,0],[10,5,6,8]]]]
+
+[[[]],[[1,1,5,10,[4,0,10,6,1]],[10,[2,4,7,7],[6,0,8,7]],9,0]]
+[[[[4,9,6,4,9],2,[5,1,0,1,5]]],[[1,[4,7,5],8,5],[7,[9,4,8,3,7],8,8,[6,8,3,10,2]],[[6],[8],[2,5,8,3],0]],[]]
+
+[[[4,6,[8,2,10],9],[6],5],[[],0,[1,[4,5,9,1],2]]]
+[[[],9,[8,6,[4]]]]
+
+[[6,[]],[4,[],[3,[6,8],[1,6,7,6,6]],6],[],[2,5,5]]
+[[8,[[5,3],2,2,6,6]],[]]
+
+[[2,[]],[],[[3,9,10],9]]
+[[[]]]
+
+[[[9,[8,6,1,5,0],7,[5,0],[5]],[[]]]]
+[[7,4,[[6,4,6,5]],[[9,1],[3,0]],4],[0,[[10,4,8]]],[],[],[[6,7],0,[],[]]]
+
+[[9,3,[8],[10,[10],[7,4]]],[1,[[10,9,4],[7,6],[]],10,5,[]],[[5,7,0],[[3,6,2,8,7]],[[2,6],[],[1,3,9,8,8],10,5],6],[10],[[0,3,7],[[7,1,1,2,1],9]]]
+[[1,[3,[],[5,3,9,2],[10,5,4,1,7],[1,5,7]]],[[4,[4,0],9,0]],[[1,[9,8,0,6,9]],2,[[7],7,[1],[10]],7],[[0,[],[6],[]]]]
+
+[[6,1,[10,[4,1,3],1,9]],[]]
+[[],[],[],[10]]
+
+[[8,[[10],0,1]]]
+[[7,2,7,8],[],[6,0,6,4],[[[5,4,5],7],6,[],[]]]
+
+[[],[[[8,2],7,9],4,2],[7,0],[]]
+[[0,1,9,7,5],[[[4,1,10]],8,6],[[[8,9,9,10],[6,5],[8,5,3,5]]],[[],8]]
+
+[[[4,5,6,8],[[5,0,7,10,8],0,[],[7,4,9,9,3]],[]],[],[0,5,[6,8]],[4,[2,[0],[10,1,9,7]],8,3],[]]
+[[],[]]
+
+[[[4],4,9],[],[[[3,1],[4,2,5,10,1]],3,[[5,1,0,1,2]],10,[7,[10,5,9,9,9],[2,3,4,10],[2,1],9]]]
+[[6,[10,[10]],[7,[4,0,4]],[[0,3,10],7]],[[[9,7,2],7,9,[7,4,8,4,9]],2]]
+
+[[7],[[3,[],[5],[0,6]],[[3,10,5]]]]
+[[3,[4,7,[9,0,1,1,7]],0],[[8]]]
+
+[[9,4]]
+[[9,[[5],2]],[3,3,[4,[9,3,8],0,5],3,7],[9,5,6],[10,9,2,5,1]]
+
+[[[],[6],8],[[[8],9,[5],1],[6],4,6],[[[]],6],[],[5,[8,8,[10],[5,1,5,9],4],[5,7]]]
+[[6,[[],2,9,3],7],[4,[[5,9],3,[3,5,5]],7,7],[[],[[2,0,2,9,3],6],[],[[9,6]],2],[5,9,[[],2,[9,10,10],[7,0,4,1],9],9,[[8,2,2]]]]
+
+[[[7,5,[5,10,1,9],[2,9,9,3]],1,[6,9,[7,9,6]],9,[[5,1,9,10,0]]],[6,8,[]],[],[[2,[2,5,4,9,10],[3,3,3],1],7,[2,9],[4,7,7,[5],[1,2,5,9,8]]],[4,[[],[7]],8,2,1]]
+[[4,9,3],[6,[],[6,[7,7,9,1,5],[10,4],10],10,3]]
+
+[[[2,3,[7,5,1,0],5,[10,2,0]]],[7,6],[[[1,0,8,10,2],1]],[0],[6]]
+[[10,6],[7,10],[[4],[]],[8,[],[[],10,2,10],[[9,3],[6,9,8],[10,2,4,1],8],2]]
+
+[[[],4],[10,8,[3,9,[]],9],[8,5,[],2],[[8,[10,5,7,2,10],[4,10,7,9],[4,4,5]],[[5,4,6]],[],4]]
+[[],[0,8,[5,[6,3,0,7],1,9,6],[3,8,[10,3,8,10],4],[8,[10,6,10],10,[],4]]]
+
+[[[[],6,[5,5],8,[0,5,1]],[7,4,4,[4,1,3,0],8],3,[5,6],8],[9,[4]],[[0,[6,5],1],2,[],[],[2,[8,0,2,10,6],1,[5,8,9,9,4]]],[9,9,[],0]]
+[[2,[[7,9,8,8,10],[],[4,5]],[[1,10],7,[1,9,1,0]]],[[4,[6,10,1,5],5,6],[],[[4,9,2,3,2],6,[3,0,2,2]],9,[]],[5,[[10,0,10,6,4],1]],[9,[0,[8,2,2],8,[5],4],[]]]
+
+[[[8],[7,6,10]],[2,5,[[9,9,1,2],[],[],2,4],1],[],[[[7,3,8],1,1,0],[[4,8,7,10,3]],6]]
+[[],[[9,9,[4,2]],[7,[],9,[3]],[[1,5,0],[9,3,6,1,2]],[[9,9],4,10,1],1]]
+
+[[],[[0,[9,6],[2,4],9,3],[]],[5],[],[6,[[4,1,0,7,7],[]]]]
+[[8,10,6,[],4],[[9,7,2,8]],[0,[5,10,[3],[6,5,9],[4,4]],[],6],[[[],2],8,[9,[3],5,[10,1],8],0],[[3]]]
+
+[[[4,5,[],6,[]],[0,6,[2,4]],10],[[1,[10,6,4,10],[10,4]],1,7,10,7],[],[[],[4,10,[9,0]]],[[6,[10,7,0,7,10]]]]
+[[3,[3,[4,1,1,10,10],[8,4]],4],[]]
+
+[[10,[10,4,7]],[7,[1,2,[0,8,6,7]]],[4,6,4]]
+[[10,10],[[[2,4,4],0],4]]
+
+[[[[10,4],[1,4,7,1]],2],[[[]]],[3]]
+[[[[],[5,4,5,9],8,5],[[],0,4,[1,0],6]],[[3],[[],6,7,0,[7,1]],8,7,8]]
+
+[[[[6,6,5,8],[10,2],[4,10,0]]],[[[1],[4],[0,3,5],[0,1]],[6,[0]],8,1],[1,10,8]]
+[[[10,3],[6,[2,2],5]],[[10],[],[[7]],[[],3,[0,0,1,8,0],3,[]],2],[],[]]
+
+[[6],[[],7,[[1,2,0,1]]],[[7]]]
+[[[[],[],3]],[]]
+
+[[1,[[5,2,1,10]]]]
+[[],[6,1,[]],[1,10,5,6,[[1],[10],2,[2],[4,6,10]]],[]]
+
+[[10,[2,[6,9,4,10,7],[5,8],0],8,10,6],[[[4,10,1]],[[7],[7,4,10,0],[7]],10],[],[[2,[0,2,10,10,1],7,8],[9],[1,[0],[2]],[8,7,[]]],[[]]]
+[[1,2,3,[3],[]]]
+
+[[[],1,10,3],[],[5,2,0]]
+[[10],[5,1,[8,[9,0,9,10]]],[],[[0],[10,10],4,1]]
+
+[[0,[[0,5],5,2,3]]]
+[[],[[],5],[],[0]]
+
+[[3,[9,1,3,[0,9,1,4]]],[],[3,6,[3,10,6]]]
+[[9,[[],[7,6],[9],1,10],7,[[4,0],[7],[1]],[1,1,3,[4,5,3,10],1]],[7,4,[[2,9,1,9,3],5,[4]],[8],8]]
+
+[[[[4,5,7],[0],6,[6,7]],8,4]]
+[[4,3,[[7,4,6],0,2]],[3,3,8,[[5,5,1,8],[8,2,3],7,3,10],7]]
+
+[[[[7],3,7],0,7,2],[7,[[4,6,8,2,4]],[[6,6,5],[4,4,5,6,6]],[],5],[10,9],[]]
+[[2,[[6,2,7,5,7],5,1,3],8],[5,[8,[5,9,8],[],[7,5,3],[4,9,0,2]]]]
+
+[[[2]],[3,[0]],[9,10,2,[],[[7,0,8],4]]]
+[[[6,[],7],6,5,9,7],[9,[5,[10,1]],[6],3],[0],[4,4,9,7,[3,6,3,8]]]
+
+[[6,0]]
+[[4],[[[4,6],[4,10,3],2,[]],3]]
+
+[[6,8],[[],[5,8,7,3,[]],2,[5,10,[0,5]]],[10,[3,7,[0,5,6,3],1,[9,4,5,1]],5],[[],[7,0,0],[7,6],[7,[7,3,1,1,1],0],[[],8,[]]]]
+[]
+
+[[[1,[6]]]]
+[[[8,[],[6,9,0,9,7],3,0],4,5,5,[[],8]],[0,5,7,[10,9,[]]],[],[[],[10],[5,8,7]],[6,[[6,10,1],0,[4,9,8,4,7],6,[0,4,9,2]],[5,[1,5,7,1]],3]]
+
+[[10,[0,1,[10],[]],[]],[[8,6],4,9,8,0],[5,[[3,0,6,7],1],4,8],[5,[8,[3]],9,3,[[10,5]]]]
+[[[[1,10],[5],[6,2,2],5],[8,5,8,[6,0,0],3]],[]]
+
+[[1,[9,[3,6,3,9]],[[10,4,2],4,4],[[5,10,4]]],[2,[[10],3],[6,[],[2,10],1,[2,4,6,8]],[8,[8,8,9,2],[],7,[2]],[[10,5,5,10],[3,0,10,2,6],[2,2,7,8]]],[[[6,7,1],[8,7],[4,4,4,4],[],9],3,9,0],[[4,2,[2,3],0],[[10],8,1,5]]]
+[[[],[10,[2,10,8]]],[]]
+
+[[2,9,4,2,[[2,6,4,9],[10,4,4],[],0,[]]],[[[9,0,9,5],[0,1,0,6,10],[10,2,0,6],10]]]
+[[[],7,[3,9,[],2,[2]],10],[],[7,1,[[4,1],[],[5,3,1,8,2]],4,4]]
+
+[[10,[[6],[10,8,1,5],[2,3],3],[[6],8],[5,[4,6],[5,2]],[[8,8,2]]],[2],[[[],[5,3,7],5,[8,2,6]]],[[[2]]]]
+[[10,8,9,4,[8,[],8]],[5,7],[]]
+
+[[5],[],[[[1,8,0,8],[1,7,4],5,[]],[],[[]],[2,8,[6],10,10]],[[[0],9,[],[1,0]],10,7,3]]
+[[3,[],5,[[10],[9],5],[[10,3,6,9],[8,7],2]],[8,9],[7,[]],[[5],[],8,0]]
+
+[[10,[[9,2,3,7],10,[3,8,4,3]],[10,[3],[4,4]],[2]],[],[3,[7,[9,8,10,10,1],10,[10],1],[7,8,6,[4,8,7],2],6],[[[10]],[[10,7,1],2],0,[[]],8],[]]
+[[3,0,1,[7,[0,7,5,2],[],[],[6,5,0]]],[],[],[10],[9,5,[]]]
+
+[[0,8,[],[[1,0],[5,8,3]],[9,8,10]]]
+[[],[8,[]]]
+
+[[[7,9],[]],[],[[[1,10,3,8,4]],[9]],[]]
+[[[],6,[4,1],2],[9,10],[6,0,1,3],[3,[],[],[7,2]]]
+
+[[[10,[],8,9,[0,1,7,3]],[[10,4,10]]],[],[[5,[5,7,6,7],5,4],3,8,[6,[],[3,2,10],[5,6,2,7]],8],[7,[[9,7,2],8,3,0,9],[5,4,4],7]]
+[[[]],[],[2,[],0],[[2,[],4,4]],[[10,[4,7],[1,3,2,4,2]],[],[6,[8,1,3,2],2],6,[5,10,[8,10,6,8,2],6,[]]]]
+
+[[[[7,6,1,3],8,[]],3,1,[0,[5,0,9,8],4,9]],[[[3,10,5,8],[2,2,4],[9,7,6],[7,7,10],0],5,[[0],[4,9,3],3,1,1],[[9],6,5],[]]]
+[[3,1,[6,[9,0,3],[2,9,1,2,7],2,[9,9,5]],[0,0,0],3],[8,4,[[2,10,9,6,2],0,[7,5]],[7,2,[9]]]]
+
+[[[10,[],[1,9,4],[0,7,10]],10,10,[[],[7,1,1,9],[4,5,7,2,0],9]],[[[8,7,7,7,10],2,9],[],[[4,10,6,6],[]]],[]]
+[[[[],8,[6,0,1],9,9],3],[],[]]
+
+[8,3,10,5]
+[8,3,10,5,4]
+
+[[[10,8,1,6],9],[4],[[8],10,[[1,3,2,10],[1,1,8,8,4],10,6]],[9,2],[[[8,9],5,9]]]
+[[[[1,5,1,8],[3,6],5],7,10,7,4],[[9,4,6,5,9],[[0],3,[2,2,10,1,1],1],[2,2,[2,10,7],5,10]],[7,6,[4],[[],3,10]]]
+
+[[4,[],[9],7],[5],[[7]],[8,[[3,9,10],10,[4,4,1,7],[7,1,0]],[[2,3,1,7,10],1],5],[9,10,9,[]]]
+[[1,1,8,1],[]]
+
+[[[[0,9,3,8],9]],[7,[[8,7,6],4,1,5,[10]],2,[5,[9,6,4,9],[6,7,5,8],10]],[[5,4],8,1,8],[]]
+[[7,10,10,[[2,6,6],2],[[]]],[],[5,7,[1,[]],[[4,8,7]],1]]
+
+[[9],[2],[],[]]
+[[[],[0,1,4,4],[],[[10,8,8,4],9,[0,2,4,6],[],[7,2,8,9]]],[6,[[2,5,5,8],6,1,[7,1,7,2],[6,9]],[[4,5,6],5,4]],[[]],[],[4,4,[[9],[],9,0,2]]]
+
+[[],[[0,[10,3,3],4,5],[6,9,4]]]
+[[9,[[],2,[1],[4,4,6]],[[9],[6,5,2],[6,3,7,4],4],[]],[2],[],[[[2,7],[1,1,10,2,9],7]],[[],[[10,6,4,3],[]],0,[4],[[4],1,10,5]]]
+
+[[[[3],5],[7,9,10]],[2,[1,7,8,[3]],[]],[]]
+[[7,6,[],0],[],[[[7,6],[10],1,2,10],1,1,[6,10],[[4,10,4]]],[0,[],[],8,[[5,6,0,1,0]]],[6]]
+
+[[3,[9],[2,[5,0,5,8],[],4],[9,[8],[2,5,4]],[2,[4,7,2],[10,0,3,8,8]]],[[10,2],7,3,9,[[4],1,[1,9,6,9],10,10]],[1],[4,4],[[[7,1],1],10]]
+[[[[4,2,1,3],7,[6,0,9,6,8],[3,0,10],8],6,[],3],[[[6],[0,10,5,4,6],7],10,[9,7,[10,3,0,4,0],2,[9,4,2,5]]],[3,[0],[[9,0,1,6,1]]],[[4,1,8,8],[[5,0,6,3,8],[7,8,7],7,[10,6,5]],5,[0],[[],9,9]],[[5]]]
+
+[[[6,[0],[0]],9,[10,7,[10,1,6,8],10],[[],3,2,9],3],[7]]
+[[[[9],[8,5,4,6]],10,[[9,6],4,5],6,4],[[10,[]],10,2],[],[[[8,10,9],7,0],[[4],[5,9,8,1,2]],[[8],[10,9,3],[2,6,3,2,6],1],[[6,8],[5,5,4],3]],[[8,1],[5,10],6,0,1]]
+
+[[8,[0,1,6,6,8]],[],[[1,9,2,[4,5,2,4]],4,[],[7,1,7],7]]
+[[[7,[7,1],4,10],5,5],[[[1,6,8,9,2],[4],[5,5,7]],1,10,[0,[10,6],3]],[],[[[6],[6,2,0,10]],[[6,6,4,1,3],1],[]],[1,[[7,2],5],[],[2,8,10,[10,1,2,2],4]]]
+
+[2,0,1,0,6]
+[2,0,1,0]
+
+[[],[5,[],3,[[1,9,3]],2],[[[],[3,2,3,2,7],[1,10,6,3,9]],1,8]]
+[[6],[[[1,0,6],[6,4]],7,1,[2,[5]],7]]
+
+[[9,0,4]]
+[[1,10,5,9,[5,5]],[[[3,8,10,8],0,[4],[8],[9,7]]],[[[1,5,4],10],9],[4,[[5,2,8,8],[10,5]],4]]
+
+[[7,6]]
+[[[],[[10],0,8],0],[1,5]]
+
+[[[[2],4,[8,7,7,0,4],[3],7],[],[[3,6,6,1]],6],[[[7,0]],1,[1]],[[0,10,[1,0,5],[0,5]],8,4,[9],[0]],[[3,0]],[9]]
+[[],[[[0,6,6]],[[8]],3,[1],9]]
+
+[[[4,[0,2,0],8],[[5,10,6,6],[2]]],[],[]]
+[[0,6,4],[8,[5,[]],[[9,3],[9],[2,5,0]]],[[10,8,2,[3,0,4,9]],[6,6,5],[4,[],5,9],9],[[[5,0,10,5],5,3],6,4]]
+
+[[0,4,[],4]]
+[[[1,[]],6,9,[[4,0],[]]]]
+
+[[0,[[1],10,[4,7],4]],[[10],1,[3],6],[[[7,2,0,7,0],9,[0,8,4],1,6],[[9,2,0]],8,6,[10,8]],[[],10,[9,[8,5,0]],[10],3],[]]
+[[1,[[],9,[7],[7,6]],[3,5,1]]]
+
+[[6],[1,6,[[2,3,2],[7,9,4,3,5],5,[6,6]],[9,5,2,0],[3,[7,1,4,1,2],4,[2,7,7,9],[8,8,4,10]]],[]]
+[[[10,7,[],[3,4],[8,1]],[5,[9],3]],[[3,[8,7,0,8,6],[0],[5,3,1,0,5]],[9,[4],10,[8,0,2,10],2]],[[[10,10],0],[]]]
+
+[[2,[[7,5,10,9]],5,5,[]],[[[1,6,5,10,6],[5,8,4,10],[2,5,3,8]]],[[],[[2,10,1],[],8],5],[]]
+[[3,[10],9,[5,[],[2,3],6,7]],[[],4,9],[],[[[1,10,4,10]],0,10]]
+
+[[],[10,[2,[0,8],[7,4],6],2,2,[[2,2,7,2,9]]],[0,[]]]
+[[[[10]]],[],[],[[[2,2],6,0,[]],[],10,3,[[4,7,1],[6,10],2]]]
+
+[[[4],[],5]]
+[[],[[],3,8,8,10],[7]]
+
+[[]]
+[[[3,5,1,[0,8,0,7,6]],[2,10,1,[]],[[8,8,3,8,2]],[[10,1],1,[0,2,6],[10]]],[[[1,2],[5,2,6,7,9],10,1],2,5,[]],[[7],[6,9,10],[2,[6,4,10,1]],3,[[10,5,8],9,[2,5,10,2]]],[[5,6,[7,7,8]],[7,[],7],[],[6,10,[7,7,5]]],[]]
+
+[[[5,[5],[],10,[3]]],[],[],[5,3,4,8,[[0,10,7,3],[5,5,6],[10,7,9,2,7],[6]]],[[],[[6,0,5,10]],[[10,1,1,5,7],[8,6],[],[5,5,5],2]]]
+[[8,[9,4,[8,0,3],[0,4],2],[[3],1,1,4]],[5,[1,[],6,5,[4,7,0,8]],3,[[3,8,10,0]]],[7,4,[],1,6],[[[7,4,9,10,8],[],10,[7,9],[2,1,3,8]],2],[[[8,5,1,6,6],[3,9,3,1],[2,10,0,3,5]],7]]
+
+[[7],[2,[10,[9],[9,10],[1,5,8,8,3]],[[3,7,0],3,[9,1,0,9,10],8,[5]],[[1,6,10,9]],3],[[9,1],[[10,1,7]],6]]
+[[9,[],4,[[],5],5],[8,[5,6,3,[5,8],[4,10,0]],[3,8]],[8,[[0,1],3,0,1],4,[[2,9,3,1]]],[[5,3,5,1,[6,5,6,3,6]]],[1,[[]],[5],[2],7]]
+
+[[10,9,9,2],[[10,6,7,6,[0,1,10,10,0]]],[2,[3,[6,9,5],9,[]]],[8,2,[]]]
+[[],[[7,[8,10,7],[7,8,10,6],3,[]]],[],[[[5,5,1,4,2],6],[],0],[2,4]]
+
+[[5,[8,0,[7,10,7],9,[1,6,9,2]],7],[[10,9,[7]],2,[4,[10,7,0,8,6],[],[4,1],5]],[]]
+[[6,2],[0,[],6,[[1,10,4,8,8]]]]
+
+[[[5,[]]]]
+[[6,[],2],[0],[[],10,[[1,8],4,[9],[5,2,0,6,9]],[]]]
+
+[[10,[[],[5,8,10]],2,[10,1],[]],[[],5,[6],[3,[2,0,4],6,4,3],[7,4,[],1,7]]]
+[[[[5,0],[10,10,3],[9,10,10,10,5],5],5,[[0,1,10,9],10,[8,8,6]],5,9]]
+
+[[4,[[]],[]],[],[[10,[7],0,[3,10,1]]],[[6,3],10,10,[2]],[3,4,[3,6,10,0],[[5],8,[3],[6,2,8,2,2]]]]
+[[2,[0,[3]]],[9]]
+
+[[[2,5,[9,10,7],[0]],[[4]]],[9,3,[3,10,9],[9,[3,9,10],[6,3,10]]]]
+[[],[8],[[[],10,[],8],5,4],[[6,10,[],5],[8]],[[8,[9,10]],[[9,0,3,4,10],[7,9,4],8]]]
+
+[[5,7,5],[1],[1,[],10],[[9],5,10,0,[]]]
+[[7,0],[[],9,4]]
+
+[[3,[]],[[]],[[0,[7],[8,2,9,0]],[[3,2],[3],[3,3,3]],[]]]
+[[[[],5],7,[[0,0,1]]],[9,[6,[10,8],[6,7],1],0,[6,0],0],[2,5,[9,3,6],[[5],8,2,5]],[[[],4],[]]]
+
+[[9,10,2,[5,[],[3,7,0,8,3]]],[[9],4],[2,[[3],[9,2,0,3,8],[9,4,2,9,10]],[[5],[4,2,0,8],9,[],[1,6,6,7,8]],10,8],[9,2]]
+[[0],[10,[[2],3,2,[9]],[0]],[9,[8]],[1,[],[2,2],8],[7,6,[8,[],5,8],[[6]],7]]
+
+[[0],[[5,7,3,8],[[1,5,2,2,5],9,3],[],[],[[0,0,5,6,1],9]],[[9]]]
+[[3,[[3,6,8,3],[]],4],[[9]],[1,[0]]]
+
+[[[1,[6,3,1,4,4],[]],10,10],[[[],[4,6,2,8],[7,3,8]],[],[8],[[9],[4],[5,8]]]]
+[[8]]
+
+[[],[8,[[0,2,0],[4],2],[8,[]],10,[]],[0],[[7,2,[6,4,10,7,8],[8,2,10],[3,10,9,5]],[],[1],3]]
+[[8,3],[[[7,2],[4]],[],[7,10,[7,7,4],[0,5]]],[10,6,8,8,[[10,9],[9,7],[0,10],[10,6,5,6,2]]],[10,7,8,[[7],3,6]]]
+
+[[[10,[7,6,5,8,7],10,4]]]
+[[[9,2,7,2],[[8]]]]
+
+[[],[[0,[8,5,1],2],[[5,9,4,1],8,2],[[3,6,1],[5,4,4,7],[6]]],[],[4,8,[[5,9,6,4],9,[10,6],[0,8,9,1,10]],[4],2]]
+[[6,2,[[7,10,2,8,5],2]]]
+
+[[3,[],0,[]],[2,8,[[5]],[2,6,[0,7,0,1]]]]
+[[2,[[3,4,9,9],[],[6,6,5,3],9],0],[],[9],[[],[8,2,2,[9,6,0,5],[0]],5,6]]
+
+[[[],8,5],[10,[[8],6]]]
+[[[8,5],2,5],[],[]]
+
+[[10,10,[0,0,[4,1,10,5,6]],0,[[7,2],5]],[],[[[10,9],[1,2],[8,1]],6,2,10],[[[10,7],8,[1,9,6,6,10],5,5]]]
+[[[[10,10,2],[6,6,6]],[5,5,[4,8,10,5,9]],5,[],[[2,6],4,7,[8,5,6],[2,3,9,2,1]]],[[5],7],[1,[2,3,[1,6,8,8,4]],9]]
+
+[[9],[3],[2,[[],7,4,4,[7,2]],[1,[4,5,6,3]],5,[[7],9,9]]]
+[[6],[[5,[8,7]],[[4,4,8,2],9]],[1,7,4,[[5],4,[2],10],10],[6,10,10,[]]]
+
+[[10,4,[[5,0],[2,0,2,4,7],[8,3,7,1],8],[],6],[[4,[10,9]],1,10],[[[1,5,6,2,7],3],[[7,0,2,3],1],[[]]],[[5,[2,1,8],[2,3,9]],[[9,1],[3,3,1,2],[10,6,3,5,2]]],[]]
+[[[1,6],[6,2,[3,8,10],[],[7]]],[],[8,[9,[9,1,2,4,10]],8,[],0],[]]
+
+[[[[0],[0,10,7,8],10,9],3]]
+[[8,1],[[[2,8,1,1],[],0]],[[],10,3,7]]
+
+[[[1]],[[5,[3,3,0,8],[8,8,5,5,8],7,6],[6,[2,10,3,9],[4],[5,6,1,8,7],[0,9]],[[0,2,2],1,1,5,8],10],[2,3,[6,[9,9,8,1],[],2],7,5],[0,0,1,[],[9]]]
+[[9,5],[8,[[10]]],[[[7]],8,2],[3,4],[9,[],[[4,4],3,[3],[9],[5]],[2,[7,3],[0,0],[10,8,2]],10]]
+
+[[[[3,1,7,9],2,[0,0,1,4]],8],[[[7,4],9],[7,9,[],2,10],10],[[[0,2,2],4,6,3,6],2,4],[[8,[4,1,9,3],8,7],[[1],[1,0,6],9,9,5],4],[]]
+[[7,2,[[6,5],[6,1],[3,5,5,3,3],9],[[0,7,2],[5,0,2,10,4],[8,3],[],10],0],[]]
+
+[[2,9,1,10]]
+[[],[9,10],[8,[[10,10,7,0],[10,2,1,9,3],1,[6,8,8]]],[],[[[10,2]],[[6,0,9,6,4],7],7]]
+
+[[5,4,8,4]]
+[[],[[6]],[[8,2,0,[]],[],2],[6,1,[10,2,5],[[],[10],[8,0]]],[[6,2],7,[8,[1]],[]]]
+
+[[[5,6,[1,8],10],[9,[2,3,5,6,10],0,[4,3,5]],2],[],[1,9,1,9,[[],[1],4,10,[2,1,9,5,5]]],[3,2,[],6],[[],[],3,6,2]]
+[[1,[[3],10,2,6]],[],[[10,7],2,[],[[],5,6,[2,10]]],[[[9,2],9],[[],4,[10,4,3],10,1],[[4,1,10],[0,3],7],[2,5,7,[0,9,8,5]]]]
+
+[[[],8,[],3],[8,[4,[3,0],[6,6],7,[0,3,5,6]],10,[[10,8,1,1,1]],[]],[4],[4,7],[10,[],1,[9,[0,2],4,2,2],[[5],[1,2,3,7],0,7]]]
+[[[10,4,[10,2]]],[[[7,5,8],4,[2,1]],4,9]]
+
+[[0],[],[2,[[1,6,3,5,4],7],4,9]]
+[[[2,[6,10,2,10],1,8,[]],10,[7,[],2],[[],5,1,[],4],1],[3,[[10,5,7],[1,5,8,3,9],[7,10,0,5,8]],[[0,4,7,2,1],[6,2,1],[3],0]],[0,2,3]]
+
+[[9,10,3],[[3,[2,8,3],6,2,8],[0,[7]],0],[1,8,[[5,2]],[[7,6,6,5]]]]
+[[[]],[10,10,9],[[[2],8],10,[]],[[],[7,[7,9,0],[],0],[2]],[[],[[10],[9,9,2,1,4]],7,4]]
+
+[[2,4],[[1,7,3,5],8]]
+[[],[5],[5,9],[2,3,[8,3,[0],2,6]]]
+
+[[[[0,3],[9,2,5,9,4],[5,2,9,8],[5],9],[9,7,[2,4,8]],8,3,[[6],[2]]]]
+[[7],[[],10,1,[[8,5,8],[8],[5],[1,2],6]],[9,[[2,2],10,[],4],[],[[3],9,[0,10,8,9]],5]]
+
+[[[[]]],[8,6],[[]],[],[[6,2,5]]]
+[[[2,10,[7,6,2]],[10,2],0,10],[[0,6],1,5,7],[10,[]]]
+
+[[],[7,1,[]],[9,3,9],[6],[0,4]]
+[[],[[[4,1,3],[10,9,8,7,9],7,[1,2],[8,0,2,5]],[6],6],[]]
+
+[[],[[],[8],[[0,4],8,[7,8,3,9,9]],[],[[],[6,6,10],0]],[[1,1,[],[10,2,8,7]],[[9,6],[9,6,2,10],2,10,10]],[[8,[5,5,7]],[3,8],3],[[[6,0,2,2],[],8],[0,[7,5,4],4,[4],[1]],[8,6],5,3]]
+[[[10,3],[[1,0,7,3],6,[1,1,2,10],5,[6,7,4]],[],[5]],[],[],[3,4,[[3,7,9,3,0],6,4]],[0,3,0]]
+
+[[],[],[4,[10,7,[2,9,5]],[],[9,1],10]]
+[[[],[2,[1,9],[]]],[],[],[],[6,9,[[6,8],5,2,[4,3,4,6,6]],[[5,2,3,8]],[[3,8],4,5,[4,2,4,1]]]]
+
+[[7,[5,[4],4],1,[[2,5,8,2],0,[9,4]],1],[[9,4,8,[0],5]],[],[8,[5,[2,5,8,6,8],3,1]],[]]
+[[[0,[9,6,2,7,9]],[8,[1,1,8]],4,[3],8],[[5,[8,6],3,1,5],4,8,[],[[1,1]]]]
+
+[[],[[3,3],[[8,8],10,2],9,4],[0],[3]]
+[[3],[],[8],[]]
+
+[[[5,[8,5]],[9,2]],[[[4,9],[3,1],[2,7,5],[2,9,2]],0],[[2,10,2,[],[4,4,4]]],[[7,[1,2,5],[],9],[8,3,[3,8,0,1,10],0,5],1,7],[[[8,0,6,2],[],4,[10]],3,[],4,8]]
+[[[[9,8,4,2,4],[0,2,0],5],[7,[4,7,10],[]],[[4,0],2],[8,[2,0,10,4],[7,6]]],[],[1,[[1,4,9,8,6],4]]]
+'	
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day13sample [
+
+	^ '[1,1,3,1,1]
+[1,1,5,1,1]
+
+[[1],[2,3,4]]
+[[1],4]
+
+[9]
+[[8,7,6]]
+
+[[4,4],4,4]
+[[4,4],4,4,4]
+
+[7,7,7,7]
+[7,7,7]
+
+[]
+[3]
+
+[[[]]]
+[[]]
+
+[1,[2,[3,[4,[5,6,7]]]],8,9]
+[1,[2,[3,[4,[5,6,0]]]],8,9]
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day14: data bis: bis [
+
+	"(Advent2022 day14: Advent2022 day14sample bis: false) >>> 24"
+
+	"(Advent2022 day14: Advent2022 day14data bis: false) >>> 638"
+
+	"(Advent2022 day14: Advent2022 day14sample bis: true) >>> 93"
+
+	"(Advent2022 day14: Advent2022 day14data bis: true) >>> 31722"
+
+	| cellular count next |
+	cellular := Cellular new.
+
+	data linesDo: [ :line | 
+		(line splitOn: ' -> ') overlappingPairsDo: [ :from :to | 
+			cellular rockFrom: from asPoint to: to asPoint ] ].
+
+	bis ifTrue: [ 
+		cellular
+			rockFrom: 400 - cellular abyss @ (cellular abyss + 2)
+			to: 600 + cellular abyss @ (cellular abyss + 2) ].
+
+	count := 0.
+	[ 
+	next := cellular fallFrom: 500 @ 0.
+	next ifNil: [ ^ count ]. "normal exit"
+	next = (500 @ 0) ifTrue: [ ^ count + 1 ]. "bis exit"
+	cellular at: next put: 'o'.
+	count := count + 1.
+	true ] whileTrue
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day14data [
+
+	^ '495,144 -> 499,144
+492,40 -> 492,43 -> 484,43 -> 484,50 -> 499,50 -> 499,43 -> 496,43 -> 496,40
+499,13 -> 499,17 -> 497,17 -> 497,25 -> 505,25 -> 505,17 -> 502,17 -> 502,13
+504,141 -> 508,141
+498,135 -> 502,135
+499,13 -> 499,17 -> 497,17 -> 497,25 -> 505,25 -> 505,17 -> 502,17 -> 502,13
+511,101 -> 511,96 -> 511,101 -> 513,101 -> 513,93 -> 513,101 -> 515,101 -> 515,94 -> 515,101
+485,147 -> 490,147
+483,153 -> 488,153
+479,151 -> 484,151
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+510,141 -> 514,141
+498,53 -> 498,57 -> 495,57 -> 495,64 -> 508,64 -> 508,57 -> 502,57 -> 502,53
+511,101 -> 511,96 -> 511,101 -> 513,101 -> 513,93 -> 513,101 -> 515,101 -> 515,94 -> 515,101
+513,114 -> 513,110 -> 513,114 -> 515,114 -> 515,110 -> 515,114 -> 517,114 -> 517,107 -> 517,114
+476,153 -> 481,153
+506,83 -> 506,85 -> 503,85 -> 503,88 -> 513,88 -> 513,85 -> 511,85 -> 511,83
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+506,83 -> 506,85 -> 503,85 -> 503,88 -> 513,88 -> 513,85 -> 511,85 -> 511,83
+515,165 -> 520,165
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+508,165 -> 513,165
+494,155 -> 499,155
+506,83 -> 506,85 -> 503,85 -> 503,88 -> 513,88 -> 513,85 -> 511,85 -> 511,83
+487,30 -> 487,31 -> 499,31 -> 499,30
+497,129 -> 502,129
+473,155 -> 478,155
+517,123 -> 522,123
+511,101 -> 511,96 -> 511,101 -> 513,101 -> 513,93 -> 513,101 -> 515,101 -> 515,94 -> 515,101
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+506,83 -> 506,85 -> 503,85 -> 503,88 -> 513,88 -> 513,85 -> 511,85 -> 511,83
+489,149 -> 494,149
+507,126 -> 512,126
+489,144 -> 493,144
+506,83 -> 506,85 -> 503,85 -> 503,88 -> 513,88 -> 513,85 -> 511,85 -> 511,83
+513,114 -> 513,110 -> 513,114 -> 515,114 -> 515,110 -> 515,114 -> 517,114 -> 517,107 -> 517,114
+486,151 -> 491,151
+498,53 -> 498,57 -> 495,57 -> 495,64 -> 508,64 -> 508,57 -> 502,57 -> 502,53
+521,126 -> 526,126
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+487,155 -> 492,155
+513,120 -> 518,120
+499,13 -> 499,17 -> 497,17 -> 497,25 -> 505,25 -> 505,17 -> 502,17 -> 502,13
+482,149 -> 487,149
+500,158 -> 500,159 -> 513,159
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+499,13 -> 499,17 -> 497,17 -> 497,25 -> 505,25 -> 505,17 -> 502,17 -> 502,13
+492,40 -> 492,43 -> 484,43 -> 484,50 -> 499,50 -> 499,43 -> 496,43 -> 496,40
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+513,114 -> 513,110 -> 513,114 -> 515,114 -> 515,110 -> 515,114 -> 517,114 -> 517,107 -> 517,114
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+499,13 -> 499,17 -> 497,17 -> 497,25 -> 505,25 -> 505,17 -> 502,17 -> 502,13
+505,168 -> 510,168
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+492,40 -> 492,43 -> 484,43 -> 484,50 -> 499,50 -> 499,43 -> 496,43 -> 496,40
+513,114 -> 513,110 -> 513,114 -> 515,114 -> 515,110 -> 515,114 -> 517,114 -> 517,107 -> 517,114
+509,117 -> 514,117
+498,53 -> 498,57 -> 495,57 -> 495,64 -> 508,64 -> 508,57 -> 502,57 -> 502,53
+511,101 -> 511,96 -> 511,101 -> 513,101 -> 513,93 -> 513,101 -> 515,101 -> 515,94 -> 515,101
+498,53 -> 498,57 -> 495,57 -> 495,64 -> 508,64 -> 508,57 -> 502,57 -> 502,53
+503,123 -> 508,123
+511,101 -> 511,96 -> 511,101 -> 513,101 -> 513,93 -> 513,101 -> 515,101 -> 515,94 -> 515,101
+513,114 -> 513,110 -> 513,114 -> 515,114 -> 515,110 -> 515,114 -> 517,114 -> 517,107 -> 517,114
+498,53 -> 498,57 -> 495,57 -> 495,64 -> 508,64 -> 508,57 -> 502,57 -> 502,53
+510,123 -> 515,123
+511,101 -> 511,96 -> 511,101 -> 513,101 -> 513,93 -> 513,101 -> 515,101 -> 515,94 -> 515,101
+513,144 -> 517,144
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+501,138 -> 505,138
+507,144 -> 511,144
+513,114 -> 513,110 -> 513,114 -> 515,114 -> 515,110 -> 515,114 -> 517,114 -> 517,107 -> 517,114
+498,53 -> 498,57 -> 495,57 -> 495,64 -> 508,64 -> 508,57 -> 502,57 -> 502,53
+492,40 -> 492,43 -> 484,43 -> 484,50 -> 499,50 -> 499,43 -> 496,43 -> 496,40
+492,141 -> 496,141
+495,138 -> 499,138
+513,114 -> 513,110 -> 513,114 -> 515,114 -> 515,110 -> 515,114 -> 517,114 -> 517,107 -> 517,114
+492,40 -> 492,43 -> 484,43 -> 484,50 -> 499,50 -> 499,43 -> 496,43 -> 496,40
+498,141 -> 502,141
+501,155 -> 506,155
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+497,153 -> 502,153
+504,129 -> 509,129
+518,129 -> 523,129
+480,155 -> 485,155
+513,114 -> 513,110 -> 513,114 -> 515,114 -> 515,110 -> 515,114 -> 517,114 -> 517,107 -> 517,114
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+506,83 -> 506,85 -> 503,85 -> 503,88 -> 513,88 -> 513,85 -> 511,85 -> 511,83
+498,53 -> 498,57 -> 495,57 -> 495,64 -> 508,64 -> 508,57 -> 502,57 -> 502,53
+492,40 -> 492,43 -> 484,43 -> 484,50 -> 499,50 -> 499,43 -> 496,43 -> 496,40
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+525,129 -> 530,129
+504,135 -> 508,135
+487,30 -> 487,31 -> 499,31 -> 499,30
+487,30 -> 487,31 -> 499,31 -> 499,30
+493,151 -> 498,151
+514,126 -> 519,126
+511,101 -> 511,96 -> 511,101 -> 513,101 -> 513,93 -> 513,101 -> 515,101 -> 515,94 -> 515,101
+507,138 -> 511,138
+495,37 -> 506,37
+511,101 -> 511,96 -> 511,101 -> 513,101 -> 513,93 -> 513,101 -> 515,101 -> 515,94 -> 515,101
+500,126 -> 505,126
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+519,168 -> 524,168
+511,162 -> 516,162
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+499,13 -> 499,17 -> 497,17 -> 497,25 -> 505,25 -> 505,17 -> 502,17 -> 502,13
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+492,40 -> 492,43 -> 484,43 -> 484,50 -> 499,50 -> 499,43 -> 496,43 -> 496,40
+506,120 -> 511,120
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+501,132 -> 505,132
+511,129 -> 516,129
+494,80 -> 507,80
+506,83 -> 506,85 -> 503,85 -> 503,88 -> 513,88 -> 513,85 -> 511,85 -> 511,83
+501,144 -> 505,144
+490,153 -> 495,153
+512,168 -> 517,168
+490,77 -> 490,68 -> 490,77 -> 492,77 -> 492,75 -> 492,77 -> 494,77 -> 494,74 -> 494,77 -> 496,77 -> 496,72 -> 496,77
+507,181 -> 507,171 -> 507,181 -> 509,181 -> 509,173 -> 509,181 -> 511,181 -> 511,176 -> 511,181 -> 513,181 -> 513,176 -> 513,181
+499,13 -> 499,17 -> 497,17 -> 497,25 -> 505,25 -> 505,17 -> 502,17 -> 502,13
+500,158 -> 500,159 -> 513,159
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day14sample [
+
+	^ '498,4 -> 498,6 -> 496,6
+503,4 -> 502,4 -> 502,9 -> 494,9
+'
+]
