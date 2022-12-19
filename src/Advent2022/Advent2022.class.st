@@ -3,3 +3,7954 @@ Class {
 	#superclass : #Object,
 	#category : #Advent2022
 }
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day01: data [
+
+	"(Advent2022 day01: Advent2022 day01sample) >>> 24000"
+	"(Advent2022 day01: Advent2022 day01data) >>> 66306"
+
+	^ (('<r><r>' expandMacros split: data) collect: [ :block | 
+		    (block lines collect: #asInteger) sum ]) sort last
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day01bis: data [
+
+	"(Advent2022 day01bis: Advent2022 day01sample) >>> 45000"
+	"(Advent2022 day01bis: Advent2022 day01data) >>> 195292"
+
+	^ ((('<r><r>' expandMacros split: data) collect: [ :block | 
+		  (block lines collect: #asInteger) sum ]) sort 
+		 last: 3) sum
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day01data [
+
+	^ '5474
+4920
+5381
+8650
+11617
+7193
+8161
+
+10747
+5855
+13827
+6294
+13437
+8125
+
+6913
+6443
+3431
+5357
+1579
+3590
+4471
+4971
+4055
+4937
+2514
+1679
+2917
+
+4203
+4433
+8798
+5838
+2031
+8765
+5107
+6055
+2482
+6266
+
+4646
+4705
+5183
+1707
+3676
+2042
+4140
+3321
+1899
+3055
+3327
+3944
+3879
+2981
+
+59238
+
+11748
+22005
+
+6389
+4630
+1443
+14530
+9588
+
+10578
+8843
+10344
+6289
+10444
+7615
+9510
+
+9351
+3942
+5896
+4692
+10110
+4125
+1161
+8261
+
+22239
+
+5485
+1528
+1288
+4749
+3742
+5861
+2418
+5901
+5201
+1695
+4640
+4609
+3717
+5597
+4183
+
+6675
+4543
+3795
+2873
+6364
+2320
+4087
+5536
+7235
+2206
+6179
+4316
+
+2755
+6991
+3129
+7988
+3124
+4657
+6947
+4511
+3345
+4043
+6322
+
+8053
+5068
+3647
+8695
+6724
+8679
+6974
+4379
+6785
+
+7345
+3825
+3850
+4237
+2168
+5866
+2329
+3006
+2966
+3778
+1635
+4083
+
+8997
+7386
+3721
+6526
+9222
+2248
+1079
+4470
+2870
+
+3780
+4795
+6084
+3682
+4147
+4840
+1603
+3949
+7023
+3175
+
+3438
+2545
+2816
+6367
+6068
+1782
+2026
+5115
+5648
+5239
+3530
+5553
+3809
+1891
+
+6970
+4195
+3109
+3953
+9504
+5121
+6159
+3932
+
+5045
+22725
+
+2633
+6392
+4433
+4789
+4593
+3043
+2935
+6540
+7966
+6176
+7759
+
+6551
+7220
+2325
+6230
+2058
+6931
+7107
+3393
+4448
+2157
+7172
+2699
+
+43804
+
+9649
+
+4126
+3911
+4619
+13049
+
+4094
+5564
+6038
+1736
+2035
+7064
+5449
+3542
+6245
+5280
+4870
+3181
+
+5699
+4317
+2871
+3784
+6855
+5389
+3538
+1374
+7930
+6761
+6756
+
+8427
+4122
+1938
+8024
+1572
+4399
+1371
+1945
+1475
+5936
+
+4158
+8074
+3978
+12335
+4192
+1983
+
+7331
+3052
+5007
+7331
+6303
+3832
+4584
+6628
+4574
+3994
+6504
+7166
+
+5045
+1220
+6070
+1942
+2263
+3916
+1936
+1557
+4652
+3224
+2866
+1448
+1261
+5803
+
+8695
+10505
+8608
+11934
+9221
+3064
+9944
+
+3497
+6215
+4573
+6966
+3312
+7874
+5739
+2775
+7394
+1896
+
+8484
+6106
+7125
+10399
+4310
+3978
+8000
+3698
+
+2462
+4167
+5607
+2518
+2013
+5458
+5439
+4152
+4061
+2246
+1349
+5429
+4122
+3370
+1401
+
+6994
+5598
+4181
+11620
+7973
+2680
+
+16039
+23774
+
+3915
+1933
+2725
+5159
+5433
+5165
+5447
+1291
+1851
+5476
+3464
+3070
+
+3511
+10497
+2941
+9581
+10220
+9369
+3517
+8319
+
+11067
+4795
+9788
+6321
+9229
+5678
+3344
+
+7639
+7865
+2566
+9034
+1333
+4160
+9017
+5958
+
+7565
+5227
+7692
+6780
+2290
+10189
+3257
+6345
+
+3910
+8187
+7800
+4521
+1055
+6494
+6879
+6508
+3778
+2576
+
+1160
+7168
+7118
+7138
+5054
+2319
+1581
+5235
+6430
+2877
+2511
+2595
+
+5449
+1604
+8598
+8992
+5251
+7608
+2606
+2404
+
+4494
+1614
+12591
+
+4105
+6805
+2299
+1368
+6970
+2029
+2567
+2055
+4073
+3090
+5666
+3796
+
+11914
+10997
+7550
+5656
+
+18298
+5479
+
+4700
+1779
+6303
+4671
+2275
+3101
+1835
+3928
+2480
+3402
+4974
+5518
+1507
+5891
+
+17354
+19903
+19827
+
+6309
+4879
+4247
+4723
+1826
+3124
+6153
+4359
+5103
+5449
+3834
+4751
+5939
+3534
+
+8210
+14642
+3626
+8654
+7933
+
+12463
+2202
+9518
+5869
+5003
+
+21437
+
+1303
+5025
+7398
+2518
+6070
+7001
+8240
+4130
+4486
+2590
+
+2211
+4296
+6216
+5870
+6871
+3508
+2504
+2898
+3048
+3381
+3879
+6604
+3057
+
+2476
+4145
+8294
+5106
+9531
+5254
+1495
+1765
+
+4592
+1366
+5153
+5189
+5896
+5331
+5104
+2438
+1725
+4846
+1744
+2251
+2769
+4181
+1189
+
+8345
+13849
+7806
+11279
+
+2950
+4805
+1549
+4468
+5550
+5136
+1311
+3073
+3482
+1175
+5151
+2011
+4116
+4405
+3581
+
+2616
+6472
+4229
+2306
+1079
+1132
+5062
+6279
+2972
+1437
+5100
+2270
+3377
+1256
+
+7703
+4334
+3700
+3586
+2980
+8040
+5481
+6456
+2284
+2481
+7518
+
+7767
+3145
+1131
+6374
+2591
+1952
+2915
+6288
+
+17556
+1308
+2244
+11329
+
+5138
+18453
+24805
+
+4253
+2926
+5747
+2324
+5486
+4747
+6081
+3244
+1015
+3443
+2086
+2016
+1409
+5915
+1805
+
+5662
+3866
+4336
+3394
+2257
+4012
+2404
+4649
+4156
+3460
+4337
+5928
+2710
+
+1811
+4065
+4708
+1579
+1360
+7071
+3771
+4071
+3152
+1427
+4361
+5013
+
+52242
+
+6035
+2981
+1824
+4305
+1253
+3804
+3713
+5411
+4316
+5945
+1503
+4619
+3873
+1063
+
+8966
+2393
+5007
+2992
+8306
+2947
+10127
+6760
+
+5101
+6156
+6344
+1093
+6575
+6010
+1179
+2699
+8234
+8433
+
+25118
+27329
+
+9532
+10745
+11456
+5346
+3371
+8674
+6338
+
+11164
+6281
+6275
+3805
+3989
+3109
+10478
+
+15795
+14646
+
+9248
+4268
+13365
+6711
+5210
+3359
+
+4367
+5811
+1444
+2920
+5074
+4213
+5135
+1109
+4701
+2615
+3108
+3748
+4670
+3620
+5180
+
+1743
+2512
+4737
+6125
+6136
+2268
+2643
+1225
+6937
+3774
+2550
+1160
+
+4159
+10506
+17904
+
+1183
+3045
+2677
+3989
+5062
+1507
+5918
+5291
+3473
+3949
+4145
+4949
+4775
+3148
+
+6473
+6375
+1013
+6653
+6193
+4437
+2192
+2663
+
+3145
+9517
+5339
+7768
+10803
+5365
+
+1120
+3384
+5420
+6699
+7252
+1922
+6063
+6993
+7110
+1062
+5206
+3326
+
+3235
+3681
+3647
+2771
+1608
+1299
+1037
+2665
+2285
+6054
+3787
+6019
+1867
+2501
+
+2116
+2641
+6185
+2165
+5765
+1674
+4516
+3426
+4773
+6586
+1914
+6492
+6193
+
+2417
+5222
+2764
+3045
+1511
+3873
+5328
+4941
+4189
+5083
+2969
+2534
+1666
+1733
+5940
+
+7351
+4465
+13541
+2200
+12798
+11321
+
+32442
+
+17392
+2823
+10314
+3495
+
+4737
+4570
+3856
+2588
+3135
+3661
+3884
+5635
+5842
+1983
+2290
+5140
+2252
+4826
+5424
+
+1666
+8670
+6408
+8258
+2038
+11212
+
+7026
+7262
+5520
+7613
+10233
+4683
+9874
+5205
+
+6451
+1335
+16980
+1986
+
+7472
+10701
+3953
+3512
+9189
+5675
+5285
+1085
+
+6673
+4260
+7698
+1171
+5686
+4966
+4824
+2941
+3847
+3968
+
+2927
+6876
+6839
+1336
+6843
+5907
+1013
+6284
+2354
+2037
+4355
+4735
+2470
+
+11642
+3298
+7526
+8973
+1752
+9609
+9415
+
+7862
+24260
+
+13115
+12552
+9965
+9011
+4189
+10063
+
+4678
+5279
+1173
+4347
+1102
+1067
+7067
+7598
+5114
+3247
+
+11741
+9531
+5821
+3624
+1064
+6312
+3099
+
+17369
+
+2453
+6099
+2945
+5136
+3273
+2295
+4925
+5956
+1280
+
+1443
+1787
+2042
+8898
+3387
+2391
+6857
+5622
+
+6594
+3937
+1178
+4172
+7356
+7296
+7497
+2169
+1673
+3993
+5546
+
+25269
+15637
+21519
+
+10437
+4102
+6545
+
+2996
+4277
+2063
+2577
+3304
+3240
+5948
+3754
+3940
+4706
+4258
+5636
+2857
+4082
+4082
+
+18222
+19780
+10272
+
+5915
+
+5612
+2789
+2367
+5086
+5148
+5115
+7196
+2378
+1394
+2072
+3440
+4135
+
+35104
+
+3238
+1135
+1210
+2747
+5793
+7097
+3327
+3438
+6990
+3218
+6635
+2945
+
+2247
+5037
+2112
+3768
+1817
+4538
+3236
+1070
+2146
+1813
+1567
+6025
+2533
+1134
+1320
+
+2305
+4606
+4812
+3568
+4712
+4459
+4131
+4079
+4008
+3131
+1264
+1684
+5296
+2945
+
+1255
+1633
+4774
+5707
+1349
+1660
+1549
+3965
+3511
+1791
+3535
+2568
+6598
+
+4756
+7488
+2222
+2964
+4150
+5175
+4198
+8641
+5103
+
+2689
+16286
+12088
+10520
+
+4714
+21793
+17571
+
+4388
+2535
+3284
+3574
+1322
+3532
+3505
+3713
+6261
+6430
+4673
+1695
+1169
+
+59355
+
+20855
+1036
+20325
+
+3231
+2285
+7377
+4182
+9866
+1502
+7341
+
+3151
+3745
+15911
+4525
+6796
+
+10285
+3489
+6159
+1484
+1735
+5194
+6943
+3763
+
+2654
+4389
+3639
+5386
+2078
+3240
+3504
+8137
+2330
+8406
+
+13627
+7144
+6062
+11288
+
+21671
+15167
+8981
+
+1199
+8578
+5102
+4529
+8070
+7573
+6499
+5155
+5134
+3510
+
+3364
+6004
+3899
+6417
+3007
+5581
+4427
+5193
+1580
+6498
+4366
+3702
+6294
+3007
+
+1086
+8177
+10586
+7787
+6042
+
+4367
+1320
+9290
+7230
+9666
+4239
+8803
+6955
+
+2626
+1542
+1131
+6190
+6719
+2764
+5729
+3631
+3914
+1309
+6531
+5590
+1387
+
+1214
+3796
+4620
+1037
+6851
+2733
+6705
+5377
+5788
+4926
+3923
+1757
+3696
+
+5645
+4859
+1827
+6117
+7432
+2787
+7137
+7504
+4120
+1430
+1522
+
+3825
+6622
+8375
+8555
+1702
+2360
+4444
+1853
+
+20697
+6984
+
+5947
+4046
+6449
+1564
+3754
+5339
+4165
+5954
+4398
+3271
+2567
+1454
+6060
+1108
+
+17518
+10791
+7556
+1902
+
+6547
+1011
+11291
+3886
+
+1673
+5267
+6948
+6577
+7606
+8357
+6414
+9057
+5283
+
+36117
+
+2334
+4192
+2967
+1160
+3335
+5893
+6342
+5954
+2462
+4028
+4035
+3816
+5167
+6094
+
+4025
+5106
+3876
+1689
+2168
+3504
+2819
+6809
+5580
+1549
+4401
+5305
+2889
+
+4919
+4789
+4604
+1647
+2305
+1223
+1621
+5273
+4101
+1318
+1514
+5766
+5749
+3943
+
+18068
+9720
+11242
+
+3190
+1497
+3700
+5345
+5117
+4089
+2584
+3740
+2397
+3541
+4534
+4403
+6257
+
+4822
+7295
+1000
+4766
+9612
+9061
+3549
+8036
+5254
+
+4816
+2187
+7269
+3500
+7150
+2797
+6007
+5651
+4702
+1385
+6393
+5128
+
+2347
+3149
+2773
+3877
+5619
+1646
+3363
+1888
+5203
+5155
+5974
+2030
+2149
+3530
+2745
+
+4694
+12004
+11089
+13235
+
+11269
+
+4700
+2437
+6297
+4951
+3798
+6109
+4249
+5262
+3972
+1493
+
+3293
+3333
+2306
+1234
+6389
+1929
+1012
+1477
+3691
+1235
+3846
+5286
+1164
+5630
+
+17541
+12819
+7368
+11983
+
+14008
+7610
+2321
+4581
+
+5345
+5511
+2483
+6155
+3052
+5151
+4224
+3992
+5566
+5275
+4539
+4762
+4804
+3673
+
+64454
+
+22960
+19989
+1512
+
+6252
+1835
+9984
+5671
+6357
+8737
+7341
+
+5374
+3434
+2008
+4744
+5277
+1394
+4515
+6327
+5656
+2721
+3005
+1197
+5579
+3661
+
+5886
+4591
+5003
+2309
+2703
+5984
+2750
+2332
+1005
+2374
+2945
+2250
+3844
+5665
+5016
+
+3269
+4501
+7712
+12368
+2929
+
+8015
+7817
+9884
+10257
+7097
+1024
+6910
+
+5184
+7911
+3112
+4284
+2879
+6177
+3740
+2243
+7722
+
+4643
+6279
+5081
+3030
+3991
+2642
+7422
+6341
+3712
+6022
+2953
+
+8182
+9540
+18188
+
+9292
+10077
+8619
+2367
+9770
+3540
+10220
+2537
+
+3230
+5748
+3491
+2382
+4803
+4477
+4706
+5688
+3872
+4854
+6934
+7327
+
+16115
+16116
+15926
+6134
+7828
+
+7192
+1734
+4498
+4311
+2682
+6019
+5482
+7073
+1602
+6751
+1106
+2314
+
+6320
+7703
+9059
+12137
+10057
+4961
+
+4306
+2143
+6775
+2805
+3338
+7133
+4619
+1323
+2753
+4504
+4366
+5334
+
+11176
+13348
+13834
+10124
+8084
+6286
+
+10338
+13150
+2090
+2260
+16428
+
+3667
+4251
+5278
+1111
+3667
+6833
+6846
+4346
+2118
+5830
+6642
+3730
+1700
+
+1037
+14507
+24258
+
+22776
+16783
+22796
+
+10555
+1425
+5032
+12069
+1108
+8152
+6623
+
+11535
+11922
+4903
+5397
+13421
+
+9869
+8664
+15110
+12589
+2301
+
+1319
+11885
+12142
+3267
+6484
+1285
+2595
+
+5648
+4703
+4074
+8048
+4128
+2197
+2947
+1737
+4032
+6999
+4374
+
+6043
+2635
+3457
+6893
+1769
+2808
+4858
+5987
+1193
+6061
+1197
+4169
+4939
+
+4043
+5938
+3483
+5056
+5921
+3376
+3972
+1843
+5401
+5469
+2972
+3421
+5129
+2949
+
+12561
+1792
+13583
+12678
+11790
+4781
+
+1868
+3636
+1727
+3229
+4396
+3926
+1960
+4131
+1766
+3644
+6156
+1321
+4685
+2702
+
+6193
+5733
+4709
+2502
+3684
+3363
+5916
+6806
+5483
+3767
+2544
+3000
+5196
+
+4345
+1107
+1363
+5707
+4533
+5183
+3248
+6589
+3008
+4193
+6416
+4727
+1464
+
+16694
+7689
+
+2805
+3717
+5326
+5676
+1663
+1680
+1151
+4131
+1223
+1542
+4191
+2587
+5529
+4681
+3736
+
+10132
+10116
+6576
+4908
+16381
+
+2310
+7296
+
+11429
+16310
+
+3801
+6942
+3366
+3915
+3903
+4342
+2289
+5429
+1211
+4237
+5688
+5023
+3319
+
+1234
+4811
+2311
+2590
+2857
+5111
+5063
+6350
+1887
+1814
+6092
+3694
+2758
+3712
+
+1830
+8120
+18551
+14964
+
+7427
+1702
+4265
+3065
+3409
+3845
+9418
+10394
+
+5947
+6853
+7006
+5538
+6218
+6167
+4825
+2838
+2073
+8061
+7418
+
+3077
+1132
+1171
+3570
+4467
+5666
+3306
+5859
+2191
+2986
+4212
+5046
+3082
+3918
+3539
+
+12352
+4933
+
+11214
+21828
+18790
+
+8150
+8051
+6399
+13321
+
+1077
+7138
+9996
+2474
+7483
+5220
+9358
+
+2352
+7906
+8887
+6549
+9471
+6563
+
+2408
+11061
+2717
+9936
+7232
+
+1143
+26201
+
+8453
+18884
+14705
+
+1102
+4208
+3159
+2913
+2163
+2493
+2202
+4092
+4944
+3844
+4740
+5584
+3073
+2325
+3359
+
+5448
+5487
+5685
+2776
+5432
+2527
+3483
+4295
+7162
+7033
+5512
+4802
+
+8890
+9904
+6114
+1416
+5791
+10383
+2333
+
+5420
+6696
+5120
+3503
+1975
+6025
+1966
+3962
+7988
+3808
+4725
+
+3407
+3897
+6234
+2085
+5141
+6526
+1296
+2371
+4846
+3129
+4258
+4951
+2549
+
+3491
+1833
+7754
+8425
+5132
+1799
+4950
+1499
+1791
+7778
+
+3416
+9251
+6111
+2067
+15697
+
+1560
+4056
+4203
+5915
+1118
+3442
+7843
+1986
+2318
+7247
+
+3266
+6672
+2491
+6089
+2403
+2038
+1581
+5163
+3657
+6090
+2392
+6109
+2091
+
+8674
+5107
+10708
+6044
+5193
+2111
+1706
+5666
+
+5933
+3537
+5456
+6595
+9018
+2113
+3778
+3638
+
+3741
+1940
+1603
+4061
+3986
+3414
+2327
+2173
+5594
+5598
+3974
+5162
+
+4947
+2765
+3017
+2598
+3841
+3663
+4664
+2519
+3969
+3721
+4100
+2463
+4616
+4553
+4986
+
+2809
+6051
+1262
+1163
+6129
+1501
+4798
+7401
+3929
+1077
+6108
+3232
+
+10252
+3877
+5596
+7696
+2683
+3182
+5335
+10338
+
+4390
+7767
+7735
+6771
+2291
+2887
+2884
+6444
+4270
+1721
+
+2939
+5140
+4955
+6308
+2891
+5405
+1775
+2275
+3153
+5569
+3769
+1229
+4394
+
+1677
+2258
+5447
+4017
+1478
+1334
+2354
+5847
+4433
+2973
+3691
+4900
+5785
+3571
+
+3573
+3512
+4014
+5627
+4750
+4273
+1428
+5189
+4971
+6104
+3301
+2558
+4522
+2924
+4828
+
+62151
+
+9293
+11550
+20431
+
+24683
+10913
+
+1939
+1487
+8441
+7821
+12802
+
+19163
+2462
+17788
+
+1390
+8446
+9351
+8697
+2520
+6065
+4574
+9621
+
+3357
+3779
+1786
+7387
+4334
+5856
+1186
+2309
+7374
+3244
+6129
+
+3096
+3130
+3634
+4227
+4453
+7400
+3889
+2310
+5974
+6357
+6352
+4975
+
+4281
+15698
+6045
+16109
+
+7835
+10597
+6334
+10543
+10680
+3210
+2302
+
+2740
+2418
+3629
+1099
+8802
+6407
+4369
+3978
+8454
+3646
+
+2051
+1323
+5425
+1715
+6173
+7524
+5259
+1006
+8445'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day01sample [
+
+	^ '1000
+2000
+3000
+
+4000
+
+5000
+6000
+
+7000
+8000
+9000
+
+10000'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day02: data [
+
+	"(Advent2022 day02: Advent2022 day02sample) >>> 15"
+
+	"(Advent2022 day02: Advent2022 day02data) >>> 11475"
+
+	| score |
+	score := { 
+		         ('A X' -> (1 + 3)).
+		         ('A Y' -> (2 + 6)).
+		         ('A Z' -> (3 + 0)).
+		         ('B X' -> (1 + 0)).
+		         ('B Y' -> (2 + 3)).
+		         ('B Z' -> (3 + 6)).
+		         ('C X' -> (1 + 6)).
+		         ('C Y' -> (2 + 0)).
+		         ('C Z' -> (3 + 3)) } asDictionary.
+
+	^ (data lines collect: [ :line | score at: line ]) sum
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day02bis: data [
+
+	"(Advent2022 day02bis: Advent2022 day02sample) >>> 12"
+
+	"(Advent2022 day02bis: Advent2022 day02data) >>> 16862"
+
+	| score |
+	score := { 
+		         ('A X' -> (3 + 0)).
+		         ('A Y' -> (1 + 3)).
+		         ('A Z' -> (2 + 6)).
+		         ('B X' -> (1 + 0)).
+		         ('B Y' -> (2 + 3)).
+		         ('B Z' -> (3 + 6)).
+		         ('C X' -> (2 + 0)).
+		         ('C Y' -> (3 + 3)).
+		         ('C Z' -> (1 + 6)) } asDictionary.
+
+	^ (data lines collect: [ :line | score at: line ]) sum
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day02data [
+
+^ 'A Z
+C Z
+C Z
+A Z
+C Y
+C Z
+A Z
+B Z
+A Z
+A Z
+C Z
+A X
+C Y
+C Z
+C Y
+C Z
+A Z
+C Z
+A Z
+A Z
+C Z
+C Z
+C Z
+A Y
+C Z
+C Z
+C Y
+A Z
+C X
+A Z
+A Z
+C Z
+B Y
+C Z
+C Y
+C X
+C Z
+C Z
+B Y
+A Z
+C Z
+C Y
+B Y
+C Z
+A Y
+B Y
+C Z
+C Z
+A Z
+A Z
+A X
+A Z
+B Z
+A Z
+A X
+A Y
+C Z
+C Z
+A Z
+C Y
+A Z
+C Z
+B Y
+C Z
+C Y
+B Z
+A Z
+C Z
+A Z
+B Z
+A X
+C Z
+A Z
+C Y
+C Y
+C Z
+A Z
+C Z
+C Y
+C Z
+C Z
+C Z
+C Z
+C Y
+A Z
+C Z
+C Y
+A Z
+A Z
+A Z
+C Z
+A X
+A Z
+A Z
+A Z
+C Z
+C Y
+C Y
+A Z
+A Z
+C Y
+A Z
+C Z
+A Z
+C Y
+B Y
+C Z
+A Z
+A Z
+C Z
+A Z
+C Y
+A Z
+A Z
+C Y
+A Z
+C Z
+A Z
+A Z
+A Z
+C Y
+A Z
+B Z
+C Y
+C Z
+B Y
+A Z
+A Z
+C Z
+C Z
+B X
+B Y
+A Z
+A Z
+A Z
+C Z
+C Y
+B Z
+C Z
+C Z
+C Z
+A Y
+A Z
+A Z
+C Y
+C Z
+A Z
+C Z
+A Z
+A Z
+C Z
+C Z
+C Z
+C Y
+C Y
+C Y
+C Z
+A Z
+C Z
+A Z
+A Z
+C Z
+A Z
+C Z
+A Z
+A Z
+B Z
+A Z
+A Z
+C Z
+C Z
+C Z
+C Z
+C Z
+C Y
+B X
+A X
+A Y
+A X
+C Z
+A X
+B X
+A X
+B Z
+A Z
+C Z
+C Z
+C Z
+C Z
+B Z
+C Z
+A Z
+A Z
+A Z
+A Z
+C Z
+A Z
+A Z
+C Z
+A Z
+C Y
+C Z
+C Z
+B Y
+C Z
+A X
+A Z
+A Z
+C Y
+C Z
+C Z
+A Z
+C Z
+A Z
+C Z
+A Z
+C Y
+A Z
+B Y
+C Z
+C Z
+A Z
+C Z
+C Y
+C Z
+A Z
+A Z
+C Z
+C Z
+A Z
+A Z
+C Z
+C Y
+C Z
+C Z
+C Z
+C Y
+C Z
+A Z
+C Z
+A Z
+A Z
+A Z
+B Z
+A Z
+C Y
+A Y
+A Z
+C Z
+A Z
+A Z
+C Z
+A Z
+C Z
+C Z
+C Z
+A Z
+B Z
+C Y
+C Z
+C Z
+B X
+C Z
+C Y
+A Z
+A Y
+C Z
+C Y
+B Y
+A Z
+C Z
+A Z
+B Y
+C Z
+C Z
+C Z
+B Z
+B Z
+C Z
+C Z
+C Z
+C Z
+A Z
+A X
+B Y
+C Z
+C Z
+A Z
+C Y
+A Z
+C Z
+A Z
+C Y
+C Z
+A Z
+C Y
+C Y
+C Z
+A Z
+C Z
+C Z
+C Z
+A X
+A Z
+C Z
+C Z
+C Z
+A Z
+C Z
+C Z
+C Y
+C Y
+C Y
+C Z
+C Y
+C Z
+A Z
+A Z
+C Z
+C Z
+C Y
+A Y
+C Z
+C Z
+B Z
+A Z
+A Z
+A Y
+A Z
+B Y
+A Z
+C Y
+A Z
+C Y
+A Z
+A Z
+A X
+B Z
+C Y
+A Z
+C Z
+A Y
+C Z
+C Y
+B Y
+A Z
+B Z
+B Z
+C Z
+A X
+B Y
+C Z
+A Y
+C Z
+A Z
+C Z
+B Z
+C Y
+C Z
+A Z
+C Z
+C Y
+A Z
+A X
+A Z
+A Y
+C Z
+A Z
+C Y
+A Z
+C Z
+C Y
+C Z
+B X
+C Z
+C Z
+C Z
+C Z
+C Z
+C Z
+C Y
+C Y
+C Z
+B Z
+B Z
+C Z
+B Z
+A Z
+C Z
+C Y
+C Z
+C Z
+A Z
+C Z
+B Y
+C Z
+A Z
+C Z
+A Z
+C Z
+A Z
+C Y
+A Z
+C Z
+C Z
+C Z
+C Z
+C Z
+C Y
+C Y
+A Z
+A Z
+C Z
+A Z
+A Z
+B Y
+A Z
+A Z
+C Z
+C Y
+A Z
+C Z
+A Z
+A Z
+C Z
+C Z
+C Z
+A Z
+C Y
+C Z
+C Z
+C Y
+C Y
+C Y
+A Z
+C Z
+A Z
+C Z
+B Y
+A X
+C Z
+C Z
+C Z
+C Z
+B Z
+A Z
+C Z
+A Z
+B Z
+B X
+C Z
+B X
+C Z
+C Z
+A Z
+B X
+C Z
+A Z
+A Z
+B Y
+C Z
+C Z
+B X
+C Y
+A Z
+A Z
+B Z
+A Z
+C Z
+A Z
+B Y
+A Z
+C Z
+B Y
+C Y
+C Z
+C X
+C Z
+C Z
+A X
+C Z
+A Y
+C Z
+A X
+A Z
+C Z
+C Z
+C Z
+B Y
+C Y
+A Z
+C Z
+A Z
+C Z
+C Z
+C Z
+C Y
+C Z
+C Z
+B Y
+A Z
+C Z
+C Z
+C Z
+A Z
+C Z
+A Z
+B Z
+C Z
+A Z
+C Z
+A Z
+C Y
+C Z
+C Z
+C Z
+C Z
+A Z
+A Z
+B Z
+A Z
+B Z
+C Z
+C Z
+C Y
+C Z
+A Z
+A Z
+C Z
+A Z
+B Y
+A Z
+C Z
+C Z
+A Z
+A Z
+A Y
+A Z
+C Z
+A Z
+C Y
+C Z
+C Z
+C Z
+A Z
+C Z
+C Z
+B X
+A Z
+A Z
+C Y
+B Z
+C Z
+A Z
+A Z
+A Y
+C Z
+C Z
+C Z
+A Z
+C Z
+C Z
+C Z
+B Y
+A Z
+B Z
+C Y
+B Y
+A Z
+A Z
+A Z
+C Z
+C Y
+A Z
+A Z
+C Z
+C Z
+A Z
+B Z
+C Z
+A Z
+A Z
+C Z
+A Z
+A Z
+A X
+B Z
+C Z
+C Z
+C Z
+C Z
+C Y
+A Z
+C Z
+C Y
+C Z
+B Y
+A Z
+A Z
+C Z
+C Z
+A Z
+C Y
+C Z
+A Z
+A Z
+C Z
+C Z
+C Y
+B Y
+C Z
+A Z
+A Z
+C Z
+C Z
+C Y
+C Z
+A Z
+C Z
+A Z
+C Z
+A Z
+C Y
+C Z
+C Z
+C Y
+A Z
+B Y
+C Z
+A Z
+C Z
+C Z
+B Z
+B Z
+A Z
+C Z
+C Y
+C Z
+C Z
+A Z
+B Y
+B Z
+C Z
+A Z
+C Z
+C Y
+C Z
+C Z
+C Y
+C Z
+A Y
+A Z
+A Z
+A Z
+B Y
+C Z
+C Z
+C Z
+C Y
+C Z
+A Z
+C Y
+B Y
+C Z
+A Z
+A Z
+C Z
+C Z
+A Z
+A X
+B Z
+A Z
+C Z
+A Z
+C Z
+C Y
+A Z
+A Z
+C Z
+C Z
+B Z
+B Y
+A X
+A Z
+A Z
+A Z
+A Z
+C Z
+C Z
+C Z
+C Z
+C Y
+A Z
+A Z
+C Y
+C X
+A Z
+A Z
+A Z
+A Z
+C Z
+C Z
+C Z
+C Z
+C Z
+A X
+C Z
+A Z
+B Y
+B Y
+A Z
+A Z
+C Z
+C Y
+C Z
+A Z
+A Z
+A X
+A Z
+C Z
+A Z
+A Y
+A Z
+C Z
+B Y
+B Y
+C Z
+B Y
+A Z
+B Y
+C Z
+B Z
+B Y
+C Y
+C Z
+C Y
+C Z
+A Z
+C Y
+C Z
+C Z
+C Z
+A Z
+C Z
+C Y
+C Z
+B Z
+C Z
+A Z
+B Y
+B Z
+C Z
+B Y
+C Z
+A Z
+C Z
+C Z
+A Z
+C Y
+C Z
+B Y
+A Z
+B X
+C Y
+C X
+C Y
+A Z
+B Z
+A Z
+A Y
+B Y
+C Z
+A Z
+C Z
+C Y
+C Z
+A Z
+B Y
+A Z
+A Z
+B Y
+C Y
+A Y
+C Y
+C Z
+C Z
+A Z
+C Z
+C Z
+A Y
+C Z
+A Z
+C Z
+C Z
+B Y
+B Y
+C Z
+B Z
+A Z
+A Z
+A Z
+C Z
+C Y
+C Z
+B Y
+C Y
+A Z
+A Z
+C Z
+B Y
+C Y
+B Y
+C Z
+A Z
+B Y
+A Z
+A Z
+A X
+C Z
+C Z
+C Y
+A Z
+C Y
+C Y
+C Z
+A Z
+A X
+C Z
+A Z
+A Z
+A Z
+C Z
+C Y
+A Z
+A X
+C Z
+C Z
+C Y
+C Y
+A Z
+C Z
+B Z
+B X
+A Z
+C Z
+B Y
+C Y
+A Z
+A Z
+C Y
+C Z
+C Y
+C Y
+B Y
+C Z
+C Z
+A Z
+B Y
+C Z
+C Z
+A Z
+A Z
+B Y
+C Z
+C Y
+A X
+A Z
+C Y
+A Z
+C Z
+C Z
+A Z
+C Y
+A Z
+C Z
+C Z
+C Z
+C Z
+A Z
+C Z
+C Y
+B Z
+C Z
+A Z
+C Z
+C Z
+B Y
+C Z
+A Z
+A Z
+A Z
+C Y
+C Z
+A Z
+A Z
+C Z
+A Z
+A Z
+C Z
+A Z
+C X
+A Z
+A Z
+C Z
+A Y
+B Z
+A Z
+C Y
+A Z
+C Y
+B Z
+C Z
+B X
+C Z
+A Z
+A Z
+C Z
+B Y
+C Z
+C Z
+B Z
+A Z
+B Y
+C Z
+C Z
+C Z
+A Z
+C Z
+B Z
+A Z
+C Z
+A Z
+B Z
+A X
+C Y
+A X
+C Z
+C Y
+C Z
+C Z
+B Y
+B Y
+C Z
+B X
+C Z
+A Z
+A Z
+B X
+A Z
+C Z
+C Z
+C Z
+B Y
+C Z
+C Y
+A Z
+B Z
+C Y
+C Z
+C Z
+A Z
+C Z
+A Y
+C Z
+C Z
+C Z
+A Z
+C Z
+C Z
+C Y
+C Z
+B Y
+B X
+A Z
+A Z
+C Z
+C Y
+C Y
+C Y
+B Y
+A X
+C Z
+B Y
+A Z
+A Z
+C Z
+B Y
+B Y
+C Z
+A Z
+C Z
+C Z
+C Z
+C Z
+B Y
+C Z
+B Y
+B Y
+A Z
+C Z
+B Y
+A Z
+A X
+C Z
+C Z
+C Z
+C Z
+C Z
+C Z
+C Z
+B Y
+A Z
+B Z
+A Z
+C Z
+A Z
+C Z
+A Z
+C Z
+A Z
+A Z
+C Y
+A Z
+A Z
+C Z
+C Z
+C Z
+C Z
+B Z
+C Z
+A X
+A Y
+B Y
+B Z
+A Z
+C Y
+A Z
+B X
+A Z
+C Z
+B Z
+B Y
+C Z
+C Z
+C Y
+C Z
+A Z
+A Z
+A Z
+A Z
+A Z
+A Z
+A Z
+A X
+A Z
+A Z
+C Z
+C Z
+C Z
+A Z
+B Z
+C Z
+C Z
+A X
+C Y
+A Z
+C Z
+C Y
+A Z
+A Z
+C Z
+C Z
+A Z
+C Z
+C X
+C Y
+A Z
+A Z
+C Z
+B Y
+C Z
+A Z
+A Z
+A Z
+B Z
+A Y
+B Y
+C Z
+C Z
+C Y
+C Y
+B Y
+A Z
+A Z
+B Y
+C Z
+C Z
+A Z
+A Y
+A X
+A X
+C Z
+A Z
+A X
+A Y
+A Z
+C Y
+A Z
+C Y
+A Z
+C Y
+B Z
+B Y
+A Z
+C Z
+A Z
+C Z
+C Y
+A Z
+C Z
+A Z
+B Y
+A Z
+C Z
+C Z
+C Z
+A Y
+C Z
+C Z
+C Z
+A Z
+C Y
+A Y
+C X
+C Z
+A Z
+A Z
+A Z
+A Z
+A Z
+B Y
+B Y
+C Z
+C Z
+C Y
+A Z
+C Z
+C Y
+C Z
+C Y
+A Z
+A Z
+C Z
+A Z
+C Z
+C Y
+A Z
+C Y
+A Z
+C Z
+C Y
+B Y
+C Y
+C Y
+A Z
+A Z
+C Y
+C Z
+C Y
+B Z
+A Z
+C Z
+C Z
+B Y
+C Y
+A Z
+A Z
+C Z
+A Z
+B Z
+C Z
+A Z
+C Z
+C Z
+A Z
+A Y
+B Y
+C Y
+C Z
+A Z
+C Z
+A Z
+C Z
+A Z
+C Y
+C Y
+C Z
+A Z
+A Z
+B Y
+C Z
+A Z
+C Z
+A Z
+A Z
+C Z
+C Z
+C Z
+C Y
+B Y
+C Z
+A Z
+B Z
+A Z
+A X
+C Z
+A Z
+A Z
+C Z
+B Y
+A Z
+A X
+C Y
+C Z
+C Z
+C Z
+C Z
+B Y
+C Z
+B Z
+A Z
+A Z
+A Z
+A Z
+B Z
+B X
+C Z
+A Z
+C Y
+A X
+C Z
+C Y
+C Z
+C Z
+B X
+C Z
+C Y
+A Z
+C Z
+A Z
+C Z
+B Z
+A Z
+C Z
+B Y
+C Z
+C Z
+C Z
+C Z
+C Z
+C Z
+A Z
+C Z
+A Z
+A Z
+B Y
+A Z
+C Y
+B Y
+B X
+C Z
+C Y
+C Z
+C Z
+C Y
+C Y
+B Y
+C Y
+C Z
+A Z
+A Z
+A X
+C Z
+C Z
+B Y
+C Z
+C Z
+A Z
+C Z
+B X
+C Z
+C Z
+C Y
+C Z
+C Z
+C Z
+A X
+C Z
+A Z
+A Z
+C Y
+B Z
+A Y
+C Z
+C Y
+B Y
+C Z
+C Z
+C Z
+C Z
+A Z
+C Z
+C Z
+A Z
+C Z
+C Y
+C Z
+C Z
+A Y
+C Z
+C Y
+A Z
+C Z
+C Y
+C Z
+C Y
+C Y
+B X
+A Z
+C Z
+C Y
+C Y
+A Z
+A X
+C Z
+A Z
+C X
+B Y
+A X
+B Z
+C Z
+B Y
+A Z
+C Z
+A Z
+C Z
+A X
+C Z
+C Z
+C Z
+C Y
+A Z
+C Y
+C Z
+C Z
+A Z
+A Z
+A Z
+C Z
+A Z
+C Y
+C Z
+A Z
+A Z
+C Z
+A Z
+C Z
+C Z
+C Z
+C Z
+B Y
+A Z
+C Z
+A Z
+C Y
+C Z
+A Z
+C Y
+C Z
+A Z
+C Y
+C Y
+A Z
+A Z
+A Z
+C Z
+C Z
+B Y
+A X
+A X
+A Z
+C Z
+C Y
+C Y
+C Y
+C Z
+A Z
+B Y
+A Z
+A Z
+C Z
+C Y
+C Z
+C Y
+C Z
+A Z
+C Z
+C Z
+C Z
+C Y
+A Z
+C Z
+B X
+C Z
+C Z
+C Z
+C Z
+A Z
+C Z
+C Z
+C Z
+C Y
+C Z
+A Z
+C Z
+B Y
+A Z
+C Y
+A Y
+C Z
+C Z
+B Z
+C Z
+C Z
+B Y
+C Z
+A Z
+C Y
+C Z
+B Y
+C Z
+A Z
+C Z
+C Z
+C Z
+A Z
+B Y
+C Y
+A Z
+C X
+C Z
+C Y
+C Z
+A Z
+A Z
+C Y
+C Z
+A Z
+B Y
+A X
+C Y
+B Y
+A Z
+B Y
+A X
+B Z
+A Z
+A Z
+A Z
+A Z
+C Z
+C Z
+A Z
+A Z
+A X
+C Z
+A Z
+A Z
+A X
+B Y
+C Z
+C Z
+C Z
+B Z
+C Z
+A Z
+C Z
+C Z
+A Z
+A Z
+C Y
+C Z
+C Z
+A Z
+A Z
+C Y
+C Y
+C Z
+A Z
+B X
+A Z
+A Z
+C Z
+C Z
+C Z
+B Y
+A Z
+C Z
+A X
+B Z
+B Z
+C Z
+C Z
+C Y
+A X
+A Z
+B Y
+C Z
+B Y
+C Z
+B Y
+C Z
+C Y
+C Z
+A Z
+C Y
+C Y
+A Z
+C X
+B Z
+C Z
+C Z
+A Z
+C Y
+A Z
+A Z
+B Z
+A Z
+C Z
+C Z
+C Z
+C Z
+A Y
+C Y
+A Z
+C Z
+C Z
+C Y
+A Z
+B Y
+A Z
+B Z
+A Z
+A Z
+B X
+B Z
+A Z
+C Z
+C Z
+C Z
+C Z
+C Z
+A Z
+C X
+C Z
+C X
+C Z
+B Z
+C Y
+A X
+A Z
+A Z
+C Z
+C Y
+C Z
+C Z
+A Z
+C Z
+A Z
+A Z
+A X
+C Z
+A Z
+A Z
+A Z
+A Z
+A Z
+A Z
+B Y
+A Z
+C Z
+B X
+B Z
+C Z
+A Z
+A Z
+B Z
+C Y
+A X
+C Z
+B Y
+B Y
+C Y
+A Z
+A Z
+A X
+C Z
+C Z
+A Z
+C Y
+B Y
+A Z
+B X
+A Z
+A X
+A X
+A X
+A Z
+A Z
+C Z
+A Z
+A Z
+A X
+B X
+B Z
+B X
+A Z
+B Y
+A Z
+C Z
+A Z
+A Z
+C Z
+A Y
+C Z
+B Z
+C Y
+C Y
+A Z
+C Z
+C Z
+A Z
+B Y
+C Z
+A Z
+A X
+B Z
+A Y
+B Z
+C Y
+C Y
+C Z
+A Z
+C Z
+C Z
+A Y
+C Z
+A Z
+B Y
+C Z
+B X
+A Z
+C Z
+C Y
+B Y
+A Z
+B Y
+B Z
+A Z
+A Z
+B Y
+C Z
+A Z
+C X
+C Z
+C Z
+B Z
+B Z
+C Z
+A Z
+A Z
+C Z
+A Z
+C Z
+C Z
+A Y
+C Z
+A X
+A Z
+A Z
+A Z
+A Z
+A Y
+A X
+C Z
+C Z
+C Z
+C Z
+A Z
+B Z
+C Z
+B Z
+B Y
+C Z
+C Z
+C Z
+A Z
+C Z
+B Y
+C Y
+A X
+A Z
+A X
+C Z
+B X
+C Z
+A Z
+B Y
+C X
+A Z
+C Z
+C Z
+A Z
+C Z
+A Z
+A Z
+A Z
+A Z
+A Y
+A Y
+A Z
+A Z
+A Z
+A Z
+C Z
+C Z
+C Z
+A Z
+A Z
+C Z
+A Y
+C Z
+B Z
+C X
+C Z
+C Y
+A Y
+B Y
+C Z
+C Z
+A Z
+C Z
+A X
+B Y
+C Y
+C Z
+C Z
+A Z
+A Y
+A Z
+A Z
+C Z
+A Z
+C Z
+C Z
+C X
+A Z
+C Z
+A Z
+A Z
+C Y
+B Y
+C Z
+A X
+A Z
+C Z
+A Z
+C X
+A Z
+C Z
+C Y
+A Z
+A Z
+C Z
+C Z
+C Z
+A Z
+A Z
+C Z
+A Z
+A X
+C X
+C Z
+C Z
+A Z
+A Z
+A Y
+C Z
+C Z
+B X
+C Z
+C Y
+C Z
+C Z
+A Z
+C Z
+A Z
+C Y
+C Y
+C Z
+A Z
+C Z
+B Y
+C Y
+A Z
+B Z
+A Z
+B Z
+A Z
+A Z
+C Z
+C Z
+C Z
+A Z
+C Z
+A Z
+B Z
+C Z
+C Z
+C Z
+A Z
+C Z
+C Z
+C Z
+C Z
+C Z
+C Z
+C Z
+B Y
+A Z
+B Y
+C Y
+C X
+C Z
+C Z
+C Z
+C Z
+C Y
+A Z
+C Y
+A Z
+C Y
+C Z
+C Y
+C Z
+C Y
+A Z
+A Z
+C Z
+C Z
+B Z
+C Y
+C Z
+C Z
+C Z
+B Z
+B Z
+B Z
+A Z
+A Z
+A Z
+C Z
+B Z
+A Z
+A Z
+C Y
+A Y
+C Y
+C Z
+C Y
+C Z
+C Z
+C Y
+A Z
+C Z
+B Y
+C Y
+B Y
+A Z
+C Z
+A Z
+A X
+A Z
+C Z
+A Z
+A Z
+A Z
+C X
+C Z
+A Z
+C Z
+C Z
+C Z
+C Z
+C Z
+C Z
+A Z
+C Z
+C Y
+A Y
+B Y
+B X
+B Z
+C Z
+C Z
+A Z
+B Y
+C Z
+A Z
+B Z
+C Z
+A Z
+C Y
+C Y
+B Y
+C Z
+C Y
+C Z
+C Y
+A Z
+C Z
+C Z
+A Z
+A Z
+A Z
+C Z
+A Z
+A X
+A Z
+A Z
+C Z
+C Y
+C Z
+C Z
+C Z
+A Y
+B Y
+A Z
+A Z
+A Z
+A X
+B Z
+A Z
+C Y
+B Y
+A Z
+A Y
+B Z
+A Z
+B Y
+C Z
+B Y
+A Z
+B Y
+C Z
+C Z
+A Z
+A Z
+A Z
+C Y
+B Y
+B X
+A Z
+C Z
+A X
+B Z
+A X
+A Y
+C Z
+B X
+B Y
+A Z
+A Z
+B X
+C Z
+C Y
+C Y
+C Y
+C X
+C Z
+C Z
+C Z
+A Z
+B Y
+C Z
+A Z
+A Z
+A Z
+A Z
+C Y
+C Z
+C Z
+A Z
+C Z
+B Z
+B Y
+A Z
+A Z
+C Z
+A X
+A Y
+B Y
+A Z
+A Z
+B Z
+A Z
+C Z
+A Y
+A Z
+C Z
+C Z
+A Z
+A Z
+C Z
+B Y
+A Z
+A X
+C Y
+A Z
+C Z
+C Z
+C Z
+C Z
+A Z
+C Y
+C Z
+A Z
+A Z
+C Y
+A X
+C Z
+B Y
+A Z
+B Z
+C Z
+B Z
+A Z
+C Y
+C Z
+B Y
+C Y
+C Z
+A Z
+C Z
+C Z
+A Y
+A Z
+B Z
+A X
+C Y
+A Z
+A Z
+C Z
+B Y
+C Z
+A Z
+C Z
+A Z
+B Y
+A Z
+C Z
+A Z
+B Y
+A Z
+C Z
+C Z
+C Z
+A Z
+A Z
+C Z
+A Z
+A Z
+C Y
+A Y
+B Y
+B Z
+C Z
+C Y
+A Z
+C Y
+C Z
+B Y
+C Y
+C Z
+B Z
+C Z
+C Y
+C Z
+C Y
+C Z
+C Y
+B X
+C Z
+C Y
+A Z
+A X
+A Z
+C Z
+A Z
+B Y
+C Z
+A Z
+A Z
+B Y
+C Y
+A Z
+A Z
+C Z
+C Z
+C Y
+A Z
+C Y
+B Y
+A Y
+C Z
+A Z
+A Z
+C Z
+C Z
+C Z
+C Z
+A Z
+A Z
+C Y
+A Z
+C Z
+C Z
+C Z
+C Z
+A Z
+A Y
+C Y
+A Z
+C Y
+A Z
+A Z
+A Z
+C Z
+A Z
+C Z
+A Z
+C Z
+C Z
+A Z
+C Z
+C Z
+C Y
+B Z
+C Z
+C Y
+A Z
+B X
+C Y
+C Y
+C Z
+A Z
+B Y
+A Z
+A X
+B Y
+A Z
+A Z
+B Y
+B Z
+A Z
+A Z
+C Z
+A X
+C Z
+C Z
+B Z
+C Z
+C Y
+B Y
+A Z
+B Z
+C Z
+C Z
+C Z
+A Y
+A X
+C Y
+A Z
+B Z
+A Z
+B Z
+C Z
+A Y
+C Z
+C Y
+A Z
+C Y
+C Z
+C Y
+B Y
+B Y
+C Z
+A X
+C Z
+A Z
+A Z
+C Y
+C Y
+C Z
+A Z
+B Z
+C Z
+C Z
+C Z
+A Y
+A Z
+C Z
+C Z
+C Z
+C Z
+C Z
+B Y
+C Z
+C Z
+A Z
+B Y
+A Z
+C Z
+C Z
+C Z
+B Z
+A Z
+C Y
+A Z
+C Z
+B Z
+C Z
+B Y
+C Y
+A X
+C Z
+A Z
+C Y
+C Z
+C Z
+C Y
+A Z
+C Z
+B Z
+A Z
+C Z
+A Z
+A X
+C Z
+A Z
+C Z
+B X
+C Z
+C Z
+C Z
+C Z
+A Z
+A X
+C Z
+C Z
+A Z
+C Z
+A Z
+C Z
+B Y
+A Z
+C Z
+A Z
+C Y
+C Z
+C Z
+A Z
+C Z
+A Z
+A Z
+A Z
+B Z
+C Y
+B X
+C Y
+C Z
+C Z
+A X
+A Z
+C Z
+B Y
+C Z
+C Y
+C Z
+A Z
+C Z
+B Y
+C Z
+C Y
+B Z
+A Z
+C Z
+B Z
+A Z
+B Z
+A Z
+C Z
+C Z
+B Y
+C Y
+C Y
+A Z
+C Z
+A Z
+A Y
+B Y
+C X
+A X
+C Z
+C Y
+B Y
+C Z
+A Z
+A Z
+C Y
+C Z
+C Z
+A Z
+B Y
+B Z
+A Z
+A Z
+A Z
+B Z
+C Z
+C Z
+C Y
+A X
+C Z
+A Z
+C Z
+B Z
+B Y
+C X
+C Z
+A X
+A X
+C Y
+B Y
+C Z
+C Z
+A Z
+A Z
+A Z
+A Z
+C Y
+C Z
+A Z
+A Z
+C Z
+C Z
+C Z
+C Z
+C Z
+A Y
+A Z
+C Y
+C Z
+B Y
+A Z
+C Y
+A Z
+A Z
+B Z
+C X
+B Y
+C Z
+A Z
+C Y
+C Z
+B Y
+A Z
+C Y
+C Z
+B Y
+C Y
+C Z
+A Z
+A X
+C Z
+C Y
+B Z
+A Z
+A Z
+B Y
+C Z
+A Z
+C Z
+C Z
+B Y
+A Z
+C Z
+C Z
+B Y
+B Y
+A Z
+C Z
+C Z
+C Z
+C Z
+A Z
+C Z
+B Z
+B Y
+C Z
+B Y
+A Z
+A Z
+C Y
+A Z
+A X
+B Z
+C Y
+C Z
+C Z
+C Z
+C Y
+C Z
+C Z
+C Y
+A X
+B X
+B X
+C Z
+C Y
+A Z
+B Y
+C Y
+C Z
+C Z
+A Z
+C Y
+A Z
+B Z
+C Z
+C Y
+C Y
+C Z
+A Z
+C Z
+A Z
+B Z
+B Z
+C Y
+A Z
+C Z
+A Z
+A Z
+C Z
+C Z
+C Z
+C Z
+C Z
+C Z
+A Z
+A Z
+A Z
+B Y
+B Z
+B Y
+C Y
+A Z
+C Z
+C Y
+A Z
+C Z
+A Z
+A X
+B Z
+A Z
+C Z
+C Z
+C Z
+A Z
+C Y
+B Y
+C Y
+A Z
+C Y
+B Z
+B Y
+B Y
+C Z
+C Z
+A Z'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day02sample [
+
+	^ 'A Y
+B X
+C Z'.
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day03: data [
+
+	"(Advent2022 day03: Advent2022 day03sample) >>> 157"
+
+	"(Advent2022 day03: Advent2022 day03data) >>> 7674"
+
+	| p1 p2 c p score |
+	score := 0.
+	data linesDo: [ :line | 
+		p1 := line copyFrom: 1 to: line size / 2.
+		p2 := line copyFrom: line size / 2 + 1 to: line size.
+		c := p1 intersection: p2.
+		self assert: [ c size = 1 ].
+		p := (c at: 1) codePoint.
+		p := p > 16r60
+			     ifTrue: [ p - 16r60 ]
+			     ifFalse: [ p - 16r40 + 26 ].
+		score := score + p ].
+	^ score
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day03bis: data [
+
+	"(Advent2022 day03bis: Advent2022 day03sample) >>> 70"
+
+	"(Advent2022 day03bis: Advent2022 day03data) >>> 2805"
+
+	| p1 p2 c p score lines li p3 |
+	score := 0.
+	lines := data lines.
+	1 to: lines size / 3 do: [ :i | 
+		li := i - 1 * 3 + 1.
+		p1 := lines at: li.
+		p2 := lines at: li + 1.
+		p3 := lines at: li + 2.
+		c := (p1 intersection: p2) intersection: p3.
+		self assert: [ c size = 1 ].
+		p := (c at: 1) codePoint.
+		p := p > 16r60
+			     ifTrue: [ p - 16r60 ]
+			     ifFalse: [ p - 16r40 + 26 ].
+		score := score + p ].
+	^ score
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day03data [
+
+^ 'hqBqJsqHhHvhHHqlBvlfpHQQwLVzVwtVzjzttjQVSjMjwL
+gRTRnCRsFNGbTzLjwcSTMmSz
+dGgsRWPGdWgZJqBBqhfpPq
+HNCNJHCWJRRLqNJWlfrrrwsmlwGmmf
+dddvLdLjdDvjvswlmGwlZQtjrt
+dvcpbLVcvNJJHNPHSp
+QDprSpLQRLQrQDmQcQFZjbbhZwdRsRFbbBss
+gWGGPgNvJlgJzDlNGHCGPNZZgFBbsjbFFBwZwfhdZbZB
+lHTlGMHlGCPNvClzGzJHvGcrMcVtLqMLcrrQVcVDrqrm
+SrBpJFfldlFNslFJBZwsmwgVGGsCCVmZZD
+jLtjvzLQMtWjbbQvDZZwGRJGgwggGZgv
+MzqqjznQPqnnjznnctnFlSddPfHflhfBJFNdHd
+mPNNGVCRngnSbgNw
+WqsqlTssgvqvZWZzhsTzWhScdHtfJJnfbtSJwfczdtSS
+sqTvhpqQvWZQLmDpDGMDGrgL
+DQRcLQVLbbcbrFPcRtTBBBJnTZrrnmZTrMgJ
+slGjjjdlhMfvdMQTvg
+jlzNhWHhhWjHlwwwGLDSDtPQVtRzRbSzpp
+DzDgfvzfDczfHCHSlgHLCmWG
+PrpNPJtpPMBssmmVdmSVVr
+PSRMwPnMpBNtNBTnnZwDqzQFfwhjZZqfhh
+fzfBwhBJFbCwbwwg
+strtgtrPgmPgFRsMdRnZRMFn
+mrmLPDvGmmtSLDgmSqvHchhcHQzcQQJHBfBh
+NsgwPPDgsPHqsTqqmLbLrDRhmrRVrbVW
+lFpGFtfFlvSFplGFzptSGSSlhZbhjhfrmWbhLhmLbCZVZjWr
+ccplJQSGcSSpVFvNqqsqPNqPQPTwqd
+HFhPNNZGqSZrCDBVZBCB
+RJTtwczTzCRVQrRHpR
+mfgblfltwgwwmlJgcHNnGhSbFNnFsFjFqG
+tSRqNRHpHnMSTqpcmrWWfqfmrCQCrW
+lhGDtbgVVgDsDbhfldfwrzrfcdzwcr
+vtDDhsgFBTNZFBHS
+LcNpLLBNgdmHGmsBCrRBQDDwnwRj
+hSWfZVhfPJJhfVWbhzbnQqQnRRRqPvCCrjvjwj
+ztJSSJhzzSTJrZSbzzJTfzbZmLmggdmNMFNpmtmMGFFGNpmt
+TRdFfLbTnLvZVlZvznQV
+pgJGprJNhghhNjjPgPNrhNqqlVVlQVVQqQjfzBfQvZzB
+rmGmSwJPwJprrNDbsfMRsdTDcDWHfM
+QMpZZTtwMBttJMMbVqPpqLqbVlbqqN
+rjCFGrdGRwdDHSnqflPVLqqVNllrfl
+DHGDRvhvwTZhJWBQ
+LcQCCpLQVhrdcFQCJrmmmwDwvDtJJnnw
+TsZqqTzMRqZjfsjTTDjsNJnmnStRSHnnSJmnJSNH
+sMMZZbDjZFdbVCFphV
+FCcdFFGBsdDrbMNSmSdmQR
+tVttHVLhvVgfTTtffNSMQRMZSRmMQNmHSb
+gngvvwJtVVTvVvvvfwvJThhCzGcnsCjmCDmscPcGCsGsmz
+fsnzRNZswZszPRZSLflPpDhlhvgWHmjWvJjh
+bVcCqjbdjbcMdBrddrQphvHHmHWlggpWpppqJJ
+FBTdFQGrTjLNsNtL
+MSWWgMdgdbWbbfdgsPmddgCmSLZvSFvLQvnLrFNZvZFLlLLl
+hjpJjGthjRNRptwJJqVBllnvrrlTTQFZqnTZnn
+tjDGHwhHHjwjjJGpwjwjjJpwsdgffmbgMsmbDNcMcdmCPdsm
+MlDrrgnTDLlCCmCRFgRSCR
+HHhbbNQMccQFSNBmmpJNSJ
+MwbMbshsswVbHQsbcVMcrtDllTlLqfTGVzLGrTlT
+gSFzqQTpmVpQVpLFLrzJJRthlsQBlPsZsBhZst
+rwrNDdbHdBhRhZbsjB
+vvvMHwHcwGCwwNfMVSrqffWpSfSFzLmT
+RNgMgRCCgCfPNfvNgVQmhPVWWjWjLLdLBj
+JhJqqqwGDchsBVbdjldmBLmG
+schZzDwTJzFTsctHFMtfftgMttpM
+GHHWqWFWfWHqbRWsFZFmqZbhNjNDNppNjrjDcQdbpddhjr
+wCLCVPfwgVSnPNrQhnDcjcNpDD
+TPgLlggJLVwPVVPPwgTwvtSCFmzGGqzGZsGRqWBGfFRFJFRB
+LfFLmGTPHBfpHmzBLdZfBfZTbWWttWSDJtWVDJDtSWJzVCCV
+RssRRRhrRwQqMQQwnPngQrwvVSjttjJSjSVtWWCWjbVb
+hQPnnRnQgNcQqqQQcsZTNTLpdZZfpZFHNpBp
+VTCVVnwfFTvFmTCvWwJHdlhHWBJhJBRWNHgh
+ZbSMZbctGtScQSZsSpZpPpplhBhtdJDRDJjhdtlRJRjNRj
+rLsbBQSMBGspPGcMPQvnqmwzwmCVLmqVmwTF
+GVrrQVHHHQGTllQjPHGrlCQpZZpJFWZFzzjBssDJghzhFZ
+NSMmWmtqMWqSNbcctdLcdghpgpppssZgbgzpFzJJFs
+cfLqLwMRdtNLMlQrvflWTQPffQ
+FjtGflGsbNqjsmjGGGbmqQQQBQBTjdpTpJTWvJBddj
+CPrVRMnvvLSRHLnBpwdWTRBQwQzBzR
+SnZMZPcHMlqchsvGGb
+nnJnswzPCtmZDCpmhphD
+rSVVLQQQGQjwpdmdNmpS
+VvBcQvGcQgGLBgWrwznfJsncltJsJnssPM
+dhbwLStzSGmmmzJJvFgJNvnrgvhv
+VTsTsRscRsVBMRVTTsjZVPCnDNvfrPfDvNCfBrPNDJ
+scHHQTpJZjHwzLSHHtqHSt
+MHmFsBDmGpGTBfmCfWCffhzgvf
+wcjwnRLPZRVbtCjtNttGCh
+ZLGVJRrnPPPwQwPppqDHFpBFTpqFDr
+GzMgVfGRdRVngDjhqcjctrtrzzzs
+QbQSHwHSLbWwJJFwJPLPSWTQjrhqtjflThccsclCcscCCmmj
+JFbNSbLvHHLQFLvwQJFWSBVgMNGdBBnBMVfddpGngB
+sZHNJwMsvHswwvMWqBzhChWPMBzd
+bHQQQRDHRcRcDljttBldlPBdggBCqB
+QjnDbDjjjncRjbQnfZpvssZNHnppFNpvvp
+NdmfPNMHMdNMHcffHBCwwsvsRRllvwlcqjwscw
+VLhVGLpLShgvrjwFhjqfls
+pppnnQtVpGZVWtzGgVzgSSfnCCDmdPBMDbmmDMmdNMBmWNmm
+rrfgCrrMllfnBhBrdCFfWLFmmVFVWQvWwtwV
+TmSGSqNzvwwTFVvj
+NSGSmNbDzpmSpbHmSJqqlMgdMndcgdccdpgllRRh
+bbPtLnLcLJzTjcJbbTcttLcSgwmvWfVvfVvBgfmWVJMJMJMW
+ZsDNNGDRsrHzpNRwMlgRlgmMWvffWM
+FGzQpZGGLFjnSFbF
+DQZVDdWWNBtgWnJCnL
+SSHSmbHRFqGrmqJrbbGzjmzCwrvgvwnBwnCvprwvpwwPvv
+qFFFSmsRRzzFjcFsSsjmzJzflhlZTTThdhVflZlVDDhMcN
+cdvrFddqDtDvqgCDtFtrvvvFSmShPShJVJmMJSJbVBgTlmbM
+GzjpHzGHHfQNfJSlPQbJBSTJBM
+HWpspsWjNsGRHfpwNszzLfGqnCnZtdvvcZvwqFCcZqMZCv
+rhHhDhhDrRNwDRhNRLRqNPHjHSpVpVlljSSMnlHnjS
+sVVBsFBJBtBSPSjtjPPZZS
+JmddVTzsffcGNwzCqNqR
+nQfqFtZWFZnFJWfpGqhDsGLLPLVbrPhr
+CzjwMTgBgTNSGLVVDPbjbS
+wMCmgNNdgvzGdRQcFGFdfJ
+CbqCDnwFpDpCVfBPmPffPfRfpB
+svcsjlGJGnlnvjvzgQQgGzsZPhBRcRPhWfBZBhPhWRRhPN
+sJngnjSGGTGzgJGrrbCqLHrCLwSFqV
+hnRnJrwMHnQRRRwMhRrnJRBLZtBPdPSdtZZjjstsLHBP
+pBBzzcbTbzCcFzTvlSCZLCtSvvttdZ
+FWmNzBFNDnRqNRDM
+lvzlSPRDSpDJmNwNGgFpfsFN
+WBHrtrLBbhWHtdrFwFFsjzwfFjsdsF
+HWnrHnTWhWTCTzTBnRZqDDDCqZcclRvSJR
+qcdVbpcMFQcdMGcMFjjpbCnCGmCnJHDHDGJChzCJCJ
+wWwlSfBRgRNBDPJnCgCrgzms
+tBTfTRwlwRLNwTRmWtNwQFZtqcjcdcqpbdQMqMdd
+jJRzwDdwFdJddcjjFCFvQLvNlBhSBhCC
+gMMpbHpmnHpWfnlCSBQCPmPllQSs
+nHWHVfTGdTSjZzDT
+sCVTsBPltgDSbLvRMMDT
+WNrjNmWZwmZwfVLvLRbRNvMp
+mrHGrmnjqVzjGqdmCltlhFFllgsHBPCg
+wbglgTFRblnMRltJBNrDDWQbtdbN
+dqCpcjPLGfHZQBJNGGvQDZ
+SPssjVSqPCLpScfCgFRVmTlRwndlRwTR
+hWMWMhTTDgWMzGMszQShGWJPCQmPVCNPffPfVJftqNQC
+nbnHHwLrnswwPVCPZV
+nsRvFHLsvplvrcsSWDDDddjjDlMTjT
+HRCnhWZhCddgwRcwhdWZHHQLJzSLsSzjJwSjztsmtzsmLF
+VlVVNNVqTlMVbTVVMqvqvrDTjQfFtjstJmzftfzsSbtStJQb
+pQvvPpBqNBccPWWhcWWc
+glJTndVWCTDDVFvnVndVlCvwmBmqBBwQmwPwmMPggGsPGm
+NhcSrhNZHhZzRtHcNRrSMSMSFBMGmsQQGLMPPF
+hcpRzbcHjRhRbZRzZRztzRpJVdCdnfCnlFvdDTnJCVDjWd
+dqWvjjBdWWqMjdvvMJjWWjMGgcfchhzrhwbrwShwgzSqNb
+mmmmsVTlVlsLQmnpsNcfgfwNLgczhcGhzw
+RslpsnGGGlWdCZFMMRWR
+pfSpZSrdSMVDVVLMMDDZpdgRWMPGqqPGqmqqGGhGHNRN
+wwQBwtjvvJlvsnbTbvBRHgPmlqhlqWWHqZZgNm
+JnQwJvjTtzTZwJnbzzfCrfLCfdfdddfD
+PZcnljZFTVmQdlQh
+JCLLqBBCSNCCqzJNzStBpStBmsdhVTdmVWsWmdhfLhWVdfrR
+BpMzzqSzppMMqpJqqgzPFcjZjnTjgcjbPjPDPZ
+HLHWmqBHHqWbMHFtbgWcdhspPcPchndPpn
+ZRVSQZRfVZGRgnfsdhLgLndL
+jzJRwJRSJJvSlZQGRVwlSGZDMqmmCCCmtNbCmtCMzFNLbF
+fDhlBhhZmQRRfHwLdjHFFWQQjQ
+ZMTssVVzvbCqJddsLwwH
+TzgTbgGGzztMbbvzvVbGvSPBrlShRrfnNrnBDlNcRDZRZB
+bjfqGfvFfcHvRwGFRHjbgQtddlQljWpWnQgdWWll
+TSPVVSVwSzSDTDlntDndnlWddt
+hTrrNCBCVrCrrVshThHHbZvFGscwbfFGRJcZ
+jNhMjcgvMNgWggvttcFtchvPFFzdPPrQrrGGQQszRPQrRG
+wSCqCmmppbTwPnGHrQdrGCCD
+LlqwGmGScLcVthVt
+dGGrWWDqmCnwCCQMQrMbFHbMHsPFgPVZbgFPgg
+tLRTBwfvTBJcZFNFZRHSHPVN
+zjJLTvjcwDzqqhGD
+DzrWszFFrtBBhnhNCClHlnHbSbmlSn
+ZLwLcVVZcLVpvRwLgMLpLJgPmmQSNSTNbtTvQmCHQCClCHCt
+cfgZJwwVLJZPPVpRwzhzrrfGGBrGtDrBsf
+BTsdCQsQnwwdcCqqdCnsFvGFpFBvGzrLLmmzpvfG
+pjZjgPVlJVMVtgJSWLPvfFFFbNNmNbvbmL
+ggVplgJtHSSggdCHsscChhdnnR
+JddZcSlvvGFJNWVWFgQgVtFWhg
+nDqsHqCszwjCCPMnfhfBhtdWggfg
+bqppHqqHHbPLjLCppbwDdRNvdmcTmlNZGGbTTcNv
+lcZDSvztcHHcMSZVHVvMZBqBNNFNhBNTTmssBqBcFB
+bbGJQdQPpGfQJQdJfLFhmznhzLLNTFhNhf
+JGpWpPJddbPpPwpjbtZSzltDgWDSgvtrVv
+lJcNlNjPcmtFzHtHBJFg
+VPZdwGGWVrsdPWhWwhzzCzzFppDFMBtttFCr
+wshsLVfWTnGswdhwcmRjRmScqTcjlPNq
+BsBshRZQQsVdsZQZSdsPDwJDHNNHBztNNFMGGwMF
+nSTpLjcvHppzwwNt
+jcqncjjvfmgrCfvqrnZbmdmSsdbVWlsmhRdW
+FjjqRZjZFZWFqPvNvvPQpmbPDCmt
+GSnHSnrScncHhrtncGshVbmTmbpVvppCmpCTmTCmCC
+rHfnddwdfctlzFFgwqlj
+wBwlBmmhwRVThVBmFHnvHMnfsmFfHq
+jzwGSGJNZCCssHfsCPfv
+GJbzbZdbwJdtdQphRVWQ
+ztFZccVHFWHHLSDBpSBPhhZw
+fmjsCmqnNTJnvbTvLRPDlCpBSPBpRShl
+JqsGTSNJGqvqvNvttGQQGdFrQctrrF
+mNZqjTFrZqrTNTTGSSSbrhrhRFRHcnLCzcCdHcLBdccHLzRC
+JDDfJswJDWsvgVgwpWnRBlBzGCnlCLBlcCDl
+vVGpfQWJpsPQMVgvppVwgWPJrqSZTrZqhTQTrhjbjqSSjZqt
+fMSDzDHzpDDVsStdDgwwFZFrrMPCNngCZP
+WmLnbWmvvWTTLWWQWRGQvLvrPFZJcgJFCZNrCgGCFCPNPF
+QLhlqhljWvRQbbqlqnfStnHdBqVVfzpq
+qWZtSQTSvJJvBfJVBBVFNDNHbbdRVPdpNFRF
+fGcwwmCgsLhgwLchbpHdrrrphdPRPh
+gMjllmcjwsLMgcwlMnSWzSqjSZJqZqZfjQWv
+cdRHPjRFRdFVHGcFfFTHQTHVLSQBsbsqSCLqllBJqqbSqLJC
+WwWppWgtNrnzzWDmrrmNvWJClJSSbqLJJCGbsCgJbLLg
+MnvWpmwvWnvtGPjVRcHRRHMj
+dLMDhdHGrcLTvvvstB
+nPqgGGNPqRgRSjgmlWjbbTTPPBvpvpTcswwsTF
+NRGmgjRnWgnZJqllmSqjnqSDhQzVrdQHDfDrDJQDMHDJzM
+RgmcPmGNQwwNmSRwPPgfmrBlCDlGbvFFvtrCsvlrBB
+nfdVnjHdMWnTqflFtbjrllrlsCDl
+TZJVMhnfMnVMHnpRRNRzgJRzSzgwPR
+nTbsblzlnGllmsNnbDwbcWQWwWBFJBQcWQvPWFJM
+HRZRdSRdCdLdRftrHHZfSQBMWJMgMzQPFWMJCFWgvQ
+HVzrLrrjRjLGnlTnlDlsjj
+RQdTdZhWqlZhTdWTqblhNmTMVnnrQsnnpvgMVMHMgHMrgP
+fjSSfjcCzGNBjCjsnpMVpnpzvpzsHp
+GGwLGSccwjwLwBcGLGSqZWmmdLZLWThmRNZmWR
+ncmBrmfdfcVcfGnQdVWRBRvgqNvDvWqzLRqg
+PlpPbSbLFPLpFstsbqRqZMqWZqMWSDRzvq
+sjtjHCwJwlHfdfjccmmLLQ
+tGMtLHQGWzLHFVQtVfQtMWtbgrZNbdfSbccggrcTjTrfbm
+swRChnwqhBCCCmSjcNSdcd
+vnlnqDRlsRnJJqswJvGMFVMMdWtpVJFMQQFL
+ffcHLzGmfvqqfWfF
+rJrrRSPCPMCrPRQMNNWJQjJCnqFVVVTStqVnSBdqppBVtpqd
+jNQQPjQMCRQwwQbRQbjMgwbNhwWZHHmzmlchlHHHDcLmWzhD
+JzvrRHHJvCRZFPFnPgsQVVQNzQTQDttVsB
+GSMjpqdbGNppBtDhPN
+MbmqMwGbZPmPHJmv
+ggVSVWzCNbbNCbRM
+DfVhVsVQcQDmpmQTTQLjPjMjbDGNlbRMlNGG
+sftTFJJccnphcfncTsfBvwZvrzgzZzZvBrVnzq
+qqlClBNSCNSRQMvdrwFvnBrr
+GDfhDtszhhsThpTDzsfpprMrFvQvrnnfvQrwHFbfFH
+VtggWhpsmGVTGJWMjWjNjPWjLL
+NSnShnjsswSsRPNsrnwcwMHfFwGqbvqCbFfg
+LDJtzzmgVVlvqGbzvFfzff
+mlJmQQpmJpZpBJJdjBNhrnnRdTTgNN
+RtRRvbhDFPHHlhtPhRvPRtqjmzqzzwLjHQHLLLQVmVjq
+WNNBBZfgfWnqVQwNqzmQcm
+MZGfzSrTTnWrrWsTWnfSGbGllPCbGlJRvlPllCtt
+phgcNfqgfpZsjjpdsS
+brHHnWPbDPDbTPlDJJvJJPrMVVzRSdFzwdZZzFnsdzzVdVZs
+SbStvJMDQgNmmtgg
+lzDMDhfFRlfMFTfMGPMbFTlMpBHrmpjjCFjmBmrqBjtCmjjq
+VvVswLLHZnJJwdndNsSSNBpCpjqjmNgrmCNtmmqm
+nHcZWcSVsScTDlPPlTPb
+DFMQSlMDpSpFDtDFccHvmqzvbHZjJmvzmmQH
+CSgffrPssdgqRbqzzRqZ
+dsdsfGsrBPsTVcMctMVNNhtStW
+MDWRDWpgDvWpNptvNMnJCHJHMwHCndJfZn
+blcrqTFmmcbhLTTTmlBZbjBJdBfBnCbQBdfn
+TzlnhcnzTmhLRvSDsRzDPzWR
+nwmmPnnPDjclhhjfFzzzwqbFFNHwVqVq
+vSQrbpWCvMWQQWQMLgFJVHqzBzJVNqzBFL
+CvCvQtWWQmcbtntPcb
+qzvtzCCtLsLLzmQCHqpSsHSmfrnNrTrNWWMNGnWZTMZGBvWn
+PglVFJwPhbcghVTBpBnWWhWnTMhB
+FgjcJccVpwDcwFgVDsqzddqLqSDSCQQL
+PLHsSVGGPvSLTffjMJWJJBjfBL
+gNhwgTqDcqwpDqNhFpDFhFWfnndjcMJjMWzzBtntJBnW
+DFhhQRRwbCbwRQChppmTHCVGTlslrsvrrSVZ
+hHnRfSMmsSVrFvQqrmDPgr
+jjcBzjZLpWccJLczBjZjWGwCnNzDvrgPCgQvFggvqrQFnr
+jtZGpLwjWBpBWcfMTttfbHRnHTbT
+swSHffFTVrJlHFSWrTpMZMPhMNBqBhTvhhqZ
+bQbLQGGjQLdRCcQjGZBzpzBZqMBBBVdBqh
+RjQDQGmgmVVbVcjjmjgcnWtJfrwsfrtHlwswnfHSFw
+bVHbbMFDcbDbcmbbHVRbMRFgzSmdzSSTBtTjBdQTzlSldQjT
+nqpqCMwJffqQSzTBQlqd
+wvJhnnfrfsJrCNffvspRrPPFMbPMRRPPMZgZHR
+FnJZnssHvMdJWJpW
+mlDlllGrSGmttwlGvZgrzZNWgggzTzdT
+bCltZCthtRcbcFbjFL
+JGmHrJwGzzpllRZdzZLRcW
+htbPSbVtFbbgjhffgPSfTVSDcHDDDLWscRdsZjdZcRssWc
+vhfFbFvVHbtTVgFPhmJBCvBNrqBBrGCqQB
+BcNQcvcBchSQNccLLvhTqbJZTrHrrrzzqTZMZMFZ
+tpHDsnDRslllCCHtwnpsfjRgrJrVMfMmMrFrzVJFzrVZbZrr
+tnDpjCwPLNSPdhPH
+qnjvvBwBhSSFPgDQLVVDqgLr
+WbszTbHTbsbHJWHLLMVZmJPQDrvmZL
+ctlRbtCWWtvlSfjljjhBnBNB
+TsnvssDDQlRbzMzjDMqHwq
+tSGjZCfFZtCFLtVGWGZFbcqwHbhWdbzbwHbdwbdw
+ZGBFJFZVBLjStZPBBZLRvlmsPTvsgrrnrTllvs
+PgQdNsQFsdNwWqQBsQrTrTLpbrnTpGngnbTG
+hCzzMJVDmfzmBDMCfSfhTMGcnpnTcjGrpjbMGjbL
+CVVfvCflSHNHvPdBHW
+DwlMjMNjStgmthMghg
+PTlpHnJJTcZvTTbHZWZTvpqdHhmLgrgdfrhLLsmshmsLts
+vncqTbPqcpCnbCPvccZbDBCGzzNBwjDlVVGFjjVR
+QsdGGCztZVRddPgndf
+DrNNBbwNHNwlbjFbbCNjNwDWWDPPVfDMgfmVMfnMWmmP
+rvJBbbBNcLCtJZQL
+NfLlqLhbNPddLPqLhpgHwFFwFHHTwRHWwPFTrT
+MSMSCnjBnBjCscjVDVljTvHmmWnrwTrwFTrvTWTT
+JCMMBzDMJcZZCjDzSBDNJgdfdQlqlLNdhgGLhp
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day03sample [
+
+	^ 'vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw'.
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day04: data [
+
+	"(Advent2022 day04: Advent2022 day04sample) >>> 2"
+
+	"(Advent2022 day04: Advent2022 day04data) >>> 576"
+
+	| score parsed i1 i2 j1 j2 |
+	score := 0.
+	data linesDo: [ :line | 
+		parsed := line splitOnAny: ',-'.
+		i1 := parsed first asInteger.
+		i2 := parsed second asInteger.
+		j1 := parsed third asInteger.
+		j2 := parsed fourth asInteger.
+		((i1 <= j1 and: [ i2 >= j2 ]) or: [ j1 <= i1 and: [ j2 >= i2 ] ]) 
+			ifTrue: [ score := score + 1 ] ].
+	^ score
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day04bis: data [
+
+	"(Advent2022 day04bis: Advent2022 day04sample) >>> 4"
+
+	"(Advent2022 day04bis: Advent2022 day04data) >>> 905"
+
+	| score parsed i1 i2 j1 j2 |
+	score := 0.
+	data linesDo: [ :line | 
+		parsed := line splitOnAny: ',-'.
+		i1 := parsed first asInteger.
+		i2 := parsed second asInteger.
+		j1 := parsed third asInteger.
+		j2 := parsed fourth asInteger.
+		(i2 < j1 or: [ j2 < i1 ]) ifFalse: [ score := score + 1 ] ].
+	^ score
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day04data [
+
+	^ '14-38,14-14
+2-10,3-55
+36-90,36-46
+9-97,8-87
+75-92,51-92
+6-82,1-83
+21-79,29-80
+26-66,27-27
+11-32,11-32
+6-90,91-91
+36-78,21-65
+66-66,23-66
+22-23,22-95
+3-82,3-35
+1-92,93-93
+1-96,1-1
+12-54,9-53
+80-98,4-80
+7-63,3-63
+2-2,2-21
+33-95,85-94
+60-60,60-80
+76-97,96-98
+1-98,2-2
+69-96,68-98
+63-84,63-63
+24-31,23-28
+16-71,40-70
+30-63,64-64
+20-61,64-77
+57-90,17-58
+57-58,12-58
+10-74,10-74
+14-65,64-72
+95-99,8-90
+26-46,45-75
+18-66,17-19
+21-56,21-21
+42-75,70-74
+5-46,45-47
+20-79,20-79
+1-99,2-99
+16-31,17-30
+10-30,8-9
+1-99,1-99
+51-91,50-97
+18-39,18-39
+9-97,4-9
+5-76,6-6
+88-92,88-89
+11-91,19-92
+70-74,2-42
+65-93,94-94
+10-96,9-95
+8-40,6-35
+3-11,12-12
+17-88,17-89
+8-41,7-9
+9-60,60-66
+56-86,86-87
+58-67,58-86
+14-90,7-90
+3-82,2-81
+54-56,20-55
+2-88,4-87
+5-79,6-6
+95-95,19-95
+37-94,38-94
+2-12,2-36
+9-46,46-47
+58-80,66-81
+96-98,1-97
+72-85,84-85
+52-55,52-61
+74-76,6-75
+1-65,2-88
+22-58,22-58
+29-97,30-96
+3-5,5-62
+2-89,2-72
+20-62,69-76
+63-66,62-65
+18-20,19-35
+17-88,17-87
+14-99,13-98
+46-84,46-81
+4-98,3-5
+3-76,75-75
+84-92,91-95
+38-83,4-83
+4-53,5-77
+58-86,58-74
+21-97,96-97
+7-7,7-34
+9-38,9-36
+29-43,43-78
+56-97,55-56
+89-90,9-89
+4-47,48-88
+23-58,58-76
+5-55,32-55
+34-48,41-45
+98-98,44-99
+14-92,48-92
+22-96,23-98
+25-43,73-95
+71-79,72-77
+74-94,93-95
+14-90,89-89
+5-32,4-99
+4-58,4-59
+4-96,4-4
+62-83,54-84
+66-67,67-68
+25-42,25-42
+13-79,12-78
+4-65,2-92
+4-65,3-4
+6-83,7-82
+74-76,41-75
+3-62,61-62
+10-39,11-30
+19-93,3-42
+25-25,11-26
+37-52,53-77
+3-97,97-98
+22-67,23-77
+47-96,35-35
+25-84,23-25
+6-86,86-86
+62-62,48-62
+41-95,42-95
+12-75,13-76
+7-69,6-70
+78-91,35-78
+17-80,79-81
+49-77,50-78
+96-99,20-97
+7-9,8-78
+85-86,58-87
+8-8,8-80
+17-66,43-67
+48-60,22-65
+9-67,67-67
+9-45,10-62
+43-73,44-83
+80-96,80-93
+72-87,85-88
+16-61,13-16
+92-92,2-91
+22-43,42-43
+31-83,30-79
+38-95,38-97
+63-85,71-84
+11-11,11-19
+13-14,13-56
+2-5,4-81
+59-64,62-65
+71-89,8-59
+93-99,87-94
+25-25,26-72
+56-98,57-97
+33-36,37-94
+38-85,84-86
+1-79,78-94
+77-98,76-99
+14-72,13-71
+17-92,18-86
+18-99,57-98
+2-87,3-87
+78-95,86-94
+43-44,32-46
+59-62,60-62
+12-24,24-25
+41-66,21-66
+13-82,13-83
+53-87,11-87
+7-96,7-96
+24-26,25-32
+13-70,8-13
+12-93,12-17
+4-39,5-38
+95-97,73-96
+73-81,74-83
+57-62,63-63
+58-59,56-59
+38-98,38-97
+20-75,19-74
+8-62,74-99
+2-96,3-91
+7-97,6-8
+1-99,1-99
+41-81,42-80
+91-91,43-92
+4-73,4-4
+40-43,42-54
+37-66,47-56
+88-89,20-73
+10-98,10-98
+51-81,51-51
+36-81,5-36
+16-64,61-64
+22-98,21-99
+29-76,75-77
+2-95,1-96
+58-58,2-58
+10-62,11-42
+8-8,35-90
+53-78,53-94
+9-74,10-73
+41-86,40-86
+2-40,3-80
+26-26,25-62
+38-99,37-97
+24-91,25-98
+26-93,25-94
+31-53,1-54
+16-47,24-47
+25-91,39-92
+22-91,40-92
+8-23,8-8
+83-88,83-90
+62-85,63-86
+27-48,27-27
+50-58,37-59
+5-74,5-64
+29-77,29-77
+19-24,19-19
+12-12,11-87
+37-87,38-71
+99-99,12-95
+77-77,24-78
+72-85,71-99
+7-7,7-87
+3-97,58-96
+14-16,15-99
+47-94,93-94
+36-82,14-82
+2-22,9-21
+2-74,73-75
+88-88,46-88
+1-93,93-93
+48-67,48-67
+78-78,12-77
+52-99,34-52
+66-66,65-71
+64-92,65-91
+18-44,19-58
+38-44,27-38
+44-99,44-85
+69-84,31-81
+44-86,44-86
+76-77,2-76
+71-72,24-72
+23-72,24-72
+8-23,9-22
+76-96,92-94
+7-77,76-76
+14-15,17-79
+13-99,14-96
+34-90,33-43
+6-81,6-81
+17-73,3-11
+2-22,3-23
+88-99,87-98
+6-52,52-53
+8-93,76-94
+88-95,84-96
+64-94,64-67
+12-29,11-30
+50-58,32-59
+70-90,71-90
+50-57,58-59
+2-65,1-64
+9-45,8-44
+57-90,56-88
+7-84,7-7
+46-84,45-45
+17-59,16-58
+3-11,11-15
+64-93,20-70
+54-93,54-92
+23-24,23-92
+17-82,17-26
+21-79,78-94
+18-94,93-94
+25-40,26-84
+20-83,19-83
+20-20,20-90
+1-96,88-96
+12-57,13-13
+26-99,26-98
+69-70,39-69
+14-83,82-82
+24-99,24-98
+2-10,10-82
+16-62,41-82
+1-71,1-72
+26-30,25-29
+5-96,5-99
+8-8,7-61
+26-99,27-27
+26-90,8-19
+22-89,22-90
+7-68,69-69
+57-59,3-58
+92-93,86-92
+51-83,50-77
+87-87,11-86
+2-51,3-81
+63-65,25-64
+34-81,33-83
+5-37,5-91
+13-55,1-24
+15-15,15-83
+18-22,18-88
+11-41,11-41
+93-95,6-94
+65-68,65-70
+31-87,32-81
+11-84,3-85
+96-97,32-97
+27-67,66-68
+87-89,22-88
+31-75,24-76
+18-96,17-97
+3-95,4-36
+66-99,67-97
+21-71,22-72
+56-77,78-85
+2-96,3-95
+20-93,92-92
+35-97,96-98
+32-37,17-36
+8-95,7-94
+21-81,7-81
+68-69,68-89
+22-47,23-48
+23-78,23-24
+50-52,12-51
+14-96,14-98
+18-46,34-45
+2-88,1-2
+11-60,10-12
+97-97,60-97
+18-70,19-71
+5-94,93-95
+68-95,67-87
+12-87,93-95
+58-68,57-60
+92-93,5-92
+21-21,20-71
+48-82,81-99
+9-59,10-84
+29-50,29-94
+14-15,14-15
+65-90,65-80
+10-36,10-35
+24-81,80-82
+9-10,10-51
+48-54,54-54
+49-50,50-56
+58-92,57-70
+16-27,4-17
+1-98,23-99
+31-94,93-93
+39-41,8-40
+87-95,95-95
+58-90,59-89
+9-97,30-97
+10-79,10-78
+3-41,3-41
+3-63,62-63
+65-97,66-66
+83-83,65-84
+16-60,17-59
+61-83,63-84
+66-68,66-67
+78-78,18-79
+13-83,12-82
+20-69,21-69
+25-95,60-96
+22-22,22-97
+28-85,2-84
+65-84,84-85
+43-87,88-88
+4-4,3-99
+4-84,2-4
+53-55,45-54
+16-17,11-70
+44-98,44-97
+43-64,43-58
+28-37,19-27
+23-77,76-78
+1-92,6-92
+52-86,52-86
+59-86,58-59
+8-94,7-95
+48-98,98-98
+46-49,47-48
+31-82,32-85
+58-87,57-87
+45-47,46-86
+61-86,61-76
+38-84,37-85
+92-92,53-93
+21-68,22-68
+69-98,70-98
+17-91,92-92
+35-35,35-35
+17-53,17-53
+26-40,37-37
+22-88,22-88
+10-30,10-30
+97-99,27-98
+17-37,17-37
+19-31,19-28
+4-86,3-85
+11-32,12-31
+67-77,67-98
+12-40,9-9
+36-83,83-84
+10-71,70-70
+57-92,15-84
+1-4,3-91
+3-11,7-12
+31-90,90-91
+5-22,2-5
+6-91,5-91
+92-92,40-72
+4-8,12-97
+5-76,52-75
+5-91,91-91
+2-99,1-96
+19-43,19-43
+48-98,47-97
+25-96,19-97
+3-91,3-99
+11-13,12-38
+67-71,17-71
+11-11,10-99
+1-6,5-97
+57-57,35-57
+87-89,24-88
+92-92,29-93
+31-35,28-36
+20-80,19-19
+82-82,5-82
+10-31,32-55
+18-82,28-81
+29-73,29-88
+10-93,10-10
+40-42,40-42
+22-32,22-26
+71-72,58-71
+36-97,36-41
+5-94,5-98
+96-99,87-97
+12-95,13-95
+97-99,20-98
+24-84,24-84
+76-92,75-97
+14-54,14-53
+37-51,37-52
+69-71,35-70
+41-41,35-40
+35-92,92-92
+58-68,57-67
+57-75,27-76
+21-85,22-84
+42-59,41-41
+96-96,1-96
+27-29,28-98
+14-81,15-15
+42-94,42-93
+22-59,15-60
+3-98,3-69
+15-15,3-15
+67-82,36-47
+27-54,10-55
+44-57,43-56
+56-68,56-56
+90-92,33-91
+92-94,82-95
+8-69,69-69
+37-76,36-75
+21-96,1-21
+15-15,10-18
+83-83,9-83
+11-11,11-64
+34-94,25-93
+54-77,77-77
+34-70,35-70
+20-96,20-77
+59-64,32-63
+28-75,27-97
+3-85,2-86
+52-89,52-91
+43-54,45-53
+20-27,20-28
+45-91,68-89
+7-61,12-84
+7-94,6-95
+32-33,32-79
+2-5,5-99
+7-63,6-53
+16-78,17-78
+19-54,54-54
+66-74,66-75
+20-93,21-93
+42-98,1-99
+5-24,4-5
+10-95,94-95
+1-99,1-99
+81-81,81-96
+39-39,23-38
+3-41,3-4
+35-71,36-36
+11-39,38-88
+39-56,40-57
+1-6,6-82
+11-34,1-34
+7-7,7-94
+3-97,2-98
+47-99,47-99
+66-91,96-97
+5-89,97-99
+62-62,36-61
+7-17,6-16
+96-96,57-78
+83-95,13-94
+98-99,1-99
+2-93,92-93
+93-93,51-92
+23-23,23-84
+45-82,44-82
+7-32,7-33
+9-97,10-75
+23-77,25-69
+9-91,8-9
+4-95,47-93
+64-67,2-96
+48-72,72-73
+46-92,45-93
+2-95,94-95
+68-76,69-69
+2-51,8-51
+57-81,82-94
+7-60,13-60
+24-71,23-35
+24-97,24-97
+24-94,32-95
+21-35,21-22
+22-51,23-76
+32-94,32-91
+9-94,9-90
+87-88,9-87
+5-12,7-13
+35-73,74-74
+61-64,48-65
+17-94,71-94
+54-54,29-57
+75-77,19-76
+14-14,15-72
+14-14,14-43
+29-33,29-95
+1-1,1-81
+46-81,80-80
+39-66,10-66
+55-88,55-71
+91-94,34-96
+28-93,27-89
+56-97,55-71
+17-94,93-95
+27-67,26-66
+90-99,83-98
+24-25,24-70
+42-98,79-99
+94-94,46-88
+7-71,70-81
+29-95,28-83
+85-85,3-84
+12-89,63-88
+8-31,9-9
+3-93,70-95
+19-19,19-94
+16-40,1-41
+54-88,88-88
+39-39,29-39
+39-59,59-59
+20-80,19-79
+2-7,2-53
+20-97,19-58
+4-70,4-70
+56-89,55-90
+86-95,95-95
+66-93,65-73
+4-84,5-85
+34-88,33-41
+26-61,26-78
+48-79,49-79
+66-99,52-99
+77-77,43-78
+49-90,50-80
+17-71,16-37
+45-91,45-90
+71-71,27-70
+96-96,3-96
+15-89,14-90
+17-96,7-96
+95-95,2-94
+12-85,11-54
+58-67,34-73
+28-54,29-90
+6-84,5-83
+11-49,48-48
+71-71,11-72
+29-99,99-99
+18-92,19-93
+85-86,35-85
+51-73,51-89
+1-99,57-99
+29-53,28-81
+6-62,7-63
+78-78,77-79
+18-43,18-71
+31-32,32-50
+14-39,40-40
+41-62,42-61
+3-69,5-68
+51-57,48-58
+40-40,41-98
+11-12,11-47
+8-81,8-84
+24-54,10-55
+4-48,5-97
+11-90,11-56
+78-92,78-78
+10-66,67-76
+92-92,13-93
+75-98,67-68
+4-95,2-96
+15-70,16-23
+21-67,20-21
+38-48,38-47
+77-81,80-82
+25-74,30-73
+90-90,91-91
+28-70,20-71
+16-89,37-93
+55-68,34-69
+7-97,50-97
+16-38,17-37
+81-81,34-81
+28-81,27-29
+20-73,19-29
+51-83,52-82
+57-57,56-56
+63-76,20-62
+47-56,46-48
+14-63,62-62
+16-64,63-65
+86-97,87-96
+3-3,3-57
+26-27,20-27
+2-99,3-3
+1-2,1-49
+16-58,31-59
+2-14,2-46
+6-31,5-50
+19-65,19-65
+34-38,27-37
+2-91,3-90
+5-78,5-78
+7-20,6-19
+44-60,44-59
+61-83,61-61
+35-38,36-57
+4-98,5-99
+5-5,4-86
+4-64,21-88
+34-73,34-76
+52-78,51-79
+95-97,7-96
+50-56,51-57
+4-97,5-97
+2-80,11-79
+15-33,4-15
+1-19,19-85
+2-98,17-97
+40-49,39-84
+17-19,18-75
+49-49,48-74
+72-72,12-72
+15-77,14-98
+2-85,6-58
+45-74,32-44
+10-95,9-9
+83-83,16-83
+62-80,63-90
+25-49,26-52
+67-75,25-59
+25-83,26-73
+52-91,52-52
+69-88,68-89
+56-85,55-95
+9-97,97-97
+36-92,6-36
+45-46,44-46
+28-41,28-41
+18-82,28-87
+30-31,31-96
+5-81,6-6
+14-89,34-88
+27-91,27-27
+96-96,31-96
+16-18,17-30
+17-17,16-84
+3-43,31-45
+31-62,30-61
+48-95,47-60
+16-78,15-78
+48-48,34-48
+3-94,2-95
+1-1,2-2
+86-87,84-89
+31-49,31-66
+13-13,13-46
+4-95,79-95
+3-33,1-34
+4-69,10-69
+29-89,83-90
+25-70,23-71
+59-96,60-83
+78-90,15-83
+15-96,15-76
+80-98,12-79
+41-46,42-47
+1-98,2-97
+25-70,26-71
+4-30,83-93
+43-59,42-59
+25-47,24-48
+2-99,3-99
+1-79,80-80
+2-93,1-92
+7-10,7-10
+55-66,54-65
+9-73,9-73
+23-56,22-56
+22-44,21-45
+11-78,12-79
+7-92,8-87
+58-93,16-94
+24-69,24-94
+94-94,39-94
+34-58,33-58
+49-78,77-77
+7-18,6-19
+74-74,73-93
+44-81,48-81
+11-85,84-84
+29-91,30-92
+17-93,16-17
+1-48,2-78
+11-93,94-94
+12-97,96-96
+6-94,6-6
+19-92,56-67
+10-53,2-10
+14-81,13-90
+23-92,23-93
+38-70,70-71
+42-98,42-66
+37-86,38-99
+11-97,1-97
+48-81,49-49
+11-81,9-20
+44-92,15-44
+68-95,67-97
+57-74,57-74
+34-39,16-38
+27-79,28-80
+50-59,10-60
+13-41,13-30
+77-79,45-78
+24-72,24-80
+12-12,12-66
+10-81,81-82
+4-60,3-61
+31-85,30-31
+23-56,23-69
+21-84,83-84
+8-92,91-91
+27-86,85-91
+64-96,63-99
+2-50,3-50
+70-88,2-71
+11-27,12-27
+31-32,31-55
+2-73,73-85
+27-28,27-27
+68-94,68-79
+4-95,67-96
+22-79,8-22
+3-71,2-70
+6-92,1-92
+74-97,73-93
+2-73,1-66
+10-11,10-96
+29-34,30-34
+43-93,23-42
+25-28,27-28
+52-93,53-94
+62-81,46-63
+8-22,8-8
+10-93,92-94
+10-96,98-99
+2-83,1-1
+14-23,13-17
+27-97,71-96
+2-3,1-8
+4-79,4-58
+52-96,53-89
+19-97,11-19
+18-84,17-85
+39-99,39-88
+25-34,26-31
+41-66,41-65
+2-82,1-83
+8-39,40-40
+35-58,26-58
+5-52,4-51
+4-97,34-96
+53-84,3-74
+3-9,3-97
+2-42,8-96
+4-6,5-95
+53-77,22-53
+16-83,15-82
+41-50,41-74
+11-12,11-78
+39-81,38-82
+7-36,8-37
+3-99,3-97
+50-53,52-54
+7-98,98-98
+30-73,31-31
+90-90,73-90
+74-83,74-83
+45-66,7-65
+15-95,15-16
+53-86,54-87
+1-7,7-86
+64-64,29-63
+17-31,17-75
+26-40,48-98
+18-34,17-33
+45-45,5-45
+24-42,23-42
+66-90,65-91
+15-76,8-27
+4-56,4-56
+59-59,59-66
+20-52,29-63
+56-57,54-57
+90-99,46-73
+6-98,6-98
+7-75,7-75
+28-96,13-96
+39-49,33-50
+45-60,61-79
+8-81,8-90
+6-7,7-73
+43-88,1-99
+87-89,53-88
+79-80,32-80
+7-15,7-15
+40-41,8-40
+28-99,29-56
+47-89,90-90
+66-66,46-66
+6-99,7-98
+13-97,96-97
+67-67,22-68
+61-88,27-89
+12-33,13-13
+3-19,3-40
+10-61,10-99
+13-29,29-97
+50-83,9-49
+1-21,1-91
+48-48,10-48
+51-81,51-51
+39-41,40-98
+61-84,62-83
+4-94,4-93
+3-3,2-29
+87-89,82-88
+3-16,3-40
+36-48,48-48
+27-54,26-53
+50-91,49-91
+1-99,1-1
+16-18,17-41
+74-75,17-75
+25-61,7-25
+40-40,39-83
+41-61,55-61
+58-89,23-89
+10-78,77-79
+9-68,1-9
+9-49,10-94
+64-88,88-88
+43-88,42-89
+55-94,4-94
+23-60,46-59
+14-80,79-81
+39-46,38-45
+35-69,58-68
+38-97,97-97
+7-39,7-87
+33-96,33-71
+3-43,26-42
+1-32,2-96
+55-99,54-56
+50-56,48-55
+44-92,93-93
+10-67,9-9
+31-73,3-31
+8-91,9-9
+19-19,19-61
+63-94,63-94
+7-29,94-99
+11-87,10-92
+10-70,69-71
+15-85,14-85
+11-29,10-13
+61-96,56-95
+6-58,7-7
+79-79,64-78
+70-89,11-90
+7-73,7-73
+62-94,14-62
+15-99,15-25
+8-30,7-71
+20-49,19-21
+20-36,10-36
+9-80,7-9
+42-87,30-88
+9-95,10-96
+10-63,50-90
+13-16,7-15
+25-87,88-88
+5-62,3-62
+9-13,11-99
+5-72,18-73
+75-75,8-75
+1-95,3-95
+18-91,91-91
+12-96,12-13
+32-78,33-78
+2-83,83-95
+33-65,33-33
+66-82,1-67
+65-93,64-93
+35-47,19-34
+22-47,21-42
+4-54,3-55
+44-98,44-45
+99-99,7-97
+95-95,7-94
+43-84,42-83
+28-48,29-67
+2-98,2-3
+2-97,3-95
+68-68,1-67
+20-29,4-30
+16-35,5-47
+22-76,99-99
+6-29,6-29
+24-58,47-57
+2-7,7-68
+56-58,46-57
+36-45,35-71
+13-18,18-18
+13-42,14-43
+72-92,91-93
+82-87,76-84
+79-81,14-80
+38-65,38-38
+42-42,1-41
+2-42,20-67
+20-70,20-70
+28-88,89-94
+6-54,7-55
+77-92,77-94
+37-99,67-90
+9-11,56-71
+43-43,34-43
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day04sample [
+
+	^ '2-4,6-8
+2-3,4-5
+5-7,7-9
+2-8,3-7
+6-6,4-6
+2-6,4-8'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day05: data bis: bis [
+
+	"(Advent2022 day05: Advent2022 day05sample bis: false) >>> 'CMZ'"
+
+	"(Advent2022 day05: Advent2022 day05data bis: false) >>> 'QGTHFZBHV'"
+
+	"(Advent2022 day05: Advent2022 day05sample bis: true) >>> 'MCD'"
+
+	"(Advent2022 day05: Advent2022 day05data bis: true) >>> 'MGDMPSZTM'"
+
+	| datas data1 data2 stacks j c parsed rpt from to |
+	datas := data splitOn: '<r><r>' expandMacros.
+	data1 := datas first.
+	data2 := datas second.
+
+	stacks := OrderedCollection new.
+	data1 linesDo: [ :line | 
+		1 to: line size + 1 // 4 do: [ :i | 
+			i > stacks size ifTrue: [ stacks add: OrderedCollection new ].
+			j := i - 1 * 4 + 2.
+			c := line at: j ifAbsent: [ $  ].
+			c ~= $  ifTrue: [ (stacks at: i) addFirst: c ] ] ].
+
+	data2 linesDo: [ :line | 
+		parsed := line splitOn: $ .
+		rpt := (parsed at: 2) asInteger.
+		from := (parsed at: 4) asInteger.
+		to := (parsed at: 6) asInteger.
+
+		bis
+			ifFalse: [ 
+				rpt timesRepeat: [ 
+					(stacks at: to) addLast: (stacks at: from) removeLast ] ]
+			ifTrue: [ 
+			(stacks at: to) addAll: ((stacks at: from) removeLast: rpt) ] ].
+
+	^ stacks collect: [ :s | s last ] as: String
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day05data [
+
+	^ '    [V] [G]             [H]        
+[Z] [H] [Z]         [T] [S]        
+[P] [D] [F]         [B] [V] [Q]    
+[B] [M] [V] [N]     [F] [D] [N]    
+[Q] [Q] [D] [F]     [Z] [Z] [P] [M]
+[M] [Z] [R] [D] [Q] [V] [T] [F] [R]
+[D] [L] [H] [G] [F] [Q] [M] [G] [W]
+[N] [C] [Q] [H] [N] [D] [Q] [M] [B]
+ 1   2   3   4   5   6   7   8   9 
+
+move 3 from 2 to 5
+move 2 from 9 to 6
+move 4 from 7 to 1
+move 7 from 3 to 4
+move 2 from 9 to 8
+move 8 from 8 to 6
+move 1 from 7 to 4
+move 8 from 6 to 4
+move 4 from 5 to 7
+move 3 from 4 to 9
+move 2 from 6 to 3
+move 11 from 4 to 1
+move 1 from 3 to 4
+move 2 from 3 to 1
+move 1 from 7 to 6
+move 14 from 1 to 6
+move 7 from 4 to 3
+move 2 from 5 to 9
+move 5 from 6 to 4
+move 9 from 6 to 1
+move 3 from 4 to 8
+move 1 from 7 to 6
+move 3 from 4 to 1
+move 7 from 3 to 8
+move 5 from 9 to 5
+move 4 from 1 to 4
+move 3 from 7 to 2
+move 5 from 6 to 2
+move 3 from 4 to 1
+move 7 from 8 to 5
+move 3 from 6 to 8
+move 11 from 2 to 1
+move 1 from 4 to 3
+move 1 from 3 to 9
+move 2 from 2 to 9
+move 8 from 5 to 4
+move 1 from 1 to 7
+move 1 from 9 to 5
+move 8 from 4 to 1
+move 1 from 6 to 8
+move 2 from 9 to 1
+move 4 from 5 to 3
+move 2 from 7 to 3
+move 40 from 1 to 2
+move 24 from 2 to 9
+move 1 from 5 to 6
+move 11 from 2 to 3
+move 9 from 3 to 5
+move 12 from 9 to 4
+move 6 from 5 to 7
+move 4 from 7 to 4
+move 2 from 5 to 1
+move 2 from 1 to 9
+move 1 from 6 to 8
+move 9 from 4 to 8
+move 6 from 4 to 9
+move 17 from 9 to 6
+move 1 from 4 to 6
+move 17 from 6 to 5
+move 1 from 1 to 4
+move 2 from 7 to 9
+move 1 from 6 to 7
+move 2 from 2 to 9
+move 2 from 7 to 2
+move 6 from 3 to 8
+move 3 from 5 to 9
+move 1 from 4 to 9
+move 2 from 3 to 7
+move 4 from 5 to 6
+move 1 from 7 to 4
+move 1 from 4 to 2
+move 1 from 7 to 5
+move 9 from 8 to 1
+move 1 from 1 to 2
+move 2 from 9 to 3
+move 7 from 2 to 7
+move 1 from 9 to 5
+move 12 from 8 to 7
+move 3 from 1 to 9
+move 2 from 6 to 4
+move 9 from 9 to 3
+move 1 from 6 to 7
+move 1 from 9 to 5
+move 1 from 6 to 1
+move 9 from 7 to 1
+move 7 from 1 to 8
+move 4 from 3 to 9
+move 5 from 7 to 1
+move 3 from 9 to 1
+move 4 from 7 to 2
+move 12 from 1 to 5
+move 2 from 9 to 4
+move 7 from 8 to 2
+move 7 from 5 to 7
+move 4 from 3 to 4
+move 1 from 8 to 1
+move 2 from 2 to 1
+move 2 from 3 to 1
+move 3 from 2 to 7
+move 13 from 5 to 4
+move 1 from 8 to 3
+move 1 from 3 to 8
+move 1 from 3 to 5
+move 1 from 8 to 7
+move 17 from 4 to 8
+move 5 from 2 to 6
+move 2 from 1 to 6
+move 5 from 6 to 3
+move 9 from 7 to 1
+move 4 from 4 to 3
+move 1 from 6 to 2
+move 4 from 7 to 4
+move 1 from 6 to 5
+move 2 from 3 to 2
+move 15 from 1 to 4
+move 6 from 5 to 4
+move 4 from 3 to 5
+move 4 from 5 to 2
+move 2 from 2 to 4
+move 11 from 8 to 1
+move 2 from 8 to 3
+move 5 from 3 to 7
+move 4 from 2 to 8
+move 2 from 2 to 9
+move 4 from 7 to 8
+move 11 from 4 to 6
+move 2 from 5 to 4
+move 3 from 6 to 9
+move 4 from 1 to 4
+move 15 from 4 to 9
+move 1 from 7 to 3
+move 2 from 1 to 2
+move 6 from 4 to 5
+move 11 from 8 to 2
+move 16 from 9 to 4
+move 2 from 9 to 1
+move 4 from 2 to 3
+move 8 from 4 to 9
+move 1 from 8 to 7
+move 5 from 4 to 7
+move 6 from 7 to 3
+move 10 from 9 to 5
+move 5 from 3 to 1
+move 1 from 1 to 4
+move 5 from 1 to 9
+move 5 from 1 to 7
+move 5 from 4 to 1
+move 4 from 1 to 6
+move 3 from 1 to 9
+move 10 from 5 to 9
+move 2 from 7 to 1
+move 5 from 3 to 6
+move 4 from 5 to 7
+move 4 from 2 to 6
+move 2 from 5 to 6
+move 5 from 2 to 7
+move 18 from 6 to 1
+move 5 from 9 to 2
+move 7 from 9 to 6
+move 16 from 1 to 7
+move 4 from 6 to 1
+move 1 from 2 to 6
+move 2 from 2 to 6
+move 1 from 2 to 4
+move 4 from 9 to 3
+move 1 from 2 to 8
+move 5 from 7 to 5
+move 2 from 9 to 3
+move 1 from 5 to 9
+move 7 from 3 to 4
+move 1 from 9 to 7
+move 8 from 1 to 9
+move 1 from 8 to 9
+move 3 from 6 to 9
+move 17 from 7 to 5
+move 3 from 4 to 8
+move 3 from 4 to 2
+move 3 from 8 to 3
+move 3 from 3 to 7
+move 7 from 9 to 3
+move 6 from 5 to 9
+move 4 from 9 to 3
+move 10 from 7 to 2
+move 15 from 5 to 2
+move 4 from 6 to 3
+move 1 from 3 to 2
+move 23 from 2 to 5
+move 2 from 4 to 6
+move 2 from 6 to 7
+move 1 from 7 to 2
+move 1 from 6 to 9
+move 5 from 9 to 8
+move 3 from 8 to 7
+move 5 from 2 to 6
+move 2 from 2 to 3
+move 2 from 6 to 3
+move 3 from 6 to 2
+move 3 from 6 to 8
+move 10 from 5 to 9
+move 2 from 7 to 5
+move 1 from 5 to 8
+move 13 from 9 to 5
+move 6 from 5 to 6
+move 1 from 6 to 1
+move 1 from 7 to 3
+move 1 from 7 to 3
+move 13 from 5 to 6
+move 3 from 3 to 5
+move 1 from 2 to 1
+move 4 from 8 to 9
+move 2 from 2 to 6
+move 2 from 5 to 3
+move 2 from 3 to 6
+move 5 from 6 to 4
+move 9 from 5 to 9
+move 10 from 6 to 9
+move 1 from 1 to 7
+move 3 from 3 to 9
+move 1 from 8 to 1
+move 3 from 6 to 3
+move 1 from 7 to 6
+move 1 from 8 to 7
+move 2 from 6 to 1
+move 2 from 6 to 4
+move 3 from 4 to 6
+move 2 from 1 to 4
+move 10 from 9 to 6
+move 6 from 4 to 9
+move 17 from 9 to 1
+move 4 from 9 to 5
+move 19 from 1 to 7
+move 4 from 5 to 6
+move 1 from 9 to 3
+move 5 from 3 to 4
+move 5 from 4 to 8
+move 17 from 6 to 9
+move 17 from 9 to 2
+move 1 from 6 to 1
+move 1 from 1 to 2
+move 1 from 8 to 3
+move 2 from 3 to 2
+move 5 from 7 to 1
+move 1 from 7 to 3
+move 5 from 2 to 9
+move 4 from 8 to 2
+move 2 from 7 to 8
+move 3 from 9 to 3
+move 7 from 3 to 9
+move 2 from 8 to 7
+move 8 from 2 to 9
+move 5 from 9 to 6
+move 4 from 3 to 9
+move 11 from 2 to 3
+move 2 from 6 to 5
+move 1 from 9 to 4
+move 10 from 7 to 3
+move 3 from 1 to 8
+move 2 from 6 to 7
+move 15 from 3 to 8
+move 2 from 3 to 2
+move 2 from 1 to 3
+move 14 from 9 to 6
+move 1 from 4 to 9
+move 14 from 6 to 3
+move 5 from 7 to 2
+move 2 from 9 to 2
+move 1 from 5 to 3
+move 1 from 5 to 8
+move 12 from 3 to 7
+move 13 from 7 to 8
+move 1 from 6 to 7
+move 5 from 2 to 6
+move 1 from 6 to 2
+move 1 from 7 to 6
+move 4 from 6 to 8
+move 31 from 8 to 7
+move 15 from 7 to 8
+move 7 from 7 to 5
+move 4 from 2 to 3
+move 1 from 6 to 2
+move 3 from 5 to 8
+move 9 from 7 to 4
+move 2 from 2 to 9
+move 4 from 5 to 6
+move 13 from 3 to 9
+move 3 from 3 to 5
+move 13 from 9 to 1
+move 1 from 3 to 2
+move 2 from 6 to 5
+move 1 from 3 to 4
+move 2 from 6 to 5
+move 1 from 9 to 1
+move 6 from 8 to 9
+move 5 from 5 to 2
+move 2 from 9 to 8
+move 2 from 1 to 6
+move 1 from 9 to 4
+move 12 from 8 to 4
+move 2 from 6 to 9
+move 11 from 4 to 3
+move 9 from 4 to 2
+move 4 from 9 to 7
+move 2 from 5 to 6
+move 8 from 3 to 4
+move 2 from 3 to 9
+move 2 from 8 to 9
+move 4 from 4 to 9
+move 2 from 6 to 7
+move 1 from 3 to 7
+move 2 from 9 to 1
+move 5 from 4 to 2
+move 9 from 1 to 8
+move 1 from 4 to 9
+move 4 from 9 to 3
+move 1 from 3 to 6
+move 4 from 8 to 7
+move 1 from 3 to 6
+move 4 from 1 to 7
+move 1 from 3 to 8
+move 1 from 1 to 8
+move 2 from 6 to 7
+move 2 from 9 to 1
+move 1 from 4 to 5
+move 1 from 1 to 5
+move 11 from 8 to 4
+move 12 from 2 to 8
+move 1 from 9 to 8
+move 2 from 4 to 5
+move 1 from 1 to 8
+move 5 from 2 to 1
+move 1 from 3 to 2
+move 9 from 7 to 3
+move 6 from 7 to 5
+move 1 from 3 to 4
+move 1 from 5 to 1
+move 4 from 2 to 5
+move 4 from 4 to 1
+move 2 from 7 to 3
+move 3 from 4 to 1
+move 6 from 3 to 7
+move 9 from 8 to 7
+move 3 from 8 to 7
+move 11 from 5 to 9
+move 2 from 4 to 8
+move 5 from 8 to 7
+move 1 from 9 to 8
+move 12 from 9 to 5
+move 1 from 4 to 5
+move 5 from 1 to 8
+move 6 from 8 to 3
+move 1 from 3 to 8
+move 3 from 7 to 9
+move 4 from 7 to 6
+move 3 from 1 to 3
+move 3 from 1 to 6
+move 1 from 8 to 1
+move 7 from 6 to 2
+move 3 from 1 to 8
+move 7 from 3 to 4
+move 3 from 4 to 1
+move 1 from 4 to 2
+move 3 from 1 to 2
+move 1 from 7 to 6
+move 1 from 8 to 5
+move 9 from 5 to 3
+move 1 from 6 to 9
+move 11 from 3 to 6
+move 1 from 4 to 1
+move 1 from 3 to 4
+move 8 from 6 to 9
+move 1 from 3 to 1
+move 1 from 9 to 1
+move 2 from 6 to 2
+move 5 from 5 to 7
+move 5 from 9 to 3
+move 2 from 8 to 5
+move 1 from 1 to 2
+move 1 from 9 to 1
+move 15 from 7 to 4
+move 1 from 1 to 6
+move 1 from 6 to 9
+move 3 from 9 to 3
+move 1 from 3 to 5
+move 5 from 5 to 3
+move 9 from 2 to 9
+move 5 from 4 to 1
+move 1 from 6 to 7
+move 7 from 9 to 3
+move 1 from 4 to 7
+move 1 from 9 to 6
+move 1 from 6 to 5
+move 2 from 1 to 4
+move 3 from 9 to 3
+move 1 from 5 to 6
+move 7 from 4 to 3
+move 1 from 9 to 3
+move 16 from 3 to 1
+move 9 from 1 to 3
+move 5 from 4 to 2
+move 1 from 6 to 9
+move 12 from 1 to 9
+move 3 from 2 to 9
+move 5 from 7 to 3
+move 2 from 4 to 8
+move 2 from 7 to 2
+move 12 from 3 to 5
+move 6 from 2 to 9
+move 12 from 3 to 1
+move 2 from 8 to 6
+move 1 from 6 to 1
+move 6 from 5 to 8
+move 5 from 3 to 2
+move 2 from 5 to 8
+move 8 from 1 to 8
+move 13 from 9 to 7
+move 4 from 7 to 5
+move 4 from 1 to 4
+move 8 from 5 to 6
+move 1 from 1 to 6
+move 4 from 7 to 3
+move 1 from 3 to 1
+move 1 from 1 to 9
+move 4 from 9 to 5
+move 3 from 3 to 7
+move 12 from 8 to 7
+move 2 from 4 to 3
+move 2 from 6 to 9
+move 4 from 8 to 2
+move 2 from 3 to 9
+move 2 from 4 to 7
+move 3 from 5 to 7
+move 2 from 9 to 7
+move 3 from 6 to 1
+move 4 from 6 to 7
+move 1 from 5 to 4
+move 1 from 9 to 3
+move 12 from 2 to 5
+move 4 from 9 to 7
+move 11 from 5 to 1
+move 1 from 6 to 5
+move 1 from 1 to 4
+move 10 from 1 to 2
+move 2 from 5 to 1
+move 1 from 3 to 5
+move 7 from 2 to 5
+move 8 from 7 to 8
+move 2 from 2 to 8
+move 3 from 9 to 4
+move 5 from 4 to 3
+move 1 from 5 to 7
+move 3 from 7 to 1
+move 3 from 5 to 8
+move 1 from 2 to 5
+move 12 from 7 to 6
+move 4 from 1 to 3
+move 2 from 5 to 6
+move 7 from 3 to 7
+move 14 from 6 to 4
+move 1 from 5 to 6
+move 3 from 1 to 3
+move 4 from 3 to 2
+move 2 from 5 to 8
+move 11 from 7 to 4
+move 7 from 4 to 5
+move 1 from 3 to 4
+move 1 from 5 to 6
+move 14 from 8 to 7
+move 11 from 7 to 3
+move 2 from 2 to 6
+move 1 from 2 to 3
+move 5 from 5 to 4
+move 4 from 6 to 4
+move 8 from 7 to 8
+move 3 from 7 to 3
+move 1 from 2 to 1
+move 5 from 8 to 2
+move 4 from 4 to 3
+move 1 from 2 to 9
+move 1 from 1 to 9
+move 3 from 2 to 1
+move 1 from 5 to 4
+move 3 from 8 to 1
+move 1 from 7 to 4
+move 4 from 3 to 9
+move 1 from 8 to 7
+move 2 from 9 to 1
+move 6 from 3 to 4
+move 28 from 4 to 7
+move 15 from 7 to 8
+move 3 from 3 to 8
+move 1 from 2 to 9
+move 2 from 3 to 2
+move 7 from 1 to 4
+move 10 from 4 to 5
+move 10 from 5 to 6
+move 3 from 8 to 2
+move 1 from 1 to 7
+move 1 from 4 to 7
+move 1 from 9 to 6
+move 9 from 6 to 7
+move 1 from 2 to 4
+move 1 from 9 to 5
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day05sample [
+
+	^ '    [D]    
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
+
+move 1 from 2 to 1
+move 3 from 1 to 3
+move 2 from 2 to 1
+move 1 from 1 to 2'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day06: data len: len [
+
+	"(Advent2022 day06: Advent2022 day06data len: 4) >>> 1598"
+
+	"(Advent2022 day06: Advent2022 day06data len: 14) >>> 2414"
+
+	| set |
+	set := Bag new.
+
+	1 to: data size do: [ :i | 
+		i > len ifTrue: [ set remove: (data at: i - len) ].
+		set add: (data at: i).
+		set asSet size = len ifTrue: [ ^ i ] ].
+	self error
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day06data [
+
+	^ 'qfmfhmhjmjggwbbvdvwvlvrrtsrsccwsslvlffjrrtprprjjvmmclmmghhddpvddclctcqtccgbgdbgdgsdgghqhtqtvvptvppwrwprpvrrrhpphththvhhrnnhnlnslnlhnhnhgnhnpnqqsmsgsllprlprrlzzqzffmzztctbtnbtthlttqvqcqmcmpcpbbczzbqbgghcghchhvwvllfrfnnbssfzsszpsplpglpprnpnfnbnhbnbtbzzvbvpbbhjjlzzbtbvbppczppbwppqwwnwlwccglgvgrgmmdwmwrmrppnfnhhhhqthqthqqrhrshhhqbhqqjgjvjllzvzbzhbbpttjsszvzqqtzzmbmddpldpdcdnccrmcrmmpwprplrrqssvddmpdmmwfwwlrljrrdsssmhsspnpffjggqllnzlnlhnnmddfrfpfbbvssjsrrznngcghgchcmhmrrrtzztjzzhchssslsmlmvvpwpqpjqjdddmsdmmtgtmgtglttfbbgrrcprrqffmmjnjttcmczzgbzggthhsttpggrmmgwwnpnqnqvnqvqppmlpmlpmpjpljljmmtpptfppfrppfdpfdppddmdttgzgzzdbzdzhzhnnsqssvmvbbpjjzwwvnwvvzmvzmzpmpttvrvccqddpgdppgmmthmthtggsfsbbvfbvfvhfvhvvpwpddqrqgqhghnnfmfbbwrbrgbgbvgbbdttffrddqbqpqzzmttlhhsqhsqhsqhhlplttpnpsstpthhpfhpfplprrgfrgffjppghgppghgdggjmmcgmccjvvsrvsrrwgrgmrrngrgttvbtbltthrthrttmfffjpfpssncnrngrrltrltlggjgcgllrzzllhwwjwrwgrgsrgrhrphrhhqwqsqmqlmqlmqmqrmrnnwnhwnhwhzwzjwwgbghhsjspszsznzfztfzfpzzlczztctsstctqtfqfqcfqqjrjccttmqqfpfdfnfwnffqbfbblpbpfpcfcwfccblbwwmqwqrrgprpccngnhghpppwmpplcppfrfjjgmmbzbhbcbzzgdgsdsvvqllzlppnfnlnlslsljlppcscqqfjjjwzwppfgfjjsvvsggjbjljpjpzjzrzjrzzfnfpnfpnfpnfnsnggmpggdllpmmrhhdqqppttgqqcsqsjsbjsjrsrqrbqqmbmcbmcbmbfmfvfqqdbdppmrprnrggmjjhnhbhdhbbfcbbcjjdhhwjwmjmssjswscswcwzccbgbqqmqgmmsdsjsbsdbsddvttjpppcqpcqcgqqslqsssczszrzvvrtvvjppswwhnnwlwtwhhwwzfwwpfpddlvvnvnnvlnntjtqjqjzzjttvvbqbhqbhbbbwnwhnwnppdbpdpvddrqdqjjlvlqqdfdhdjhdjdcjcrcjjggfmfvvfllvfvgglzllmhmzmdddfwddqjjqjfqfcfrrstrssptsstllrflfwwgswslwlbwbwjjvhvfvhfhffhsslwsllbnbblccbwwjqwqqdllrdrnrnffcbbqqpnqqdmdndtntvvrjvvsvmvgvnnmjlwgnjcwljgwnrwpqlztwrpmpgqtwlhrcwsrrhqhjhznrtpqfdnzbfqrzwslptdbdcnqvcllpjsfdvmzqwvzbpnmfcfcjnbmhtwhttjgtnczwctpdthhwmzvzrrgsnmbflgmszgsbvghbzgcmcmszgsbfmlmpbdspqlftmqrcjtmvgcrzznlfwjcbmddplsqrfflqnqfsldwhnncczdmfrrrsbjjqsdzrsgbdbwjbslfcqglsqfddhdsrcdrgqfqthgmfjvnfdfgdncfzpvqcpscnpmfgvqbfwszwzgmqvmcrdrwplfshdgqrchmccpqfznbmfvlhdpctlqgjslrwhjfjlmqfblgjrdlnzdtwlpwhnrhrcrpfwqpmjlgrdbgpbljntmbqlblqqqpgrnjtmjqvjpzvsqdpgtchmmwbhtmgcjqdplrtptqcvdjjpqdzsrcjhcwvdcghlwrdhtdfctmqfcjcqhcvvbzgsvlggcrdgqbtznwwmnbgsfrjprqgcmlswftlwpqqqvshdprldrsghmhrqvmqmvglbvzpvtrjbhcvhqmvdtcvsllznqzjmhpnlbhmlzthbwwhhvdtcdfdcdzhnbsrnqqjvzzsvfjhbsdlsbdlqjnlpnhfcjtdppzmphghltztzcdvzwbftbvwhvgmrllqfzrpbltptdtjjqtfwjfmczzgdvclqbsbftgtlhnhrrvbpvdltstdnhqvpvtjhmghptvsfnlspslmfsftzdrwljrgblgmcbmlszmhnlfdtmsrnjqwrfmsnfgpcqgzmlwppffrmbvhnlstfpgzwwmwffrqpdfvrspbczbrclwljgzfhpsrwwpdndfgjwbjtftnjrqvmtmzvjmtlmjhhptmgjvfrlzncmhnmpfcwpjbcpftqfzvmtldqhjpwvzrdnvnwnscgzslvfgjjpcvjshctmmpjbgdwtdjtlmztsbmwrjtmltnlsmwmjnpcgpprnfwcqdldbbqbfmdnvprzqwvntgzdbrsgdpgdjbcblmqpdphmwgvbgwlpblflphvjgjsjfshbjdftcqmsdnrzbgngcvddddjvrndhdcscqqswrnvslfrlvvncqjhzlbhdqhtrlvdsvjsbglhfzfphmzfmzqdvjqdwhjgfdwmzsdmbjzstjddfmfqjhmbdgdbvvhbqgstrzpvhpthhbwljczzrmvgsmbqvzdrmhvvjlmphzjfbmfqvwhtnrlfnfmqnnjvnwjswzshwgljmfjhrwbwgtpdqnqgqdzbssbjfbsgwmfzpfjdrtrnmsdffhnbgnrdlbjzfjrvtjgjgcvvzgllljrcrshczvpfqgnwnjjnhbwgvzwrptrgrdgtczjfzzndsqhqpmtqsvmcncfszsjllzzsjjmwgplpjwlhnhgbhctrttgzqbbcflzqvqgmhgdtlvfpbtncbwsjgnzpmbspcqzzwfplfprqlnbctwwrzpjtpfrmnpvnjrjppqrzjrcmggfmhrstzhmsjllcgjhwrbhcrvdvgmvjqqgmczlmhstmthzphlvrrvqmhjzzfzbhphstflhfjdlwqvzlsszctrdchwjssdfjjfzszlqdtwwthfjdqprpfftgdrpdhhcsdcpjbhdrgzwbgjspmffcmgcjnpmwsqwsvpfwzddlcpvlgpvctrssghndhvdmmmgndcjvhdjwttqphsjpgfbsdczmplfpwpzzjlbhrjptmsshfttnmhzdzmjctbltqjmfnpndqgwjzwdwrgdjdmcbtvjqwjngrtbfrwcttpdvcqtwqndznbchjqcqttrhjpjgwdbwzvwgmdsdfmpdwctvntvnsdmfnznfrsdcllpgpnstrrfrwrfrwnhbclnqhltrcdwqwzzldgbbtzmcvnbzmwcmntqpbscqrpzcjnbgbrzpcrcmdmdfsfgdpmgvwccqjrltrgfvjdgbhjndnmtnjjhzvghscdhnhflwplrqdzrnlnsvrtrdnphgqwjwqcjvtfdfshqdwbsvgrqbdlncjmhdmrlsvdnrhztznczzllsvpqlvwgqjvgvvwgrjcvtjvhrsgbdgvlmmtjbwrnftzphnqslcpggztgsdbjsbdtzwprsbcljpbwjhcrffnvtplcdlgmbtcgbllbdmwhwcllbqstnqqvdbcjrglwbmcfqvlvtpqncbspbphflvvrrsprlhqspfmqrsdtdlftsfzrqwdfffbhccvpfdtlptqzllfsbbrfnhjgwhlfcwmmjgjndcwfhdzvvvrzmwllthwsdmbbsrfrzmqnlnqnjnfpgfvrhsbzhjftmvzrzpqpmlcbnwmbssmvssmmqpvwnsjppdhmnhpntlvqmjnbmtvjnmtbpbzrcfhjfhvztnwrmthbswwthjddjmsdnjmzhhpjdllgscdrgmhfpljfzsmszqsqqgrznddhfmstzdcqpgztgwwqpvrghtmqlgdddlqqwwwtnpldbqtf
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day07: data bis: bis [
+
+	"(Advent2022 day07: Advent2022 day07data bis: false) >>> 1583951"
+	"(Advent2022 day07: Advent2022 day07data bis: true) >>> 214171"
+
+	| parsed sums last total goal best result |
+	result := 0.
+
+	"part2 2 only"
+	total := 0.
+	data linesDo: [ :line | 
+		parsed := line splitOn: $ .
+		parsed first asInteger ifNotNil: [ :s | total := total + s ] ].
+	goal := 30000000 - (70000000 - total).
+	best := total.
+
+	sums := OrderedCollection new.
+	data linesDo: [ :line | 
+		parsed := line splitOn: $ .
+		parsed second = 'cd' ifTrue: [ 
+			parsed third = '..'
+				ifTrue: [ 
+					last := sums removeLast.
+					bis
+						ifFalse: [ last <= 100000 ifTrue: [ result := result + last ] ]
+						ifTrue: [ 
+						(last between: goal and: best) ifTrue: [ best := last ] ] ]
+				ifFalse: [ sums add: 0 ] ].
+		parsed first asInteger ifNotNil: [ :s | 
+			sums replace: [ :x | x + s ] ] ].
+
+	^ bis
+		  ifFalse: [ result ]
+		  ifTrue: [ best ]
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day07data [
+
+	^ '$ cd /
+$ ls
+149291 cgc.vzv
+dir cmcrzdt
+dir hwdvrrp
+26925 hwqvsl
+dir lsmv
+dir ngfllcq
+dir ngnzzmpc
+dir pwhjps
+dir rgwnzttf
+260556 tcglclw.hsn
+dir trvznjhb
+dir wgcqrc
+68873 whpnhm
+$ cd cmcrzdt
+$ ls
+dir chqllfw
+95243 hjpf
+108868 hwqvsl
+115004 jpppczvz.mtp
+dir lnsgfnbr
+dir pdtjlb
+dir rqfzvwts
+dir trvznjhb
+$ cd chqllfw
+$ ls
+56623 cgs.hbt
+134804 zqb.grc
+$ cd ..
+$ cd lnsgfnbr
+$ ls
+dir jtzw
+dir ngfllcq
+dir sdm
+dir wlsg
+$ cd jtzw
+$ ls
+dir nfz
+$ cd nfz
+$ ls
+255427 hwqvsl
+94147 tmnjbqq.fzh
+$ cd ..
+$ cd ..
+$ cd ngfllcq
+$ ls
+110661 cdgqtwcv.lzn
+208050 dpf
+$ cd ..
+$ cd sdm
+$ ls
+dir dhwm
+dir ngfllcq
+125983 rfdz.vqm
+24227 tzn
+41909 tzn.vnr
+dir zdzq
+$ cd dhwm
+$ ls
+dir clr
+dir lhv
+dir ncvmgn
+212499 ngfllcq.dcr
+191108 nggnj
+dir pdtjlb
+dir pwhjps
+dir sqqbthdp
+dir trvznjhb
+$ cd clr
+$ ls
+dir lnbc
+87079 npwhncc
+109530 pfqhpr.tzl
+249566 tmnjbqq.fzh
+dir zgmgztcd
+$ cd lnbc
+$ ls
+62635 ftshngp.vbj
+$ cd ..
+$ cd zgmgztcd
+$ ls
+149111 pwhjps.fjm
+$ cd ..
+$ cd ..
+$ cd lhv
+$ ls
+dir phzfwl
+$ cd phzfwl
+$ ls
+dir gmzcjzm
+$ cd gmzcjzm
+$ ls
+263161 vsptqdv
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ncvmgn
+$ ls
+245840 hjpf
+21272 pbcjtbg
+dir stm
+$ cd stm
+$ ls
+dir hnbrd
+$ cd hnbrd
+$ ls
+102906 lftjtq.gdt
+45082 vsptqdv
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd pdtjlb
+$ ls
+171382 hwqvsl
+$ cd ..
+$ cd pwhjps
+$ ls
+75342 cgc.vzv
+185458 hwqvsl
+254359 ngfllcq.jzd
+dir pdtjlb
+200999 slnlws.sgh
+91174 vqqbcb
+dir zmc
+$ cd pdtjlb
+$ ls
+39001 ngfllcq
+$ cd ..
+$ cd zmc
+$ ls
+dir cjqmc
+$ cd cjqmc
+$ ls
+257668 ctsfdprp
+889 mzr.hnp
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd sqqbthdp
+$ ls
+154217 pwhjps.jtn
+$ cd ..
+$ cd trvznjhb
+$ ls
+105431 hwqvsl
+$ cd ..
+$ cd ..
+$ cd ngfllcq
+$ ls
+183850 dcppzj.lmm
+131039 hbpn.zlp
+110398 hjpf
+dir pwhjps
+251784 rqgslj.sqg
+dir szqf
+150728 vsptqdv
+$ cd pwhjps
+$ ls
+dir pzrtwv
+156616 rpbh.ftj
+dir tzn
+$ cd pzrtwv
+$ ls
+197890 tzn
+$ cd ..
+$ cd tzn
+$ ls
+121296 pdtjlb.nmg
+$ cd ..
+$ cd ..
+$ cd szqf
+$ ls
+dir ngfllcq
+dir qtrhn
+$ cd ngfllcq
+$ ls
+dir vnfcczg
+$ cd vnfcczg
+$ ls
+86691 cgc.vzv
+189290 hjds.lwf
+230265 hwqvsl
+dir jbmvmzn
+223129 ngfllcq.mdw
+dir rpcbpjvm
+215119 tmnjbqq.fzh
+$ cd jbmvmzn
+$ ls
+dir flrszsrr
+175047 hjpf
+dir jrzf
+dir ngfllcq
+$ cd flrszsrr
+$ ls
+163007 zdvfmqr.pfq
+$ cd ..
+$ cd jrzf
+$ ls
+32641 qbnz
+$ cd ..
+$ cd ngfllcq
+$ ls
+dir dlcvcd
+dir gcpftfm
+183962 tzn.mjh
+$ cd dlcvcd
+$ ls
+260612 mhf
+$ cd ..
+$ cd gcpftfm
+$ ls
+227489 hwqvsl
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd rpcbpjvm
+$ ls
+dir tnwzgrvw
+$ cd tnwzgrvw
+$ ls
+dir trvznjhb
+$ cd trvznjhb
+$ ls
+127767 pdtjlb.qjw
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd qtrhn
+$ ls
+81716 dngdll
+76367 tdj
+180116 tmnjbqq.fzh
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd zdzq
+$ ls
+192339 bqcmzm.vzw
+dir cplvj
+dir drpmlmf
+92165 mcthl.dzw
+dir qccnln
+$ cd cplvj
+$ ls
+dir gmqddf
+71720 hjpf
+220700 hwqvsl
+260353 lgw.msr
+$ cd gmqddf
+$ ls
+36587 dmdgjrs
+$ cd ..
+$ cd ..
+$ cd drpmlmf
+$ ls
+4896 hjpf
+dir ngfllcq
+65712 pwhjps.mng
+67097 tmnjbqq.fzh
+$ cd ngfllcq
+$ ls
+248967 swvf.prt
+$ cd ..
+$ cd ..
+$ cd qccnln
+$ ls
+dir tzn
+$ cd tzn
+$ ls
+81833 vsptqdv
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd wlsg
+$ ls
+181214 nmglzcds.hcg
+195698 pdtjlb.vbr
+dir trvznjhb
+77162 vsptqdv
+$ cd trvznjhb
+$ ls
+237856 trvznjhb
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd pdtjlb
+$ ls
+101237 hwqvsl
+dir jssl
+dir ngfllcq
+dir pvlqvdrw
+dir pwhjps
+dir tzn
+115255 vsptqdv
+$ cd jssl
+$ ls
+76335 smmjjrp
+$ cd ..
+$ cd ngfllcq
+$ ls
+102639 cgc.vzv
+55243 fjfhdtr.ltc
+$ cd ..
+$ cd pvlqvdrw
+$ ls
+38570 pwhjps.qgq
+191322 scnbjgg.gww
+$ cd ..
+$ cd pwhjps
+$ ls
+dir ghfwwj
+dir vtr
+$ cd ghfwwj
+$ ls
+109461 mdtp.ztw
+$ cd ..
+$ cd vtr
+$ ls
+dir fmtpdc
+$ cd fmtpdc
+$ ls
+42101 bcdbqcs.lhp
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd tzn
+$ ls
+dir pdtjlb
+$ cd pdtjlb
+$ ls
+154813 vsptqdv
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd rqfzvwts
+$ ls
+250112 hwqvsl
+63241 tzn
+149460 tzn.pph
+$ cd ..
+$ cd trvznjhb
+$ ls
+784 bdptcbl.ntt
+108339 cgc.vzv
+dir hnpdrdsm
+dir mnnwcmd
+dir ngfllcq
+dir pbsnd
+dir pdtjlb
+261083 rhl.cjh
+dir trvznjhb
+103421 wjftfs
+$ cd hnpdrdsm
+$ ls
+253895 pwhjps.nps
+36928 ssjhl
+235679 tmnjbqq.fzh
+38049 trvznjhb.dzs
+$ cd ..
+$ cd mnnwcmd
+$ ls
+218411 fvzhntq.rwm
+78694 gwlcbbtm
+243270 hjpf
+15610 trvznjhb.wdj
+$ cd ..
+$ cd ngfllcq
+$ ls
+dir fmhlq
+dir fwbdttbj
+dir hccstwh
+$ cd fmhlq
+$ ls
+142240 rbrwv.hjl
+dir tjpwvb
+256604 tmnjbqq.fzh
+dir trvznjhb
+$ cd tjpwvb
+$ ls
+83436 sfrpt
+$ cd ..
+$ cd trvznjhb
+$ ls
+44433 trvznjhb
+$ cd ..
+$ cd ..
+$ cd fwbdttbj
+$ ls
+4127 hwqvsl
+$ cd ..
+$ cd hccstwh
+$ ls
+dir cbd
+243765 lvzsrqlw.llc
+$ cd cbd
+$ ls
+158372 vzgtjqbd.tmd
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd pbsnd
+$ ls
+172548 cgc.vzv
+261836 pwhjps
+$ cd ..
+$ cd pdtjlb
+$ ls
+73184 cgc.vzv
+dir mdbjwvh
+dir mgt
+dir nbrvvghc
+98702 ngf.gtb
+dir ngfllcq
+224788 pdtjlb
+191754 tmnjbqq.fzh
+189444 tnqwbmzm.vlq
+dir tzn
+dir ztzsg
+$ cd mdbjwvh
+$ ls
+135602 nvt.rjh
+$ cd ..
+$ cd mgt
+$ ls
+dir pbrtf
+dir whflvwv
+$ cd pbrtf
+$ ls
+dir tnnnllg
+$ cd tnnnllg
+$ ls
+269436 hjpf
+$ cd ..
+$ cd ..
+$ cd whflvwv
+$ ls
+185562 ngfllcq
+dir rdl
+150984 trvznjhb
+$ cd rdl
+$ ls
+231952 mqjcttf
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd nbrvvghc
+$ ls
+dir pdtjlb
+$ cd pdtjlb
+$ ls
+40347 hjpf
+dir vwl
+$ cd vwl
+$ ls
+124408 tzn.hjw
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ngfllcq
+$ ls
+54894 bvgf
+$ cd ..
+$ cd tzn
+$ ls
+41506 vnhlvqqw.cvd
+$ cd ..
+$ cd ztzsg
+$ ls
+216433 fzsnpr.vrd
+dir grrngq
+dir hcmvbhp
+dir lbmnq
+19985 ngfllcq
+dir pqqjgbvj
+dir zsnggz
+$ cd grrngq
+$ ls
+dir cqcvb
+dir ngfllcq
+dir shrhb
+$ cd cqcvb
+$ ls
+125712 cgc.vzv
+69800 fpszwd
+160009 rbbwsszz
+dir trvznjhb
+33640 tzghd.fjp
+$ cd trvznjhb
+$ ls
+dir gtjfll
+dir mrncfvnp
+dir pwt
+dir trvznjhb
+173974 tzn
+$ cd gtjfll
+$ ls
+126840 cgc.vzv
+180163 fswwvhwn
+dir gnpcbvmt
+122192 ngfllcq.snb
+$ cd gnpcbvmt
+$ ls
+127188 crhvwb.pct
+218972 mwg
+$ cd ..
+$ cd ..
+$ cd mrncfvnp
+$ ls
+216569 phlbdl
+$ cd ..
+$ cd pwt
+$ ls
+119692 tmnjbqq.fzh
+$ cd ..
+$ cd trvznjhb
+$ ls
+203464 nltqsvd.fhc
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ngfllcq
+$ ls
+31226 rdwczp.hfq
+$ cd ..
+$ cd shrhb
+$ ls
+246035 bnbg
+98513 hjpf
+$ cd ..
+$ cd ..
+$ cd hcmvbhp
+$ ls
+dir cbb
+201230 cgc.vzv
+dir grmmpz
+220707 hjpf
+dir jnr
+dir psv
+dir trvznjhb
+134184 trvznjhb.ghp
+228507 vsptqdv
+$ cd cbb
+$ ls
+17897 hwqvsl
+$ cd ..
+$ cd grmmpz
+$ ls
+214171 spsnch.drs
+$ cd ..
+$ cd jnr
+$ ls
+82130 bhjqplbc.rth
+$ cd ..
+$ cd psv
+$ ls
+215898 pwhjps
+$ cd ..
+$ cd trvznjhb
+$ ls
+dir dfcn
+98111 gwt.fmw
+20948 hjpf
+dir pwhjps
+dir rnlrgd
+$ cd dfcn
+$ ls
+dir fqm
+179114 mbcrjb
+dir trvznjhb
+dir vfrrzdb
+$ cd fqm
+$ ls
+dir frgwsrdh
+$ cd frgwsrdh
+$ ls
+142027 hhpwsl
+$ cd ..
+$ cd ..
+$ cd trvznjhb
+$ ls
+dir nbbb
+34253 ngfllcq.src
+dir qgqmmvg
+dir tfgwmlc
+11919 trvznjhb.qgz
+dir tzn
+24383 zvfzhb.dcw
+$ cd nbbb
+$ ls
+260947 pwhjps.bdq
+$ cd ..
+$ cd qgqmmvg
+$ ls
+67028 wjvhq.tdz
+$ cd ..
+$ cd tfgwmlc
+$ ls
+dir rmcgqpb
+dir wdtmdtz
+$ cd rmcgqpb
+$ ls
+263786 nsmcndc.bjs
+$ cd ..
+$ cd wdtmdtz
+$ ls
+37751 lnspfqv.tpp
+$ cd ..
+$ cd ..
+$ cd tzn
+$ ls
+265035 nqsgm.dhm
+$ cd ..
+$ cd ..
+$ cd vfrrzdb
+$ ls
+dir pzbtsnd
+dir srpdb
+$ cd pzbtsnd
+$ ls
+72770 pdtjlb
+$ cd ..
+$ cd srpdb
+$ ls
+231540 dzgsf
+dir ngfllcq
+dir sjv
+$ cd ngfllcq
+$ ls
+26488 cgc.vzv
+195815 dfjss
+119177 lbjtjqr
+$ cd ..
+$ cd sjv
+$ ls
+225677 msgjj
+228113 ngfllcq
+92448 tzn.rbp
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd pwhjps
+$ ls
+171613 nzqd.rzh
+$ cd ..
+$ cd rnlrgd
+$ ls
+132964 hjpf
+146636 hwqvsl
+187596 mlrllbbb.wmh
+92535 trvznjhb
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd lbmnq
+$ ls
+142963 qfpjgvll.ncb
+$ cd ..
+$ cd pqqjgbvj
+$ ls
+dir dfhhzwp
+253570 jjbr.cgf
+dir lchljrwb
+dir pdtjlb
+$ cd dfhhzwp
+$ ls
+dir bqp
+$ cd bqp
+$ ls
+122939 hjpf
+$ cd ..
+$ cd ..
+$ cd lchljrwb
+$ ls
+259475 fqmppdtd.tjm
+$ cd ..
+$ cd pdtjlb
+$ ls
+199658 vsptqdv
+$ cd ..
+$ cd ..
+$ cd zsnggz
+$ ls
+117242 hjpf
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd trvznjhb
+$ ls
+dir bgvqct
+160709 dtq
+dir fldlwj
+dir ndq
+221408 tmnjbqq.fzh
+69148 zvfzt.rjm
+$ cd bgvqct
+$ ls
+66024 cmjrmfn.lpt
+40153 fdlvqgn.dbt
+135848 tmnjbqq.fzh
+$ cd ..
+$ cd fldlwj
+$ ls
+172275 ngfllcq.gbb
+$ cd ..
+$ cd ndq
+$ ls
+117311 bbhlcn.qll
+dir dtzmzgw
+123263 hsb
+dir jnthg
+111208 pdtjlb
+200860 pjq
+$ cd dtzmzgw
+$ ls
+dir tzn
+$ cd tzn
+$ ls
+249561 pszf.zcn
+$ cd ..
+$ cd ..
+$ cd jnthg
+$ ls
+17013 pwhjps.gpp
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd hwdvrrp
+$ ls
+dir fgvqft
+dir fwc
+dir sfhsb
+dir tzn
+dir wbtf
+$ cd fgvqft
+$ ls
+215710 wzh
+$ cd ..
+$ cd fwc
+$ ls
+184576 dmvqc.tsr
+dir hgznwf
+dir lfjtqz
+dir ngfllcq
+53748 ngfllcq.vgl
+dir pgpvcp
+$ cd hgznwf
+$ ls
+51012 tmnjbqq.fzh
+$ cd ..
+$ cd lfjtqz
+$ ls
+96666 fwttv.qrp
+203264 nhc.lgd
+dir pwhjps
+213570 tzn
+$ cd pwhjps
+$ ls
+69941 frqq.jnv
+136814 pqmsc.dgz
+185821 rww.trv
+$ cd ..
+$ cd ..
+$ cd ngfllcq
+$ ls
+97361 zcw.zrq
+$ cd ..
+$ cd pgpvcp
+$ ls
+834 nwv.mtw
+$ cd ..
+$ cd ..
+$ cd sfhsb
+$ ls
+78513 pdtjlb
+$ cd ..
+$ cd tzn
+$ ls
+dir lpf
+$ cd lpf
+$ ls
+242317 bngfvvgq.ptp
+82304 ngfllcq.qdz
+dir wsvqtcb
+$ cd wsvqtcb
+$ ls
+32176 vrwlnphn.nnv
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd wbtf
+$ ls
+53446 jvvdpn
+41661 ngfllcq.vhl
+dir pwhjps
+231151 tzn
+241080 vdzdhdtb.dgj
+dir vlqmz
+$ cd pwhjps
+$ ls
+200296 hdds.lsw
+$ cd ..
+$ cd vlqmz
+$ ls
+166538 pwhjps.mnq
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd lsmv
+$ ls
+dir dtjjv
+87897 hjpf
+216417 hwqvsl
+dir ngfllcq
+dir pdtjlb
+dir qlnlbcdv
+230724 vsptqdv
+177119 vvzvnn
+$ cd dtjjv
+$ ls
+218742 hjpf
+$ cd ..
+$ cd ngfllcq
+$ ls
+38560 cgc.vzv
+257037 fbttg.jlc
+29948 pwhjps.bvj
+1253 trvznjhb.nzl
+241388 tzn.vdb
+dir wlmtj
+$ cd wlmtj
+$ ls
+51957 hjpf
+27480 pwhjps.hgj
+dir qdjfgz
+dir shb
+182077 tclmtwh.wzr
+dir trvznjhb
+103119 twlf.rnl
+31950 tzn.zfm
+$ cd qdjfgz
+$ ls
+238882 hpms.gll
+dir qpbsmmp
+184633 trvznjhb.nsb
+130374 vsptqdv
+$ cd qpbsmmp
+$ ls
+60269 spsbz
+$ cd ..
+$ cd ..
+$ cd shb
+$ ls
+140111 vsptqdv
+$ cd ..
+$ cd trvznjhb
+$ ls
+dir qjqzppj
+$ cd qjqzppj
+$ ls
+203246 hjpf
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd pdtjlb
+$ ls
+41982 hjpf
+245930 hwqvsl
+dir mmnhtmr
+42314 ngfllcq.tcn
+68269 pdtjlb
+103066 vhtjp.grt
+$ cd mmnhtmr
+$ ls
+dir zqjjgvj
+$ cd zqjjgvj
+$ ls
+263209 nvhflpng.ngd
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd qlnlbcdv
+$ ls
+dir jmd
+58921 pdtjlb.mwb
+dir pzjgmm
+dir qqvrvcw
+79958 rrqmn.zwv
+18158 swjpt.trv
+dir trvznjhb
+dir tzn
+92135 zjb.nns
+268795 zspzsb.szp
+$ cd jmd
+$ ls
+137766 pwhjps
+$ cd ..
+$ cd pzjgmm
+$ ls
+1704 tzn.rhf
+66307 tzn.zll
+116623 vrfvctv.clb
+$ cd ..
+$ cd qqvrvcw
+$ ls
+179302 zrqf.fcn
+$ cd ..
+$ cd trvznjhb
+$ ls
+265026 qfzlgccf.hvz
+dir rbbmmcc
+$ cd rbbmmcc
+$ ls
+dir rtr
+$ cd rtr
+$ ls
+dir dtw
+$ cd dtw
+$ ls
+249472 svs.tgj
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd tzn
+$ ls
+80112 pdtjlb.thm
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ngfllcq
+$ ls
+228868 ggcfwgr.mwh
+10205 gztwg.pwz
+136188 hjpf
+141381 hwqvsl
+250522 pdtjlb.dwg
+dir pwhjps
+dir qcwvfl
+dir tzn
+dir zgwcwqr
+$ cd pwhjps
+$ ls
+19881 tmrljtw
+$ cd ..
+$ cd qcwvfl
+$ ls
+63317 fcjsw.jcj
+dir gvvfsq
+272464 lvqc
+148216 nwppjnwc.sdg
+121107 tzn.ppw
+dir vwfb
+$ cd gvvfsq
+$ ls
+80607 jplds.mjz
+$ cd ..
+$ cd vwfb
+$ ls
+dir gtlfdvjz
+$ cd gtlfdvjz
+$ ls
+228623 jbbplpz
+dir shf
+$ cd shf
+$ ls
+120966 cgc.vzv
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd tzn
+$ ls
+215528 cgc.vzv
+112331 gtzcl.rzp
+128653 mqd.dcz
+dir ngfllcq
+dir vmfgbzmw
+$ cd ngfllcq
+$ ls
+207193 qchb.hmv
+$ cd ..
+$ cd vmfgbzmw
+$ ls
+16152 vtlgffn
+$ cd ..
+$ cd ..
+$ cd zgwcwqr
+$ ls
+dir pdtjlb
+110033 vsptqdv
+$ cd pdtjlb
+$ ls
+9746 cgc.vzv
+8010 jdvjpps
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ngnzzmpc
+$ ls
+116647 gmsnm
+157873 hwqvsl
+$ cd ..
+$ cd pwhjps
+$ ls
+96321 cgc.vzv
+dir lcds
+dir tzn
+$ cd lcds
+$ ls
+134975 wcfv.gpd
+$ cd ..
+$ cd tzn
+$ ls
+95149 hjpf
+55950 pwhjps.rpq
+166540 tdt.pgw
+236704 trvznjhb.ccn
+$ cd ..
+$ cd ..
+$ cd rgwnzttf
+$ ls
+122721 hjpf
+$ cd ..
+$ cd trvznjhb
+$ ls
+106424 zvqz
+$ cd ..
+$ cd wgcqrc
+$ ls
+87367 hjpf
+63133 lld
+234148 pwhjps.lcr
+dir rjnnz
+19538 tzn
+233765 zlvznnwj
+$ cd rjnnz
+$ ls
+258856 gpgdm
+'
+]
