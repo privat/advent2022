@@ -7,6 +7,11 @@ The exercises of Advent of Code are hard to implement in OO languages in a dogma
 
 One thing that should be nice is the standard library of Pharo and how it provides **discoverable** handy methods to solve the various assignments.
 
+## Disclamers
+
+* Often, I did try something. If it works on the first try, I keep it, even if I thought of a smarter way later. If it doesn't work, then I hack until it does, but crufts and useless things may remain.
+* I'm not an expert at Pharo, so code might not be the right way to do things (more complex or fragile than needed).
+
 ## Basic design
 
 ### Classes & methods
@@ -33,9 +38,9 @@ Having a real test-suite seems too much work, and I'm lazy.
 
 ### Control flow
 
-In nice OOP design and programming, the various conditionals are usually delegated and shared among entities with the best responsibility, and abstracted into meaningful methods. It's very bad practice to peek low level values of random indirect objects when you write `ifTrue:` or to combine them in some various complex boolean expression.
+In nice OOP design and programming, the various conditionals are usually delegated/shared among entities with the best responsibility, and abstracted into meaningful methods. It's very bad practice to peek low level values of random indirect objects when you write `ifTrue:` or to combine them in some various complex boolean expression.
 
-Unfortunately, many exercises of advent of code need us to deal with conditional involving many variables. This causes a mess of parentheses and brackets.
+Unfortunately, many exercises of advent of code need us to deal with conditional involving many variables. This causes a mess of parentheses and brackets in Pharo.
 
 Another limitation is the lack of control flow break/continue in loops or other blocks.
 
