@@ -11453,3 +11453,293 @@ Advent2022 class >> day14sample [
 503,4 -> 502,4 -> 502,9 -> 494,9
 '
 ]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day15: data ly: ly [
+
+	"(Advent2022 day15: Advent2022 day15sample ly: 10) >>> 26"
+	"(Advent2022 day15: Advent2022 day15data ly: 2000000) >>> 5176944"
+
+	| parsed sx sy bx by covered dbs dbl bOnLine |
+
+	"Very naive approach in part1"
+
+	covered := Set new.
+	bOnLine := Set new.
+	data linesDo: [ :line | 
+		parsed := line splitOnAny: '=,:'.
+		sx := (parsed at: 2) asInteger.
+		sy := (parsed at: 4) asInteger.
+		bx := (parsed at: 6) asInteger.
+		by := (parsed at: 8) asInteger.
+
+		by = ly ifTrue: [ bOnLine add: bx ].
+
+		dbs := (sx - bx) abs + (sy - by) abs.
+		dbl := dbs - (sy - ly) abs.
+		sx - dbl to: sx + dbl do: [ :x | covered add: x ] ].
+	^ covered size - bOnLine size
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day15bis: data size: size [
+
+	"(Advent2022 day15bis: Advent2022 day15sample size: 20) >>> 1"
+	"(Advent2022 day15bis: Advent2022 day15data size: 4000000) >>> 13350458933732"
+
+	| parsed sx sy bx by covered dbs dbl sensors range |
+
+	sensors := OrderedCollection new.
+
+	data linesDo: [ :line | 
+		parsed := line splitOnAny: '=,:'.
+		sx := (parsed at: 2) asInteger.
+		sy := (parsed at: 4) asInteger.
+		bx := (parsed at: 6) asInteger.
+		by := (parsed at: 8) asInteger.
+
+		dbs := (sx - bx) abs + (sy - by) abs.
+
+		sensors add: { 
+				sx.
+				sy.
+				dbs } ].
+
+	range := 0 to: size.
+
+	0 to: size do: [ :ly | 
+		covered := IntervalSet new.
+		covered clamp: range.
+		sensors do: [ :s | 
+			sx := s first.
+			sy := s second.
+			dbs := s third.
+			dbl := dbs - (sy - ly) abs.
+			dbl >= 0 ifTrue: [ covered add: sx - dbl to: sx + dbl ] ].
+		covered size ~= range size ifTrue: [ 
+			^ covered intervals first last + 1 * 4000000 + ly ] ].
+	self error
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day15data [
+
+	^ 'Sensor at x=3999724, y=2000469: closest beacon is at x=4281123, y=2282046
+Sensor at x=3995530, y=8733: closest beacon is at x=3321979, y=-692911
+Sensor at x=3016889, y=2550239: closest beacon is at x=2408038, y=2645605
+Sensor at x=3443945, y=3604888: closest beacon is at x=3610223, y=3768674
+Sensor at x=168575, y=491461: closest beacon is at x=1053731, y=-142061
+Sensor at x=2820722, y=3865596: closest beacon is at x=3191440, y=3801895
+Sensor at x=2329102, y=2456329: closest beacon is at x=2408038, y=2645605
+Sensor at x=3889469, y=3781572: closest beacon is at x=3610223, y=3768674
+Sensor at x=3256726, y=3882107: closest beacon is at x=3191440, y=3801895
+Sensor at x=3729564, y=3214899: closest beacon is at x=3610223, y=3768674
+Sensor at x=206718, y=2732608: closest beacon is at x=-152842, y=3117903
+Sensor at x=2178192, y=2132103: closest beacon is at x=2175035, y=2000000
+Sensor at x=1884402, y=214904: closest beacon is at x=1053731, y=-142061
+Sensor at x=3060435, y=980430: closest beacon is at x=2175035, y=2000000
+Sensor at x=3998355, y=3965954: closest beacon is at x=3610223, y=3768674
+Sensor at x=3704399, y=3973731: closest beacon is at x=3610223, y=3768674
+Sensor at x=1421672, y=3446889: closest beacon is at x=2408038, y=2645605
+Sensor at x=3415633, y=3916020: closest beacon is at x=3191440, y=3801895
+Sensor at x=2408019, y=2263990: closest beacon is at x=2408038, y=2645605
+Sensor at x=3735247, y=2533767: closest beacon is at x=4281123, y=2282046
+Sensor at x=1756494, y=1928662: closest beacon is at x=2175035, y=2000000
+Sensor at x=780161, y=1907142: closest beacon is at x=2175035, y=2000000
+Sensor at x=3036853, y=3294727: closest beacon is at x=3191440, y=3801895
+Sensor at x=53246, y=3908582: closest beacon is at x=-152842, y=3117903
+Sensor at x=2110517, y=2243287: closest beacon is at x=2175035, y=2000000
+Sensor at x=3149491, y=3998374: closest beacon is at x=3191440, y=3801895
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day15sample [
+
+	^ 'Sensor at x=2, y=18: closest beacon is at x=-2, y=15
+Sensor at x=9, y=16: closest beacon is at x=10, y=16
+Sensor at x=13, y=2: closest beacon is at x=15, y=3
+Sensor at x=12, y=14: closest beacon is at x=10, y=16
+Sensor at x=10, y=20: closest beacon is at x=10, y=16
+Sensor at x=14, y=17: closest beacon is at x=10, y=16
+Sensor at x=8, y=7: closest beacon is at x=2, y=10
+Sensor at x=2, y=0: closest beacon is at x=2, y=10
+Sensor at x=0, y=11: closest beacon is at x=2, y=10
+Sensor at x=20, y=14: closest beacon is at x=25, y=17
+Sensor at x=17, y=20: closest beacon is at x=21, y=22
+Sensor at x=16, y=7: closest beacon is at x=15, y=3
+Sensor at x=14, y=3: closest beacon is at x=15, y=3
+Sensor at x=20, y=1: closest beacon is at x=15, y=3
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day16: data bis: bis [
+
+	"(Advent2022 day16: Advent2022 day16sample bis: false) >>> 1651"
+	"(Advent2022 day16: Advent2022 day16data bis: false) >>> 2029"
+	"(Advent2022 day16: Advent2022 day16sample bis: true) >>> 1707"
+	"(Advent2022 day16: Advent2022 day16data bis: true) >>> 2723"
+
+	| matcher graph rooms room valves queue bests bests2 |
+	rooms := Dictionary new.
+	graph := AIBFS new.
+	data linesDo: [ :line | 
+		matcher := 'Valve (\w+) has flow rate=(\d+); tunnels? leads? to valves? (.*)'
+			           asRegex.
+		matcher matches: line.
+		room := Valve new
+			        name: (matcher subexpression: 2) asSymbol;
+			        rate: (matcher subexpression: 3) asInteger;
+			        neighbors: ((matcher subexpression: 4) splitOn: ', ');
+			        yourself.
+		rooms at: room name put: room.
+		graph addNodeFor: room ].
+
+	rooms do: [ :r | r neighbors replace: [ :n | rooms at: n asSymbol ] ].
+	rooms do: [ :from | 
+		from neighbors do: [ :to | 
+			graph addEdge: from -> to from: [ :x | x key ] to: [ :x | x value ] ] ].
+
+	rooms do: [ :start | 
+		| dists |
+		dists := Dictionary new.
+		start distances: dists.
+		graph runFrom: start.
+		graph nodes do: [ :n | dists at: n model put: n distance ] ].
+
+	valves := rooms select: [ :r | r rate > 0 ].
+	valves doWithIndex: [ :r :i | r bit: (2 raisedTo: i - 1) ].
+
+	queue := OrderedCollection new. "{room. opened. value. time}"
+	bests := Dictionary new. "{room. opened. time} -> value"
+
+	queue add: { 
+			(rooms at: #AA).
+			0.
+			0.
+			(bis
+				 ifTrue: [ 26 ]
+				 ifFalse: [ 30 ]) }.
+
+	[ queue isEmpty ] whileFalse: [ 
+		| next r o v t b |
+		next := queue removeFirst.
+		r := next first.
+		o := next second.
+		v := next third.
+		t := next fourth.
+
+		valves select: [ :n | (o bitAnd: n bit) = 0 ] thenDo: [ :n | 
+			| t2 o2 v2 bk |
+			t2 := t - (r distances at: n) - 1.
+			t2 > 0 ifTrue: [ 
+				o2 := o bitOr: n bit.
+				v2 := v + (t2 * n rate).
+				bk := { 
+					      n.
+					      o2.
+					      t2 }.
+				b := bests at: bk ifAbsent: [ -1 ].
+				b < v2 ifTrue: [ 
+					bests at: bk put: v2.
+					queue add: { 
+							n.
+							o2.
+							v2.
+							t2 } ] ] ] ].
+
+	bis ifFalse: [ "part1" ^ bests max ].
+
+	"part2"
+
+	bests2 := -1.
+	bests := (bests associations groupedBy: [ :a | a key second ])
+		         associations replace: [ :a | 
+		         a key -> (a value maxValue: [ :x | x value ]) ].
+	bests do: [ :b1 | 
+		bests
+			select: [ :b2 | (b1 key bitAnd: b2 key) = 0 ]
+			thenDo: [ :b2 | bests2 := bests2 max: b1 value + b2 value ] ].
+	^ bests2
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day16data [
+
+	^ 'Valve YK has flow rate=0; tunnels lead to valves GL, FT
+Valve QA has flow rate=0; tunnels lead to valves JX, FD
+Valve LN has flow rate=0; tunnels lead to valves FD, FG
+Valve AU has flow rate=0; tunnels lead to valves BD, PQ
+Valve MM has flow rate=0; tunnels lead to valves UL, AA
+Valve JX has flow rate=0; tunnels lead to valves QA, NZ
+Valve CV has flow rate=0; tunnels lead to valves UP, QW
+Valve UZ has flow rate=0; tunnels lead to valves FG, NZ
+Valve BP has flow rate=0; tunnels lead to valves TI, DX
+Valve NS has flow rate=0; tunnels lead to valves ZL, CW
+Valve CO has flow rate=0; tunnels lead to valves BD, AT
+Valve RZ has flow rate=0; tunnels lead to valves AA, ZO
+Valve PQ has flow rate=0; tunnels lead to valves ML, AU
+Valve CW has flow rate=7; tunnels lead to valves UL, PH, OF, NS, GT
+Valve FG has flow rate=14; tunnels lead to valves SO, JR, IN, LN, UZ
+Valve EZ has flow rate=0; tunnels lead to valves UP, QP
+Valve GN has flow rate=0; tunnels lead to valves VQ, CH
+Valve QW has flow rate=6; tunnels lead to valves CV, PF, KH, UY, TI
+Valve UL has flow rate=0; tunnels lead to valves MM, CW
+Valve VQ has flow rate=12; tunnels lead to valves GN, LC
+Valve FT has flow rate=0; tunnels lead to valves SG, YK
+Valve SG has flow rate=21; tunnels lead to valves FT, LC, NO, QX
+Valve BD has flow rate=23; tunnels lead to valves CO, AU, AB
+Valve AB has flow rate=0; tunnels lead to valves BD, QX
+Valve QP has flow rate=0; tunnels lead to valves AD, EZ
+Valve OF has flow rate=0; tunnels lead to valves DX, CW
+Valve AA has flow rate=0; tunnels lead to valves QL, RZ, SO, MM, HW
+Valve RQ has flow rate=0; tunnels lead to valves GL, QG
+Valve ZL has flow rate=0; tunnels lead to valves NS, FD
+Valve KH has flow rate=0; tunnels lead to valves GT, QW
+Valve JR has flow rate=0; tunnels lead to valves FG, PH
+Valve PH has flow rate=0; tunnels lead to valves CW, JR
+Valve LC has flow rate=0; tunnels lead to valves VQ, SG
+Valve FD has flow rate=20; tunnels lead to valves LN, QA, ZL
+Valve NZ has flow rate=15; tunnels lead to valves UZ, JX
+Valve ML has flow rate=22; tunnels lead to valves OW, PQ, NO
+Valve PF has flow rate=0; tunnels lead to valves QW, CH
+Valve UP has flow rate=19; tunnels lead to valves RY, CV, EZ
+Valve VM has flow rate=0; tunnels lead to valves RY, CH
+Valve DX has flow rate=3; tunnels lead to valves BO, QL, BP, OF, QG
+Valve QL has flow rate=0; tunnels lead to valves AA, DX
+Valve HW has flow rate=0; tunnels lead to valves UY, AA
+Valve GL has flow rate=8; tunnels lead to valves YK, RQ
+Valve QG has flow rate=0; tunnels lead to valves DX, RQ
+Valve IN has flow rate=0; tunnels lead to valves FG, BO
+Valve NO has flow rate=0; tunnels lead to valves SG, ML
+Valve SO has flow rate=0; tunnels lead to valves FG, AA
+Valve RY has flow rate=0; tunnels lead to valves UP, VM
+Valve CH has flow rate=13; tunnels lead to valves GN, VM, PF, ZO
+Valve AD has flow rate=17; tunnel leads to valve QP
+Valve TI has flow rate=0; tunnels lead to valves BP, QW
+Valve UY has flow rate=0; tunnels lead to valves HW, QW
+Valve AT has flow rate=24; tunnels lead to valves OW, CO
+Valve GT has flow rate=0; tunnels lead to valves CW, KH
+Valve ZO has flow rate=0; tunnels lead to valves RZ, CH
+Valve QX has flow rate=0; tunnels lead to valves AB, SG
+Valve BO has flow rate=0; tunnels lead to valves IN, DX
+Valve OW has flow rate=0; tunnels lead to valves AT, ML
+'
+]
+
+{ #category : #'as yet unclassified' }
+Advent2022 class >> day16sample [
+
+	^ 'Valve AA has flow rate=0; tunnels lead to valves DD, II, BB
+Valve BB has flow rate=13; tunnels lead to valves CC, AA
+Valve CC has flow rate=2; tunnels lead to valves DD, BB
+Valve DD has flow rate=20; tunnels lead to valves CC, AA, EE
+Valve EE has flow rate=3; tunnels lead to valves FF, DD
+Valve FF has flow rate=0; tunnels lead to valves EE, GG
+Valve GG has flow rate=0; tunnels lead to valves FF, HH
+Valve HH has flow rate=22; tunnel leads to valve GG
+Valve II has flow rate=0; tunnels lead to valves AA, JJ
+Valve JJ has flow rate=21; tunnel leads to valve II
+'
+]
